@@ -16,33 +16,28 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
- # python installtion
-  install-python:
-  # should run on linux based operating system
+  my_python_job:
+    name: "Python"
     runs-on: ubuntu-latest
-  
+    strategy:
+      matrix:
+        python:
+          - 3.6.8
+          - 3.7.5
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Install python version
-      # use the pyenv-action version 7
-        uses: gabrielfalcao/pyenv-action@v7
-        with:
-          default: 3.8.6 # pick 3.8.6 verion 
-          command: pip install -U pip  # upgrade pip after installing python
-      
-      - name: create environment
-        run: pyenv local 3.8.6 && python -mvenv .venv386
+    - uses: actions/checkout@v2
+    - name: Install python version
+      uses: gabrielfalcao/pyenv-action@v5
+      with:
+        default: "${{ matrix.python }}"
+        command: pip install -U pip  # upgrade pip after installing python
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt --upgrade pip
+    - name: Install dependencies
+      run: pip install -r requirements.txt
 
-
-      - name: setup pyenv
-        id: pyenv_installation
-        uses: "gabrielfalcao/pyenv-action@v7"
-
-      - name: debug pyenv
-        run: echo ${{ steps.pyenv_installation.outputs.pyenv_root }}
+    - name: Run tests
+      run: pytest .
         
   # This workflow contains a single job called "build"
   build:
