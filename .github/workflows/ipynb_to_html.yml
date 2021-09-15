@@ -15,29 +15,6 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
-  my_python_job:
-    name: "Python"
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python:
-          - 3.6.8
-          - 3.7.5
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install python version
-      uses: gabrielfalcao/pyenv-action@v5
-      with:
-        default: "${{ matrix.python }}"
-        command: pip install -U pip  # upgrade pip after installing python
-
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-
-    - name: Run tests
-      run: pytest .
         
   # This workflow contains a single job called "build"
   build:
@@ -48,7 +25,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
       
       - name: Install nbconvert
         run: pip install nbconvert
