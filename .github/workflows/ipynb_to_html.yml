@@ -32,7 +32,8 @@ jobs:
       
       - name: Install nbconvert
         run: pip install nbconvert
-        run: jupyter kernelspec install /usr/local/Cellar/python3/3.7.11/bin/
+        
+      - run: jupyter kernelspec install /usr/local/Cellar/python3/3.7.11/bin/
         
       - name: Convert all ipynb files to html (and delete ipynb files)
         run: find . -name '*.ipynb' -type f -execdir jupyter nbconvert --template classic --to html --execute --EmbedImagesPreprocessor.embed_images=True {} \; -execdir rm {} \;
