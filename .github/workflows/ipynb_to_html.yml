@@ -20,17 +20,39 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ '3.8']
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
       - uses: actions/checkout@v1
-      - name: Install Python 3.8.10
-        uses: actions/setup-pyton@v1
+      - name: Install Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
         with:
-          python-version: 3.8.10
+          python-version: ${{ matrix.python-version }}
           architecture: 'x64'
-      
+      - name: Setup Pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+      - name: Upgrade packaging dependencies
+        run: |
+          pip install --upgrade pip setuptools wheel
+      - name: Get pip cache dir
+        id: pip-cache
+        run: |
+          echo "::set-output name=dir::$(pip cache dir)"
+      - name: Cache pip
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('setup.py') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ matrix.python-version }}-
+            ${{ runner.os }}-pip-
+      - name: Install the Python dependencies
+        run: |
+          pip install -e .[test]
       
       - name: Install nbconvert
         run: pip install nbconvert
