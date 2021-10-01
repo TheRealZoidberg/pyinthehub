@@ -53,7 +53,9 @@ jobs:
       #- name: Install the Python dependencies
       #  run: |
       #    pip install -e .[test]
-      
+      - name: Install iPython
+        run: pip install ipython
+        
       - name: Install nbconvert
         run: pip install nbconvert
         
