@@ -54,7 +54,8 @@ jobs:
       #  run: |
       #    pip install -e .[test]
       - name: Install jupyter
-        run:  pip install jupyter
+        run:  pip install jupyter-console
+        
       - name: Install nbconvert
         run: pip install nbconvert
         
