@@ -34,8 +34,10 @@ jobs:
       - name: Install jupyter
         run:  pip install jupyter
         
+      - name: Install requirements
+        run: pip install -r requirements.txt
       - name: Convert all ipynb files to html (and delete ipynb files)
-        run: pip install -r requirements.txt \; jupyter nbconvert --to html --execute --EmbedImagesPreprocessor.embed_images=True
+        run: jupyter nbconvert --template classic --to html --execute --EmbedImagesPreprocessor.embed_images=True
 
       - name: Push notebooks folder to the build branch
         uses: s0/git-publish-subdir-action@develop
