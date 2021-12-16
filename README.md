@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/spacetelescope/jdat_notebooks/HEAD)
+
 # James Webb Space Telescope Data Analysis Tool Notebooks (pyinthesky)
 
 ``jdat_notebooks`` are one component of STScI's larger [Data Analysis Tools Ecosystem](https://jwst-docs.stsci.edu/jwst-post-pipeline-data-analysis).
