@@ -9,10 +9,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: autopy-lot 
         uses: deep5050/autopy-lot@master
-          check:
-          input_type:
-          comment_magics:
-          split_at_heading:
-          output_type:
+        with:
           output_dir: '/notebooks/'
           output_type: markdown
