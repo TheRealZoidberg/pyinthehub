@@ -11,10 +11,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Convert notebooks to Python
-        run: find . -type f -name "*.ipynb" -exec jupyter nbconvert --to python --TemplateExporter.exclude_markdown=true {} \;
+        run: find /notebooks/ -type f -name "*.ipynb" -exec jupyter nbconvert --to python --TemplateExporter.exclude_markdown=true {} \;
 
       - name: Convert notebooks to Markdown
-        run: find . -type f -name "*.ipynb" -exec jupyter nbconvert --to html --TemplateExporter.exclude_code_cell=true {} \;
+        run: find /notebooks/ -type f -name "*.ipynb" -exec jupyter nbconvert --to html --TemplateExporter.exclude_code_cell=true {} \;
 
       - name: Run Super-Linter
         uses: github/super-linter@v3
