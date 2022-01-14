@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r environment.txt
+        pip install -r environment.yml
 
     - name: Install Python dependencies
       run: |
