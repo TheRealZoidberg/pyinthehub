@@ -1,8 +1,8 @@
-- jupyter>=1.0
+- jupyter
 - nbformat
 - nbconvert
-- numpy>=1.18
-- requests=2.24.0
+- numpy
+- requests
 - astropy
 - scipy
 - pytest

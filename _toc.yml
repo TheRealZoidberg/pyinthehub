@@ -3,12 +3,15 @@
 
 format: jb-book
 root: intro
-chapters:
+parts:
+ - caption: NIRISS WFSS Spectra
+ chapters:
     #- file: markdown
-- file: notebooks/NIRISS_WFSS_postpipeline/00. Optimal extraction.ipynb
-- file: notebooks/NIRISS_WFSS_postpipeline/01. Combine and normalize 1D spectra.ipynb
-- file: notebooks/NIRISS_WFSS_postpipeline/02. Cross correlation template.ipynb
-- file: notebooks/NIRISS_WFSS_postpipeline/03. Spatially resolved emission line map.ipynb
+    - file: notebooks/NIRISS_WFSS_postpipeline/00. Optimal extraction.ipynb
+    - file: notebooks/NIRISS_WFSS_postpipeline/01. Combine and normalize 1D spectra.ipynb
+    - file: notebooks/NIRISS_WFSS_postpipeline/02. Cross correlation template.ipynb
+    - file: notebooks/NIRISS_WFSS_postpipeline/03. Spatially resolved emission line map.ipynb
+ - caption: The rest
 - file: notebooks/mos-spectroscopy/MOSspec_sv06_revised.ipynb
 - file: notebooks/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_usecase.ipynb
 - file: notebooks/my_book/my_book/notebooks.ipynb
