@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JWST Data Analysis Tool Notebooks (pyinthesky) &#8212; STScI JDAT Notebooks</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">STScI JDAT Notebooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome JDAT Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRISS_WFSS_postpipeline/00.%20Optimal%20extraction.html">
+   Part 0: Optimal Extraction of NIRISS WFSS Spectrum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRISS_WFSS_postpipeline/01.%20Combine%20and%20normalize%201D%20spectra.html">
+   Part 1: Combine One-Dimensional NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRISS_WFSS_postpipeline/02.%20Cross%20correlation%20template.html">
+   Part 2: Cross Correlation to Determine Redshift of NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRISS_WFSS_postpipeline/03.%20Spatially%20resolved%20emission%20line%20map.html">
+   Part 3: Spatially Resolved Emission Line Map of NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/mos-spectroscopy/MOSspec_sv06_revised.html">
+   MOS Spectroscopy of Typical Extragalactic Field
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_usecase.html">
+   JWST Data Analysis Use Case: MIRI MRS Spectroscopy of a Late M Star
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/example_notebook/example_notebook.html">
+   Draft: Notebook title
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/cube_fitting/cube_fitting.html">
+   Spectral Cube Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.html">
+   IFU Data Modeling NGC  4151 Notebook #1  - Isolating Line Emission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.html">
+   NIRCam PSF-matched multiband photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.html">
+   JWST Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/optimal_extraction/Spectral%20Extraction-static.html">
+   NIRSpec MOS Optimal Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/ifu_optimal/ifu_optimal.html">
+   Baseline: NIRSpec IFU Optimal Point Source Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/background_estimation_imaging/Imaging%20Sky%20Background%20Estimation.html">
+   Imaging Sky Background Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/soss-transit-spectroscopy/HAT-P-1b-PART3-data-analysis.html">
+   Analyzing the JWST Pipeline products of HAT-P-1b observations with NIRISS/SOSS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/psf_photometry/NIRCam_PSF_Photometry_Example.html">
+   NIRCam PSF Photometry Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.html">
+   Specviz notebook/GUI interaction on NIRISS WFSS 1D spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/asdf_example/asdf_example.html">
+   Example of Converting a FITS File to ASDF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/composite_model_fitting/specfit_demo_3.html">
+   Draft: Advanced Composite spectral model fitting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/niriss_ami_binary/1_niriss_ami_binary.html">
+   NIRISS AMI simulation of binary point source AB Dor and calibrator HD37093
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/niriss_ami_binary/2_niriss_ami_binary.html">
+   NIRISS AMI calibration of binary point source AB Dor and calibrator HD37093
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/aperture_photometry/NIRCam_Aperture_Photometry_Example.html">
+   Draft Aperture Photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRSpec_MAST_Query/NIRSpec_MAST_Query.html">
+   MAST Query Tutorial for NIRSpec Users
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/MIRI_LRS_spectral_extraction/miri_lrs_spectral_extraction.html">
+   MIRI LRS Optimal  Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.html">
+   Extracting an Exoplanet Transmission Spectrum from NIRSpec BOTS Time Series Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/NIRCam_photometry/NIRCam%20multiband%20photometry.html">
+   NIRCam Multiband Photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/optimal_extraction_dynamic/Spectral%20Extraction.html">
+   NIRSpec MOS Optimal Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/preimaging/preimaging_02_calwebb.html">
+   Excuting the JWST pipeline on the  JWST astrometric calibration field in the LMC (part 1)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/preimaging/preimaging_01_mirage.html">
+   NIRSpec Pre-Imaging with NIRCam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/preimaging/preimaging_03_association.html">
+   Creating simulated images of the JWST astrometric calibration field in the LMC
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/index.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/therealzoidberg/pyinthehub"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/therealzoidberg/pyinthehub/issues/new?title=Issue%20on%20page%20%2Fdocs/index.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   JWST Data Analysis Tool Notebooks (pyinthesky)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jdat-and-jdaviz">
+     JDAT and Jdaviz
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jdat-notebooks">
+     JDAT Notebooks
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jdat-development-sprints">
+     JDAT Development Sprints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>JWST Data Analysis Tool Notebooks (pyinthesky)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   JWST Data Analysis Tool Notebooks (pyinthesky)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jdat-and-jdaviz">
+     JDAT and Jdaviz
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jdat-notebooks">
+     JDAT Notebooks
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jdat-development-sprints">
+     JDAT Development Sprints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <img alt="../_images/jda_notebooks_logo_wbg.png" src="../_images/jda_notebooks_logo_wbg.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="section" id="jwst-data-analysis-tool-notebooks-pyinthesky">
+<h1>JWST Data Analysis Tool Notebooks (pyinthesky)<a class="headerlink" href="#jwst-data-analysis-tool-notebooks-pyinthesky" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="jdat-and-jdaviz">
+<h2>JDAT and Jdaviz<a class="headerlink" href="#jdat-and-jdaviz" title="Permalink to this headline">¶</a></h2>
+<p>The James Webb Space Telescope Data Analysis Tool (JDAT) team at the Space Telescope Science Institute (STScI) is
+developing analysis and visualization tools for the upcoming James Webb Space Telescope (JWST). JDAT is involved
+with the development of <a class="reference external" href="https://www.astropy.org">astropy</a> core and its affiliated analysis tools (such as
+<a class="reference external" href="https://specutils.readthedocs.io/en/stable/">specutils</a> and <a class="reference external" href="https://photutils.readthedocs.io/en/stable/">photutils</a>).
+JDAT is also responsible for the development of the JWST Data Analysis Visualization tools (<cite>Jdaviz</cite>).
+<cite>Jdaviz</cite> is a package of astronomical data analysis and visualization tools based on the Jupyter platform.
+The <cite>Jdaviz</cite> package includes the following visualization applications:</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Application</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><cite>Specviz</cite></p></td>
+<td><p>Visualization and quick-look analysis for 1D astronomical spectra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>Cubeviz</cite></p></td>
+<td><p>Visualization and analysis tool for data cubes from integral field units (IFUs).</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>MOSviz</cite></p></td>
+<td><p>Visualization and quick-look analysis tool for multi-object spectroscopy (MOS).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>For more information on JDAT please see the <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-post-pipeline-data-analysis">Data Analysis Tools JDox Page</a>.</p></li>
+<li><p>For more information on <cite>Jdaviz</cite>, please visit the <a class="reference external" href="https://jdaviz.readthedocs.io/en/latest/">Jdaviz documentation</a>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="jdat-notebooks">
+<h2>JDAT Notebooks<a class="headerlink" href="#jdat-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>The JDAT team is seeking help from the scientific community to develop example notebooks that outline scientific
+workflows utilizing the analysis and visualization tools developed by the team. These notebooks will be
+made available to the public to serve as teaching resources and a form of interactive documentation of the analysis tools.</p>
+<p>The submitted notebooks should satisfy the following goals:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Reduce and analyze JWST data (we currently use simulated or similar data).</p></li>
+<li><p>Showcase analysis and visualization tools.</p></li>
+<li><p>Drive development by identifying missing functionalities in the tools and libraries.</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Completed notebooks are rendered and made available to the public in the
+<a class="reference external" href="https://github.com/spacetelescope/jdat_notebooks">jdat_notebooks</a> repository.
+Development of new notebooks is facilitated through the
+<a class="reference external" href="https://github.com/spacetelescope/dat_pyinthesky">dat_pyinthesky</a> repository.</p>
+</div>
+</div>
+<div class="section" id="jdat-development-sprints">
+<h2>JDAT Development Sprints<a class="headerlink" href="#jdat-development-sprints" title="Permalink to this headline">¶</a></h2>
+<p>The JDAT team at STScI develops the <cite>Jdaviz</cite> applications during two week sprints through out the year. During this time
+developers are available to assist with the development of notebooks. Notebook leads are strongly encouraged to participate
+in the JDAT sprints while composing their notebooks because it offers an opportunity to work with the developers and gain
+exposure to the latest tools. During a Sprint, we expect notebook leads to learn how to contribute their science expertise
+towards the development of tools via GitHub issues, JIRA tickets, Jupyter Notebook coding, communication with developers,
+and all the machinery in between. The JDAT team also has staff members dedicated to helping notebook leads with <cite>GitHub</cite>
+and <cite>Box</cite> related workflows. If you are interested in joining these sprints, please contact one of the maintainers of
+the <a class="reference external" href="https://github.com/spacetelescope/dat_pyinthesky">dat_pyinthesky</a>  repository or file a ticket in the
+<a class="reference external" href="https://stsci.service-now.com/hst">STScI help desk</a>. STScI and affilated staff should refer to the
+<span class="xref std std-ref">STScI Notebook Leads</span> section for instructions.</p>
+</div>
+</div>
+<div class="section" id="table-of-contents">
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development_procedure.html">Development Procedure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development_procedure.html#draft-stage">Draft Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_procedure.html#baseline-stage">Baseline Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_procedure.html#notebook-driven-development">Notebook-driven Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_procedure.html#advanced-stage">Advanced Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_procedure.html#final-notebook-maintenance-stage">Final Notebook - Maintenance Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_procedure.html#revision-based-on-community-feedback">Revision Based on Community Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="submitting_notebooks.html">Submitting Notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="submitting_notebooks.html#check-list">Check List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submitting_notebooks.html#box-submissions">Box Submissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submitting_notebooks.html#github-submissions">GitHub Submissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="submitting_notebooks.html#github-guidelines">GitHub Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="github_setup.html">GitHub Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="github_workflow.html">Git and GitHub Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="github_pr.html">Making a Pull Request (PR)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="submitting_notebooks.html#review-process">Review Process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_files.html">Data Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_files.html#uploading-data-to-box">Uploading Data to Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_files.html#box-urls-in-notebooks">Box URLs in Notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Jupyter Notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#starting-a-notebook">Starting a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#creating-a-new-notebook">Creating a New Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#markdown">Markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#developer-notes">Developer Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#clearing-notebook-outputs">Clearing Notebook Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#multiple-notebooks">Multiple Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#pep-8-guideline">Pep-8 Guideline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useful_links.html">Useful Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers_and_staff.html">Developers and Staff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stsci_notebook_leads.html">STScI Notebook Leads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stsci_notebook_leads.html#notebook-draft">Notebook Draft</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stsci_notebook_leads.html#join-a-sprint">Join a Sprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="technical_review.html">Technical Review</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="technical_review.html#instructions-for-technical-reviewers">Instructions for Technical Reviewers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="science_review.html">Science Review</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="science_review.html#instructions-for-science-reviewers">Instructions for Science Reviewers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Captain Jupyter<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

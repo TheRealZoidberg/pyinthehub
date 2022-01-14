@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top-level plan &#8212; STScI JDAT Notebooks</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">STScI JDAT Notebooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome JDAT Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRISS_WFSS_postpipeline/00.%20Optimal%20extraction.html">
+   Part 0: Optimal Extraction of NIRISS WFSS Spectrum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRISS_WFSS_postpipeline/01.%20Combine%20and%20normalize%201D%20spectra.html">
+   Part 1: Combine One-Dimensional NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRISS_WFSS_postpipeline/02.%20Cross%20correlation%20template.html">
+   Part 2: Cross Correlation to Determine Redshift of NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRISS_WFSS_postpipeline/03.%20Spatially%20resolved%20emission%20line%20map.html">
+   Part 3: Spatially Resolved Emission Line Map of NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/mos-spectroscopy/MOSspec_sv06_revised.html">
+   MOS Spectroscopy of Typical Extragalactic Field
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_usecase.html">
+   JWST Data Analysis Use Case: MIRI MRS Spectroscopy of a Late M Star
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/example_notebook/example_notebook.html">
+   Draft: Notebook title
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/cube_fitting/cube_fitting.html">
+   Spectral Cube Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.html">
+   IFU Data Modeling NGC  4151 Notebook #1  - Isolating Line Emission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.html">
+   NIRCam PSF-matched multiband photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.html">
+   JWST Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/optimal_extraction/Spectral%20Extraction-static.html">
+   NIRSpec MOS Optimal Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/ifu_optimal/ifu_optimal.html">
+   Baseline: NIRSpec IFU Optimal Point Source Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/background_estimation_imaging/Imaging%20Sky%20Background%20Estimation.html">
+   Imaging Sky Background Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/soss-transit-spectroscopy/HAT-P-1b-PART3-data-analysis.html">
+   Analyzing the JWST Pipeline products of HAT-P-1b observations with NIRISS/SOSS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/psf_photometry/NIRCam_PSF_Photometry_Example.html">
+   NIRCam PSF Photometry Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.html">
+   Specviz notebook/GUI interaction on NIRISS WFSS 1D spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/asdf_example/asdf_example.html">
+   Example of Converting a FITS File to ASDF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/composite_model_fitting/specfit_demo_3.html">
+   Draft: Advanced Composite spectral model fitting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/niriss_ami_binary/1_niriss_ami_binary.html">
+   NIRISS AMI simulation of binary point source AB Dor and calibrator HD37093
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/niriss_ami_binary/2_niriss_ami_binary.html">
+   NIRISS AMI calibration of binary point source AB Dor and calibrator HD37093
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/aperture_photometry/NIRCam_Aperture_Photometry_Example.html">
+   Draft Aperture Photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRSpec_MAST_Query/NIRSpec_MAST_Query.html">
+   MAST Query Tutorial for NIRSpec Users
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/MIRI_LRS_spectral_extraction/miri_lrs_spectral_extraction.html">
+   MIRI LRS Optimal  Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.html">
+   Extracting an Exoplanet Transmission Spectrum from NIRSpec BOTS Time Series Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/NIRCam_photometry/NIRCam%20multiband%20photometry.html">
+   NIRCam Multiband Photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/optimal_extraction_dynamic/Spectral%20Extraction.html">
+   NIRSpec MOS Optimal Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/preimaging/preimaging_02_calwebb.html">
+   Excuting the JWST pipeline on the  JWST astrometric calibration field in the LMC (part 1)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/preimaging/preimaging_01_mirage.html">
+   NIRSpec Pre-Imaging with NIRCam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks/preimaging/preimaging_03_association.html">
+   Creating simulated images of the JWST astrometric calibration field in the LMC
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/planning_outlines/spectralcube-to-specutils/plan.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/therealzoidberg/pyinthehub"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/therealzoidberg/pyinthehub/issues/new?title=Issue%20on%20page%20%2Fplanning_outlines/spectralcube-to-specutils/plan.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Top-level plan
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#needs-implementation-in-specutils">
+   Needs Implementation in specutils
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#required-for-science-goals">
+     Required for science goals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stretch-goals-based-on-science-cases-at-time-of-writing">
+     Stretch-goals based on science cases at time of writing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problems-incompatibilities-and-solutions">
+   Problems/incompatibilities and solutions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-the-name-spectrum1d-spectralcollection">
+     Problem: the name
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Spectrum1D
+      </span>
+     </code>
+     /
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpectralCollection
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-large-cubes-those-that-don-t-fit-in-memory">
+     Problem: large cubes/those that don’t fit in memory
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#incompatibility-masking-convention">
+     Incompatibility: masking convention
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#won-t-implement-as-part-of-this-plan">
+   Won’t-implement (as part of this plan)
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Top-level plan</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Top-level plan
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#needs-implementation-in-specutils">
+   Needs Implementation in specutils
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#required-for-science-goals">
+     Required for science goals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stretch-goals-based-on-science-cases-at-time-of-writing">
+     Stretch-goals based on science cases at time of writing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problems-incompatibilities-and-solutions">
+   Problems/incompatibilities and solutions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-the-name-spectrum1d-spectralcollection">
+     Problem: the name
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Spectrum1D
+      </span>
+     </code>
+     /
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpectralCollection
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-large-cubes-those-that-don-t-fit-in-memory">
+     Problem: large cubes/those that don’t fit in memory
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#incompatibility-masking-convention">
+     Incompatibility: masking convention
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#won-t-implement-as-part-of-this-plan">
+   Won’t-implement (as part of this plan)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p>This describes a transition plan to move <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> functionality to <code class="docutils literal notranslate"><span class="pre">specutils</span></code>.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="top-level-plan">
+<h1>Top-level plan<a class="headerlink" href="#top-level-plan" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Expand the “needs implementation” items into concrete issues in <code class="docutils literal notranslate"><span class="pre">specutils</span></code>.  In general new functionality that’s cube-specific should be a function/class in a relevant space like <code class="docutils literal notranslate"><span class="pre">specutils.analysis.cube</span></code>.</p></li>
+<li><p>Write unit tests for all the exsting analysis/manipulation functions in <code class="docutils literal notranslate"><span class="pre">SpectrumCollection</span></code> and <code class="docutils literal notranslate"><span class="pre">Spectrum1D</span></code> with cube shape/wcs.</p></li>
+<li><p>Add a label “spectral-cube feature” for all those needed for feature parity.</p></li>
+<li><p>Create parallel Jira tickets to track and prioritize internal STScI work.</p></li>
+<li><p>Declare victory when the label is empty, and at that point suggest deprecation of <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> to Adam Ginsburg.</p></li>
+</ol>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="needs-implementation-in-specutils">
+<h1>Needs Implementation in specutils<a class="headerlink" href="#needs-implementation-in-specutils" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-for-science-goals">
+<h2>Required for science goals<a class="headerlink" href="#required-for-science-goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NDCube</span></code> compatibility (although a proof-of-concept is here: <a class="reference external" href="https://github.com/astrofrog/nddata-experiments">https://github.com/astrofrog/nddata-experiments</a>) or equivalent cube-aware functionality - note this has the <em>highest</em> uncertainty.</p></li>
+<li><p>indexing via world coordinates.  This is already supported in <code class="docutils literal notranslate"><span class="pre">NDCube</span></code>, so re-using this functionality would be useful if possible.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spectral_slab</span></code> - note however that this is another word for the existing spectral region machinery in <code class="docutils literal notranslate"><span class="pre">specutils.manipulation.extract_region</span></code>, just with slightly different syntax. So <code class="docutils literal notranslate"><span class="pre">spectral_slab</span></code> might just be an alternate name that would be adopted in a <code class="docutils literal notranslate"><span class="pre">RadioSpectrum1D</span></code> or similar.</p></li>
+<li><p>Moment maps: Not this is already possible in <code class="docutils literal notranslate"><span class="pre">specutils</span></code>, particularly for first- (np.mean) and second- (line width) maps, but exposing a generic “nth moment” function is a good idea.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minimal_subcube</span></code> (see spectral-cube docs), although this would need a different name in a <code class="docutils literal notranslate"><span class="pre">Spectrum1D</span></code> context (since it would also potentially mask off the spectral “edges”?)</p></li>
+</ul>
+</div>
+<div class="section" id="stretch-goals-based-on-science-cases-at-time-of-writing">
+<h2>Stretch-goals based on science cases at time of writing<a class="headerlink" href="#stretch-goals-based-on-science-cases-at-time-of-writing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">with_mask</span></code> convenience method (not mandatory, but spectral-cube demonstrates it’s use as syntactic sugar?)</p></li>
+<li><p>Lazy masking</p></li>
+<li><p>Automatic (?) parallel processing of analysis functions across multiple spaxels.  If possible should depend on dask or similar wider ecosystem tools.</p></li>
+<li><p>Automatic (?) parallel processing of fitting across multiple spaxels.  (May or may not be best implemented via Dask as the above, but less clear because models are sometimes inherently 3d.)</p></li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="problems-incompatibilities-and-solutions">
+<h1>Problems/incompatibilities and solutions<a class="headerlink" href="#problems-incompatibilities-and-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem-the-name-spectrum1d-spectralcollection">
+<h2>Problem: the name <code class="docutils literal notranslate"><span class="pre">Spectrum1D</span></code>/<code class="docutils literal notranslate"><span class="pre">SpectralCollection</span></code><a class="headerlink" href="#problem-the-name-spectrum1d-spectralcollection" title="Permalink to this headline">¶</a></h2>
+<p>A user may not naturally think “cube” when they see “1d” or even “collection”.</p>
+<div class="section" id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Documentation/explanation that yes, a cube can be “1D” in the sense that it’s rectified.  Caveat: people don’t read documentation!</p></li>
+<li><p>Set up some aliases or subclasses with specific conventions.  E.g. <code class="docutils literal notranslate"><span class="pre">specutils.RectifiedSpectralCube</span></code> could be a subclass of <code class="docutils literal notranslate"><span class="pre">Spectrum1D</span></code> but just with an initializer that checks that the wcs has a spatial and spectral component.</p></li>
+<li><p>Point users to <code class="docutils literal notranslate"><span class="pre">NDCube</span></code> as a way to see explicit cube language, but have them use the NDCube&lt;-&gt;Spectrum1D compatibility layer as the way to still use <code class="docutils literal notranslate"><span class="pre">specutils</span></code> functionality</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="problem-large-cubes-those-that-don-t-fit-in-memory">
+<h2>Problem: large cubes/those that don’t fit in memory<a class="headerlink" href="#problem-large-cubes-those-that-don-t-fit-in-memory" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SpectralCube</span></code> takes some care to not copy cubes when possible.  It also provides hints on how to use memory mapping (from fits files) to handle cubes that are too big to fit in memory.  It is not clear if <code class="docutils literal notranslate"><span class="pre">specutils</span></code> is as careful about this or not.</p>
+<div class="section" id="id1">
+<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Run side-by-side tests of <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> operations and the equivalent <code class="docutils literal notranslate"><span class="pre">specutils</span></code> operations and see if the later uses more memory.  Where this occurs, identify where the copying occurs and fix it.  Note this is a potentially unbounded amount of work, so some careful prioritization may be needed.</p>
+</div>
+</div>
+<div class="section" id="incompatibility-masking-convention">
+<h2>Incompatibility: masking convention<a class="headerlink" href="#incompatibility-masking-convention" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> masking convention is the opposite of that used in specutils (which is the one used in numpy), and instead matches “indexing” convention.  This means code written for <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> is subtly different. Relatedly: JWST cubes by default also have a different on-disk dimensionality convention (although that may not present an <em>API</em> concern if the loader auto-transposes appropriately).</p>
+<div class="section" id="id2">
+<h3>Solution<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Don’t fix.  Just accept that there’s not direct-API compatibility</p></li>
+<li><p>Add a spectral-cube-like compatibility layer that auto inverts the masks - this isn’t too hard because masking in <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> is done via a <code class="docutils literal notranslate"><span class="pre">with_mask</span></code> method instead of direct indexing.  But it might make for more confusion because then there’s two ways to do the same thing.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="won-t-implement-as-part-of-this-plan">
+<h1>Won’t-implement (as part of this plan)<a class="headerlink" href="#won-t-implement-as-part-of-this-plan" title="Permalink to this headline">¶</a></h1>
+<p>This plan explicitly is aimed at only <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> features that are relevant for jwst, and does <em>not</em> include some of the <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> feature that are radio-specific.  This does <em>not</em> mean these cannot be done in specutils, just that the jdat effort at STScI does not plan to do them.</p>
+<ul class="simple">
+<li><p>CASA file read/write: this is a radio-specific format not important for JWST or other space telescopes.  (But probably the <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> code can be ported over to specutils without a tremendous amount of difficulty?)</p></li>
+<li><p>Extracting subcube from ds9/crtf region: not clear this is needed given viztool interfaces.  If desirable this could be done via <code class="docutils literal notranslate"><span class="pre">astropy-regions</span></code> later on.</p></li>
+<li><p>Spectral Extraction</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./planning_outlines/spectralcube-to-specutils"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Captain Jupyter<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

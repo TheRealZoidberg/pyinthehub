@@ -1,0 +1,1726 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JWST Data Analysis Use Case: MIRI MRS Spectroscopy of a Late M Star &#8212; STScI JDAT Notebooks</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Draft: Notebook title" href="../example_notebook/example_notebook.html" />
+    <link rel="prev" title="MOS Spectroscopy of Typical Extragalactic Field" href="../mos-spectroscopy/MOSspec_sv06_revised.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">STScI JDAT Notebooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome JDAT Notebooks
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRISS_WFSS_postpipeline/00.%20Optimal%20extraction.html">
+   Part 0: Optimal Extraction of NIRISS WFSS Spectrum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRISS_WFSS_postpipeline/01.%20Combine%20and%20normalize%201D%20spectra.html">
+   Part 1: Combine One-Dimensional NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRISS_WFSS_postpipeline/02.%20Cross%20correlation%20template.html">
+   Part 2: Cross Correlation to Determine Redshift of NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRISS_WFSS_postpipeline/03.%20Spatially%20resolved%20emission%20line%20map.html">
+   Part 3: Spatially Resolved Emission Line Map of NIRISS WFSS Spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mos-spectroscopy/MOSspec_sv06_revised.html">
+   MOS Spectroscopy of Typical Extragalactic Field
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   JWST Data Analysis Use Case: MIRI MRS Spectroscopy of a Late M Star
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../example_notebook/example_notebook.html">
+   Draft: Notebook title
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cube_fitting/cube_fitting.html">
+   Spectral Cube Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.html">
+   IFU Data Modeling NGC  4151 Notebook #1  - Isolating Line Emission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.html">
+   NIRCam PSF-matched multiband photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.html">
+   JWST Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../optimal_extraction/Spectral%20Extraction-static.html">
+   NIRSpec MOS Optimal Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ifu_optimal/ifu_optimal.html">
+   Baseline: NIRSpec IFU Optimal Point Source Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../background_estimation_imaging/Imaging%20Sky%20Background%20Estimation.html">
+   Imaging Sky Background Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../soss-transit-spectroscopy/HAT-P-1b-PART3-data-analysis.html">
+   Analyzing the JWST Pipeline products of HAT-P-1b observations with NIRISS/SOSS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../psf_photometry/NIRCam_PSF_Photometry_Example.html">
+   NIRCam PSF Photometry Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.html">
+   Specviz notebook/GUI interaction on NIRISS WFSS 1D spectra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../asdf_example/asdf_example.html">
+   Example of Converting a FITS File to ASDF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composite_model_fitting/specfit_demo_3.html">
+   Draft: Advanced Composite spectral model fitting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../niriss_ami_binary/1_niriss_ami_binary.html">
+   NIRISS AMI simulation of binary point source AB Dor and calibrator HD37093
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../niriss_ami_binary/2_niriss_ami_binary.html">
+   NIRISS AMI calibration of binary point source AB Dor and calibrator HD37093
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../aperture_photometry/NIRCam_Aperture_Photometry_Example.html">
+   Draft Aperture Photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRSpec_MAST_Query/NIRSpec_MAST_Query.html">
+   MAST Query Tutorial for NIRSpec Users
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MIRI_LRS_spectral_extraction/miri_lrs_spectral_extraction.html">
+   MIRI LRS Optimal  Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.html">
+   Extracting an Exoplanet Transmission Spectrum from NIRSpec BOTS Time Series Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NIRCam_photometry/NIRCam%20multiband%20photometry.html">
+   NIRCam Multiband Photometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../optimal_extraction_dynamic/Spectral%20Extraction.html">
+   NIRSpec MOS Optimal Spectral Extraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preimaging/preimaging_02_calwebb.html">
+   Excuting the JWST pipeline on the  JWST astrometric calibration field in the LMC (part 1)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preimaging/preimaging_01_mirage.html">
+   NIRSpec Pre-Imaging with NIRCam
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preimaging/preimaging_03_association.html">
+   Creating simulated images of the JWST astrometric calibration field in the LMC
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_usecase.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/therealzoidberg/pyinthehub"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/therealzoidberg/pyinthehub/issues/new?title=Issue%20on%20page%20%2Fnotebooks/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_usecase.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/therealzoidberg/pyinthehub/main?urlpath=tree/docs/notebooks/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_usecase.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-do">
+   To Do:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-paths-to-the-data-and-outputs">
+   Set paths to the Data and Outputs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-and-display-the-data-cube">
+   Load and Display the Data cube
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-to-detect-the-point-source-in-the-datacube-and-extract-and-plot-the-spectra-for-each-source">
+   Now to detect the point source in the datacube and extract and plot the spectra for each source
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-photutils-to-detect-stars-point-sources-in-the-continuum-image">
+     1) Use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Photutils
+      </span>
+     </code>
+     to detect stars/point sources in the continuum image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extract-the-spectra-from-the-datacube-using-spectralcube">
+     2) Extract the spectra from the datacube using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpectralCube
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#steps-to-find-the-background">
+       Steps to find the background
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detect-extract-and-plot-1d-spectrum-of-each-source-in-the-cube">
+   Detect, extract and plot 1D spectrum of each source in the cube
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-automatically-identify-all-the-point-sources-in-the-cube-using-photutils">
+     First automatically identify all the point sources in the cube using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       photutils
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-point-sources-are-present-in-the-cube-extract-and-plot-the-spectrum-of-each-source">
+     If point sources are present in the cube extract and plot the spectrum of each source
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-the-cell-below-we">
+       In the cell below we:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-analysis-on-the-extracted-spectra-using-specutils">
+   Data analysis - on the extracted spectra using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     specutils
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fit-a-continuum-find-the-best-fitting-template-stellar-photosphere-model-or-blackbody">
+     Fit a continuum - find the best-fitting template (stellar photosphere model or blackbody)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-have-the-dust-continuum-want-to-look-for-features-and-measure-their-properties">
+     Now have the dust continuum want to look for features and measure their properties.
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#as-an-example-lets-focus-on-the-amorphous-silicate-10-micron-region">
+       As an example lets focus on the amorphous silicate 10 micron region.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#now-try-looking-for-low-crystalline-silicate-features-at-23-28-33-microns-in-the-spectra">
+       Now try looking for low crystalline silicate features  at 23, 28, 33 microns in the spectra.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-this-notebook">
+   About this notebook
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>JWST Data Analysis Use Case: MIRI MRS Spectroscopy of a Late M Star</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-do">
+   To Do:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-paths-to-the-data-and-outputs">
+   Set paths to the Data and Outputs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-and-display-the-data-cube">
+   Load and Display the Data cube
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-to-detect-the-point-source-in-the-datacube-and-extract-and-plot-the-spectra-for-each-source">
+   Now to detect the point source in the datacube and extract and plot the spectra for each source
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-photutils-to-detect-stars-point-sources-in-the-continuum-image">
+     1) Use
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Photutils
+      </span>
+     </code>
+     to detect stars/point sources in the continuum image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extract-the-spectra-from-the-datacube-using-spectralcube">
+     2) Extract the spectra from the datacube using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpectralCube
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#steps-to-find-the-background">
+       Steps to find the background
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detect-extract-and-plot-1d-spectrum-of-each-source-in-the-cube">
+   Detect, extract and plot 1D spectrum of each source in the cube
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-automatically-identify-all-the-point-sources-in-the-cube-using-photutils">
+     First automatically identify all the point sources in the cube using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       photutils
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-point-sources-are-present-in-the-cube-extract-and-plot-the-spectrum-of-each-source">
+     If point sources are present in the cube extract and plot the spectrum of each source
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-the-cell-below-we">
+       In the cell below we:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-analysis-on-the-extracted-spectra-using-specutils">
+   Data analysis - on the extracted spectra using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     specutils
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fit-a-continuum-find-the-best-fitting-template-stellar-photosphere-model-or-blackbody">
+     Fit a continuum - find the best-fitting template (stellar photosphere model or blackbody)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-have-the-dust-continuum-want-to-look-for-features-and-measure-their-properties">
+     Now have the dust continuum want to look for features and measure their properties.
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#as-an-example-lets-focus-on-the-amorphous-silicate-10-micron-region">
+       As an example lets focus on the amorphous silicate 10 micron region.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#now-try-looking-for-low-crystalline-silicate-features-at-23-28-33-microns-in-the-spectra">
+       Now try looking for low crystalline silicate features  at 23, 28, 33 microns in the spectra.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-this-notebook">
+   About this notebook
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p><a id="top"></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="jwst-data-analysis-use-case-miri-mrs-spectroscopy-of-a-late-m-star">
+<h1>JWST Data Analysis Use Case: MIRI MRS Spectroscopy of a Late M Star<a class="headerlink" href="#jwst-data-analysis-use-case-miri-mrs-spectroscopy-of-a-late-m-star" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><strong>Data</strong>: MIRI simulated data cubes obtained using MIRISim (<a class="reference external" href="https://wiki.miricle.org//bin/view/Public/MIRISim_Public">https://wiki.miricle.org//bin/view/Public/MIRISim_Public</a>)
+and run through the JWST pipeline (<a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/">https://jwst-pipeline.readthedocs.io/en/latest/</a>) of
+point sources with spectra representative of late M type stars.</p>
+<p>For this example, we use a KMOS datacube of point sources in the LMC from Jones et al. (in prep)
+to test the first part of the notebook, whilst MIRISim &amp; the JWST pipeline is undergoing development.</p>
+<p>For the spectral analysis section: one star is represented by a dusty SED corresponding to the ISO SWS spectrum of
+W Per from Kraemer et al. (2002) and Sloan et al. (2003) to cover the MRS spectral range 5-28 microns.</p>
+<p>Analysis of JWST spectral cubes requires extracting spatial-spectral features of interest and measuring their attributes.</p>
+<p><strong>In this notebook we</strong>:</p>
+<ol class="simple">
+<li><p>Process the datacube and automatically detect and extract spectra (summed over its spatial region) for all point sources in the cube.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Read in a datacube generated at Stage 3 of the JWST pipeline or use near-IR data from KMOS as a representative example of an IR data cube.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">photutils</span></code> to automatically detect sources in the continuum image.</p></li>
+<li><p>Use an aperture mask generated with <code class="docutils literal notranslate"><span class="pre">spectral-cube</span></code> to extract the spectra of each point source in the data cube.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Data analysis using <code class="docutils literal notranslate"><span class="pre">specutils</span></code></p></li>
+</ol>
+<ul class="simple">
+<li><p>Fit a model photosphere/blackbody to the spectra.</p></li>
+<li><p>Calculate the centroids, line integrated flux and equivalent width for each dust and molecular feature.</p></li>
+</ul>
+<div class="section" id="to-do">
+<h2>To Do:<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Replace KMOS data cube with JWST/MIRI simulation of an M star ran through JWST piplieline.</p></li>
+<li><p>Make function to extract spectra from datacube using an apeture.</p></li>
+<li><p>Replace blackbody fit to the photosphere part of the spectra with a stellar photosphere model.</p></li>
+<li><p>Make sure errors have been propagated correctly in the caculation of centroids, line integrated flux and
+equivalent widths.</p></li>
+<li><p>Make simple function within the <code class="docutils literal notranslate"><span class="pre">specutils</span></code> framework to fit a continium and measure centroids, line integrated flux and
+equivalent widths of broad solid state and molecular features.</p></li>
+</ul>
+</div>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import useful python packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Import packages to display images inline in the notebook</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    
+<span class="o">%</span><span class="k">matplotlib</span> inline   
+
+<span class="c1"># Set general plotting options</span>
+<span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;18&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;18&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;axes.linewidth&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;animation.html&#39;</span><span class="p">:</span> <span class="s1">&#39;html5&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.max_open_warning&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import useful python packages</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Import packages to display images inline in the notebook</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import astropy packages </span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">ascii</span>
+<span class="kn">from</span> <span class="nn">astropy.wcs</span> <span class="kn">import</span> <span class="n">WCS</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span><span class="p">,</span> <span class="n">vstack</span>
+<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span>
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">StdDevUncertainty</span>
+
+<span class="c1"># Import packages to deal with spectralcubes</span>
+<span class="kn">from</span> <span class="nn">spectral_cube</span> <span class="kn">import</span> <span class="n">SpectralCube</span>
+
+<span class="c1"># To find stars in the MRS spectralcubes and do aperture photometry</span>
+<span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">CircularAperture</span>
+
+<span class="c1"># To deal with 1D spectrum</span>
+<span class="kn">from</span> <span class="nn">specutils</span> <span class="kn">import</span> <span class="n">Spectrum1D</span>
+<span class="kn">from</span> <span class="nn">specutils.fitting</span> <span class="kn">import</span> <span class="n">fit_generic_continuum</span>
+<span class="kn">from</span> <span class="nn">specutils.manipulation</span> <span class="kn">import</span> <span class="n">box_smooth</span><span class="p">,</span> <span class="n">extract_region</span><span class="p">,</span> <span class="n">SplineInterpolatedResampler</span>
+<span class="kn">from</span> <span class="nn">specutils.analysis</span> <span class="kn">import</span> <span class="n">line_flux</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">equivalent_width</span>
+<span class="kn">from</span> <span class="nn">specutils.spectra</span> <span class="kn">import</span> <span class="n">SpectralRegion</span>
+
+<span class="c1"># To make nice plots with WCS axis</span>
+<span class="kn">import</span> <span class="nn">aplpy</span>
+
+<span class="c1"># To fit a curve to the data</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">7</span><span class="n">b7b8daca4b0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># Import packages to deal with spectralcubes</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">spectral_cube</span> <span class="kn">import</span> <span class="n">SpectralCube</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># To find stars in the MRS spectralcubes and do aperture photometry</span>
+
+<span class="o">~/</span><span class="n">workspace</span><span class="o">/</span><span class="n">spacetelescope</span><span class="o">/</span><span class="n">dat_pyinthesky</span><span class="o">/</span><span class="n">jdat_notebooks</span><span class="o">/</span><span class="n">MRS_Mstar_analysis</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spectral_cube</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_ASTROPY_SETUP_</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="kn">from</span> <span class="nn">.spectral_cube</span> <span class="kn">import</span> <span class="n">SpectralCube</span><span class="p">,</span> <span class="n">VaryingResolutionSpectralCube</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="kn">from</span> <span class="nn">.stokes_spectral_cube</span> <span class="kn">import</span> <span class="n">StokesSpectralCube</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="kn">from</span> <span class="nn">.masks</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="o">~/</span><span class="n">workspace</span><span class="o">/</span><span class="n">spacetelescope</span><span class="o">/</span><span class="n">dat_pyinthesky</span><span class="o">/</span><span class="n">jdat_notebooks</span><span class="o">/</span><span class="n">MRS_Mstar_analysis</span><span class="o">/</span><span class="n">env</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.7</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spectral_cube</span><span class="o">/</span><span class="n">spectral_cube</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">astropy.wcs</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">astropy.extern</span> <span class="kn">import</span> <span class="n">six</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">astropy.extern.six.moves</span> <span class="kn">import</span> <span class="nb">range</span> <span class="k">as</span> <span class="n">xrange</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">astropy.extern.six.moves</span> <span class="kn">import</span> <span class="nb">zip</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;six&#39; from &#39;astropy.extern&#39; (/home/jbcurtin/workspace/spacetelescope/dat_pyinthesky/jdat_notebooks/MRS_Mstar_analysis/env/lib/python3.7/site-packages/astropy/extern/__init__.py)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="set-paths-to-the-data-and-outputs">
+<h2>Set paths to the Data and Outputs<a class="headerlink" href="#set-paths-to-the-data-and-outputs" title="Permalink to this headline">¶</a></h2>
+<p>For now use KMOS data cube of YSOs in the LMC from Jones et al in prep.</p>
+<p>TODO: Update with MIRISim JWST pipeline processed data in future itterations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup an input directory where relevant data is located</span>
+<span class="n">data_in_path</span> <span class="o">=</span> <span class="s2">&quot;https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/MRS_Spectroscopy_Late_M_Star/&quot;</span>
+
+<span class="n">data_cube_file</span> <span class="o">=</span> <span class="n">data_in_path</span> <span class="o">+</span> <span class="s2">&quot;NGC346_K_2c_COMBINED_CUBE_Y551.fits&quot;</span>
+
+<span class="c1"># Path to output directory</span>
+<span class="n">data_out_path</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
+
+<span class="c1"># Setup an output directory to save the extracted 1D spectra</span>
+<span class="n">outdir_spectra</span> <span class="o">=</span> <span class="n">data_out_path</span> <span class="o">+</span> <span class="s1">&#39;/spectra/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some housekeeping if using the KMOS data rather than simulated JWST/MRS data</span>
+<span class="c1"># Define good wavelength ranges for each grating from which to make the data cube</span>
+<span class="n">YJgrating</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">1.358</span><span class="p">]</span> <span class="c1"># microns</span>
+<span class="n">Hgrating</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.44</span><span class="p">,</span> <span class="mf">1.85</span><span class="p">]</span>   <span class="c1"># microns</span>
+<span class="n">Kgrating</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.42</span><span class="p">]</span>    <span class="c1"># microns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-and-display-the-data-cube">
+<h2>Load and Display the Data cube<a class="headerlink" href="#load-and-display-the-data-cube" title="Permalink to this headline">¶</a></h2>
+<p><strong>Developer note</strong>  Note the <code class="docutils literal notranslate"><span class="pre">SpectralCube</span></code> package is designed for sub-mm/radio data it expects a beam!
+This is preferred to other packages available due to much of its functionality and ease of use.
+JWST NIRSpec and MIRI both have instruments that give data cubes (with two positional dimensions and one spectral
+dimension) as the final pipeline product, as do many ground based telescopes, which do not have a beam.</p>
+<p><a class="reference external" href="https://spectral-cube.readthedocs.io/en/stable/index.html">https://spectral-cube.readthedocs.io/en/stable/index.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span> <span class="o">=</span> <span class="n">SpectralCube</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data_cube_file</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(2048, 14, 15) and unit=erg / (Angstrom cm2 s):
+ n_x:     15  type_x: RA---TAN  unit_x: deg    range:    14.827541 deg:   14.830852 deg
+ n_y:     14  type_y: DEC--TAN  unit_y: deg    range:   -72.158961 deg:  -72.157927 deg
+ n_s:   2048  type_s: WAVE      unit_s: m      range:        1.925 um:       2.500 um
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ojones/anaconda3/envs/astro36/lib/python3.6/site-packages/spectral_cube/spectral_cube.py:246: UserWarning: Could not parse beam information from header.  Exception was: NoBeamException(&#39;No BMAJ found and does not appear to be a CASA/AIPS header.&#39;,)
+  &quot;  Exception was: {0}&quot;.format(ex.__repr__()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cube dimensions and trimming </span>
+<span class="c1"># Data order in cube is (n_spectral, n_y, n_x)</span>
+
+<span class="c1"># Trim the ends of the cube where the data quality is poor</span>
+<span class="n">subcube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">spectral_slab</span><span class="p">(</span><span class="n">Kgrating</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">,</span> <span class="n">Kgrating</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">)</span>
+
+<span class="c1"># Rename subcube to equal cube - done in case step above is not necessary</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">subcube</span>
+
+<span class="c1"># Chop out the NaN borders</span>
+<span class="n">cmin</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">minimal_subcube</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a continuum image (Sum/average over Wavelength)</span>
+<span class="c1"># Note: many mathematical options are available median is preferred</span>
+<span class="n">cont_img</span> <span class="o">=</span> <span class="n">cmin</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Extract the target name</span>
+<span class="n">name_long</span> <span class="o">=</span> <span class="n">cont_img</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;OBJECT&quot;</span><span class="p">]</span>
+<span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">name_long</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quick plot the continuum image now the NaN borders removed</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_13_0.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the continuum in WCS</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">hdu</span><span class="p">,</span> <span class="n">north</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">F</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">()</span>
+<span class="n">F</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">relative</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">F</span><span class="o">.</span><span class="n">axis_labels</span><span class="o">.</span><span class="n">set_font</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">F</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_font</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="n">stretch</span> <span class="o">=</span> <span class="s1">&#39;condensed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:Auto-setting vmin to -1.149e-18
+INFO:astropy:Auto-setting vmax to  1.301e-19
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Auto-setting vmin to -1.149e-18 [aplpy.core]
+INFO: Auto-setting vmax to  1.301e-19 [aplpy.core]
+</pre></div>
+</div>
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_14_2.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_14_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="now-to-detect-the-point-source-in-the-datacube-and-extract-and-plot-the-spectra-for-each-source">
+<h2>Now to detect the point source in the datacube and extract and plot the spectra for each source<a class="headerlink" href="#now-to-detect-the-point-source-in-the-datacube-and-extract-and-plot-the-spectra-for-each-source" title="Permalink to this headline">¶</a></h2>
+<p><strong>Developer note</strong> Finding a way to streamline the process of detecting sources within a data cube and extracting their
+spectra would be extremely valuable.</p>
+<p>For data cubes like the JWST/MIRI MRS information on the point sources in the FOV and also obtaining a source subtracted
+data cube will be necessary (See the <code class="docutils literal notranslate"><span class="pre">PampelMuse</span></code> software for an example on how spectral extraction is implemented for
+near-IR data cubes like MUSE).</p>
+<p>Note these backgrounds of diffuse emission can be quite complex.</p>
+<p>On these source extracted data cubes (see <code class="docutils literal notranslate"><span class="pre">SUBTRES</span></code> in <code class="docutils literal notranslate"><span class="pre">PampelMuse</span></code>) I would like to produce moment maps
+(<a class="reference external" href="https://casa.nrao.edu/Release3.4.0/docs/UserMan/UserManse41.html">https://casa.nrao.edu/Release3.4.0/docs/UserMan/UserManse41.html</a>) and Position-Velocity (PV) diagrams
+(<a class="reference external" href="https://casa.nrao.edu/Release4.1.0/doc/UserMan/UserManse42.html">https://casa.nrao.edu/Release4.1.0/doc/UserMan/UserManse42.html</a>).</p>
+<div class="section" id="use-photutils-to-detect-stars-point-sources-in-the-continuum-image">
+<h3>1) Use <code class="docutils literal notranslate"><span class="pre">Photutils</span></code> to detect stars/point sources in the continuum image<a class="headerlink" href="#use-photutils-to-detect-stars-point-sources-in-the-continuum-image" title="Permalink to this headline">¶</a></h3>
+<p>The first step of the analysis is to identify those sources for which it is feasible to extract spectra from the IFU
+data. Ideally we can estimate the signal-to-noise ratio (S/N) for all sources in the cube, do a number of checks to
+determine the status of every source and loop through these (brightest first) to extract the spectra.</p>
+</div>
+<div class="section" id="extract-the-spectra-from-the-datacube-using-spectralcube">
+<h3>2) Extract the spectra from the datacube using <code class="docutils literal notranslate"><span class="pre">SpectralCube</span></code><a class="headerlink" href="#extract-the-spectra-from-the-datacube-using-spectralcube" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note</strong> There are multiple ways of extracting spectra from datacubes. The simplest is slice the cube along a single
+pixel but this is not ideal for point sources which should cover multiple pixels.
+Here I use <em>Aperture Extraction</em>.</p>
+<ul class="simple">
+<li><p>The flux from each point source was obtained via a circular aperture. This requires you to mask the data, and make a
+circular mask and a maskedsubcube.</p></li>
+<li><p>A background measured using a square/rectangular aperture sliced in pixel coordinates to produce a sub-cube.</p></li>
+<li><p>A annulus surrounding the point source to measure the local background.</p></li>
+<li><p>Using predefined regions from DS9 etc. to create a mask [<code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">used</span> <span class="pre">here</span></code>].</p></li>
+</ul>
+<p><em>If have a small number of data cubes selecting the source extraction region and background region manually using
+<code class="docutils literal notranslate"><span class="pre">cubeviz</span></code> would be useful here.</em></p>
+<p>Mathematical operation e.g. <code class="docutils literal notranslate"><span class="pre">max,</span> <span class="pre">mean,</span> <span class="pre">sum,</span> <span class="pre">median,</span> <span class="pre">std</span></code> should then be applied to the region in the aperture.</p>
+<p>Below I show a few different options from the simple to the complex, which takes into account the background emission
+within the data cube. Taking into account the background may not always be the preferred method but the option should
+always be available when using an aperture extraction.</p>
+<div class="section" id="steps-to-find-the-background">
+<h4>Steps to find the background<a class="headerlink" href="#steps-to-find-the-background" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Define a background region either as an annulus or as a rectangle away from the source</p></li>
+<li><p>Find the median of all the background pixels to account for variations</p></li>
+<li><p>Find number of pixels in background and number of pixels in the point source aperture</p></li>
+<li><p>Find the sum of all the pixels in the point source aperture</p></li>
+<li><p>Correct for background using the sum star flux minus median of background * pixels in star aperture</p></li>
+</ol>
+<p><strong>Advanced Developer Note</strong> Using Aperture Extraction to obtain the spectra for each source in the data cube is still
+very simplistic. It should be noted that the MIRI aperture changes as a function of wavelength, the steps above do not
+account for this.
+A good example of software that looks at extracting point sources from datacubes is: <code class="docutils literal notranslate"><span class="pre">PampelMuse</span></code>, by Sebastian Kamann.
+<a class="reference external" href="https://gitlab.gwdg.de/skamann/pampelmuse">https://gitlab.gwdg.de/skamann/pampelmuse</a>; <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2013A%26A...549A..71K/abstract">https://ui.adsabs.harvard.edu/abs/2013A&amp;A…549A..71K/abstract</a></p>
+<p>An <code class="docutils literal notranslate"><span class="pre">optimal</span> <span class="pre">spectrum</span> <span class="pre">extraction</span></code> procedure would take into account the varying PSF through the cube, to produce an
+accurate spectra with the maximum possible signal-to-noise ratio. This weights the extracted data by the S/N of each
+pixel (Horne 1986) and would be ideal for when there is a complex background or for extracting spatially-blended source.
+For small cubes its best to fit a PSF profile to all resolved sources simultaneously, but this might not be possible in
+larger data sets.</p>
+<p><strong>Advanced Developer Note 2</strong> In dense fields like globular clusters, with a significant number of unresolved sources or
+in embedded star-forming clusters, a more advanced treatment of the background would be necessary. For instance using a
+homogeneous grid across the field of view with parameters controlling the bin size would be ideal. If a variable
+background is not accounted for in a PSF extraction systematic residuals in the data would be present where background
+is over or underestimated.</p>
+</div>
+</div>
+</div>
+<div class="section" id="detect-extract-and-plot-1d-spectrum-of-each-source-in-the-cube">
+<h2>Detect, extract and plot 1D spectrum of each source in the cube<a class="headerlink" href="#detect-extract-and-plot-1d-spectrum-of-each-source-in-the-cube" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="first-automatically-identify-all-the-point-sources-in-the-cube-using-photutils">
+<h3>First automatically identify all the point sources in the cube using <code class="docutils literal notranslate"><span class="pre">photutils</span></code><a class="headerlink" href="#first-automatically-identify-all-the-point-sources-in-the-cube-using-photutils" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make an array to store results of the source detection within the data cube</span>
+<span class="n">name_val</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">source_val</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ra_val</span> <span class="o">=</span><span class="p">[]</span>
+<span class="n">dec_val</span> <span class="o">=</span><span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crop out Edges and take absolute value of the continuum image</span>
+<span class="n">cont_img</span> <span class="o">=</span> <span class="n">cont_img</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+
+<span class="c1"># Find the background in the collapsed datacube</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sigma_clipped_stats</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">)</span>
+
+<span class="c1"># Get a list of sources using a dedicated source detection algorithm</span>
+<span class="c1"># Find sources at least 3* background (typically)</span>
+
+<span class="n">daofind</span> <span class="o">=</span> <span class="n">DAOStarFinder</span><span class="p">(</span><span class="n">fwhm</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.</span> <span class="o">*</span> <span class="n">std</span><span class="p">)</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="n">daofind</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">median</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Number of sources in field: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Number of sources in field:  2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="if-point-sources-are-present-in-the-cube-extract-and-plot-the-spectrum-of-each-source">
+<h3>If point sources are present in the cube extract and plot the spectrum of each source<a class="headerlink" href="#if-point-sources-are-present-in-the-cube-extract-and-plot-the-spectrum-of-each-source" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="in-the-cell-below-we">
+<h4>In the cell below we:<a class="headerlink" href="#in-the-cell-below-we" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Extract a spectra for each detected object using aperture photometry, and a circular masked region.</p></li>
+<li><p>Make an estimate of the background in the datacube using both: an annulus around each source and a box region away
+from the source - this box and annulus is hard coded and not ideal for other datasets or multiple cubes.</p></li>
+<li><p>Generate a background corrected spectrum.</p></li>
+<li><p>Plots the spectra and its various background corrected versions.</p></li>
+<li><p>Convert the spectra into Jy.</p></li>
+<li><p>Write each of the spectra to a file. (They could be put into a <code class="docutils literal notranslate"><span class="pre">specutils</span></code> <code class="docutils literal notranslate"><span class="pre">Spectrum1D</span></code> object at this stage but I
+have not done this here.) This file is loaded by all other routines to do analysis on the data.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">()</span>            
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sources</span><span class="o">.</span><span class="n">colnames</span><span class="p">:</span>
+        <span class="n">sources</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.8g</span><span class="s1">&#39;</span>  <span class="c1"># for consistent table output</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>                  
+
+    <span class="c1"># From the list of sources in the field get their RA and DEC (ICRS)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># Positions in pixels</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">]])</span>
+
+    <span class="c1"># Instantiate WCS object</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+
+    <span class="c1"># Convert to RA &amp; Dec (ICRS)</span>
+    <span class="n">radec_lst</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">pixel_to_world</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">])</span>
+    
+    <span class="c1">#-----------------------------------------------------  </span>
+    <span class="c1"># We are now entering a loop which does multiple processing steps on each </span>
+    <span class="c1"># point source detected in the cube</span>
+    
+    <span class="k">for</span> <span class="n">count_s</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">radec_lst</span><span class="p">[</span><span class="n">count_s</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;hmsdms&#39;</span><span class="p">))</span>
+        <span class="n">name_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">source_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count_s</span><span class="p">)</span>
+        <span class="n">ra_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">radec_lst</span><span class="p">[</span><span class="n">count_s</span><span class="p">]</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+        <span class="n">dec_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">radec_lst</span><span class="p">[</span><span class="n">count_s</span><span class="p">]</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+        
+        <span class="c1">#-----------------------------------------------------           </span>
+        <span class="c1"># Aperture Extract spectrum of point source - using a circular aperture</span>
+
+        <span class="c1"># Size of frame </span>
+        <span class="n">ysize_pix</span> <span class="o">=</span> <span class="n">cmin</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">xsize_pix</span> <span class="o">=</span> <span class="n">cmin</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># Set up some centroid pixel for the source </span>
+        <span class="n">ycent_pix</span> <span class="o">=</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">][</span><span class="n">count_s</span><span class="p">]</span>
+        <span class="n">xcent_pix</span> <span class="o">=</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">][</span><span class="n">count_s</span><span class="p">]</span>
+
+        <span class="c1"># Make an aperture radius for source</span>
+        <span class="c1"># If made into a function this value should not be hardcoded</span>
+        <span class="n">aperture_rad_pix</span> <span class="o">=</span> <span class="mi">2</span>
+
+        <span class="c1"># Make a masked array for the aperture</span>
+        <span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">([</span><span class="n">ysize_pix</span><span class="p">,</span><span class="n">xsize_pix</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="p">((</span><span class="n">yy</span><span class="o">-</span><span class="n">ycent_pix</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">xx</span><span class="o">-</span><span class="n">xcent_pix</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+        <span class="c1"># Select pixels within the aperture radius</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">&lt;=</span> <span class="n">aperture_rad_pix</span>
+
+        <span class="c1"># Make a masked cube</span>
+        <span class="n">maskedcube</span> <span class="o">=</span> <span class="n">cmin</span><span class="o">.</span><span class="n">with_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+
+        <span class="c1"># Pixels in aperture</span>
+        <span class="n">pix_in_ap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Extract the spectrum from only the circular aperture - use sum</span>
+        <span class="n">spectrum</span> <span class="o">=</span> <span class="n">maskedcube</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1"># Extract the noise spectrum for the source</span>
+        <span class="n">noisespectrum</span> <span class="o">=</span> <span class="n">maskedcube</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1"># Measure a spectrum from the background - Use an annulus around the source</span>
+        <span class="c1"># NOTE: Hardcoded values in for annulus size - improve</span>
+
+        <span class="c1"># Select pixels within an annulus</span>
+        <span class="n">an_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">radius</span> <span class="o">&gt;</span> <span class="n">aperture_rad_pix</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">radius</span> <span class="o">&lt;=</span> <span class="n">aperture_rad_pix</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Make a masked cube</span>
+        <span class="n">an_maskedcube</span> <span class="o">=</span> <span class="n">cmin</span><span class="o">.</span><span class="n">with_mask</span><span class="p">(</span><span class="n">an_mask</span><span class="p">)</span>
+
+        <span class="c1"># Extract the background spectrum from only the annulus</span>
+        <span class="n">bkg_spectrum</span> <span class="o">=</span> <span class="n">an_maskedcube</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1"># Background corrected spectrum - annulus</span>
+        <span class="n">corr_sp</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">-</span> <span class="p">(</span><span class="n">bkg_spectrum</span> <span class="o">*</span> <span class="n">pix_in_ap</span><span class="p">)</span>
+
+        <span class="c1"># Try measuring a spectrum from the background -&gt; Use a box away from source.</span>
+        <span class="c1"># NOTE: Hardcoded values in for box region - improve</span>
+
+        <span class="n">bkgcube</span> <span class="o">=</span> <span class="n">cmin</span><span class="p">[:</span> <span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+        <span class="n">bkgbox_spectrum</span> <span class="o">=</span> <span class="n">bkgcube</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">bkg_img</span> <span class="o">=</span> <span class="n">bkgcube</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Background corrected spectrum - box</span>
+        <span class="n">corr_sp_box</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">-</span> <span class="p">(</span><span class="n">bkgbox_spectrum</span> <span class="o">*</span> <span class="n">pix_in_ap</span><span class="p">)</span>
+                
+        <span class="c1">#-----------------------------------------------------               </span>
+        <span class="c1"># Plot the spectrum extracted from circular aperture via: a sum extraction</span>
+        
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">spectrum</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                 <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Source&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">corr_sp</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                 <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Bkg Corr&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">corr_sp_box</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                 <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Bkg Corr box&#39;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">spectrum</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="n">radec_lst</span><span class="p">[</span><span class="n">count_s</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;decimal&#39;</span><span class="p">),</span>
+                       <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        
+        <span class="c1">#-----------------------------------------------------  </span>
+        <span class="c1"># Convert flux from erg / (Angstrom cm2 s) to Jy </span>
+        
+        <span class="n">spectrumJy</span> <span class="o">=</span> <span class="n">spectrum</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">Jy</span><span class="p">,</span> <span class="n">equivalencies</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">))</span>
+
+        <span class="n">corr_sp_Jy</span> <span class="o">=</span> <span class="n">corr_sp</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">Jy</span><span class="p">,</span> <span class="n">equivalencies</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">))</span>
+
+        <span class="n">corr_sp_box_Jy</span> <span class="o">=</span> <span class="n">corr_sp_box</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">Jy</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">))</span>
+
+        <span class="n">noiseSp_Jy</span> <span class="o">=</span> <span class="n">noisespectrum</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">Jy</span><span class="p">,</span> <span class="n">equivalencies</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">))</span>
+
+        <span class="c1">#-----------------------------------------------------</span>
+        <span class="c1"># Save each extracted spectrum to a file</span>
+
+        <span class="c1"># Set an output name</span>
+        <span class="n">spec_outname</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count_s</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="s2">&quot;spec&quot;</span>
+
+        <span class="c1"># Make output table </span>
+        <span class="n">specdata_tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([</span><span class="n">maskedcube</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">corr_sp_Jy</span><span class="p">,</span> <span class="n">noiseSp_Jy</span><span class="p">,</span>
+                              <span class="n">spectrumJy</span><span class="p">,</span> <span class="n">corr_sp_box_Jy</span><span class="p">],</span>
+                             <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wave_mum&#39;</span><span class="p">,</span> <span class="s1">&#39;cspec_Jy&#39;</span><span class="p">,</span> <span class="s1">&#39;err_fl_Jy&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;spec_Jy&#39;</span><span class="p">,</span> <span class="s1">&#39;cSpec_box_Jy&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Write the file</span>
+        <span class="c1"># ascii.write(specdata_tab, outdir_spectra + spec_outname +&quot;.csv&quot;,</span>
+        <span class="c1">#             format = &#39;csv&#39;, overwrite = True)</span>
+
+    <span class="c1">#-----------------------------------------------------</span>
+    <span class="c1"># Do aperture photometry on the sources - Only if using sum of image</span>
+
+    <span class="c1"># Take list of star positions from DAOFIND use this to define an aperture</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>                         <span class="c1"># To overcome in array order </span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">([</span><span class="n">sources</span><span class="p">,</span> <span class="n">sources</span><span class="p">])</span>             
+        <span class="n">positions_pix</span> <span class="o">=</span> <span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">positions_pix</span> <span class="o">=</span> <span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">])</span>
+
+    <span class="n">apertures</span> <span class="o">=</span> <span class="n">CircularAperture</span><span class="p">(</span><span class="n">positions_pix</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">2.</span><span class="p">)</span>   <span class="c1"># Aperture radius = 2 pixels</span>
+    
+    <span class="c1">#-----------------------------------------------------</span>
+    <span class="c1"># As a check to make sure all obvious point sources have been identified</span>
+    <span class="c1"># plot the cube with the NaN borders removed and overplot the apertures</span>
+    <span class="c1"># for the extracted sources</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+    <span class="n">apertures</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">else</span><span class="p">:</span>  
+    <span class="c1"># Plot the cube with the NaN borders removed </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cont_img</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: A &#39;NAXIS1&#39; keyword already exists in this header.  Inserting duplicate keyword. [astropy.io.fits.header]
+WARNING:astropy:A &#39;NAXIS1&#39; keyword already exists in this header.  Inserting duplicate keyword.
+/Users/ojones/anaconda3/envs/astro36/lib/python3.6/site-packages/spectral_cube/spectral_cube.py:246: UserWarning: Could not parse beam information from header.  Exception was: NoBeamException(&#39;No BMAJ found and does not appear to be a CASA/AIPS header.&#39;,)
+  &quot;  Exception was: {0}&quot;.format(ex.__repr__()))
+WARNING: AstropyDeprecationWarning: Inputing positions shaped as 2xN is deprecated and will be removed in v0.8.  Positions should be a (x, y) pixel position or a list or array of (x, y) pixel positions, e.g. [(x1, y1), (x2, y2), (x3, y3)]. [photutils.aperture.attributes]
+WARNING:astropy:AstropyDeprecationWarning: Inputing positions shaped as 2xN is deprecated and will be removed in v0.8.  Positions should be a (x, y) pixel position or a list or array of (x, y) pixel positions, e.g. [(x1, y1), (x2, y2), (x3, y3)].
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id xcentroid ycentroid sharpness  ... sky      peak        flux      mag    
+--- --------- --------- ---------- ... --- ------------- --------- ----------
+  1 2.3734571 1.7177399 0.62142129 ...   0 5.5538106e-19 5.2739665 -1.8053434
+  2 5.3369846 6.8329156 0.66676136 ...   0 4.1796922e-19 3.8700278 -1.4692852
+
+00h59m19.2286s -72d09m30.1487s
+00h59m18.9713s -72d09m30.1505s
+</pre></div>
+</div>
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_20_2.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_20_2.png" />
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_20_3.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_20_3.png" />
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_20_4.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_20_4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make table of extracted sources</span>
+<span class="n">source_extspec_tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([</span><span class="n">name_val</span><span class="p">,</span> <span class="n">source_val</span><span class="p">,</span> <span class="n">ra_val</span><span class="p">,</span> <span class="n">dec_val</span><span class="p">],</span> 
+                           <span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;source_no&quot;</span><span class="p">,</span> <span class="s2">&quot;ra&quot;</span><span class="p">,</span> <span class="s2">&quot;dec&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">source_extspec_tab</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name source_no         ra                dec        
+---- --------- ------------------ ------------------
+Y551         0 14.830119062034905 -72.15837463495436
+Y551         1 14.829047135765496 -72.15837513138561
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-analysis-on-the-extracted-spectra-using-specutils">
+<h2>Data analysis - on the extracted spectra using <code class="docutils literal notranslate"><span class="pre">specutils</span></code><a class="headerlink" href="#data-analysis-on-the-extracted-spectra-using-specutils" title="Permalink to this headline">¶</a></h2>
+<p>With the present lack of JWST flight data, we instead use the SWS spectra of an dusty AGB star, a cool M-star.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the paths to the spectral data extracted from the datacube above</span>
+<span class="n">dusty_AGB_spec_file</span> <span class="o">=</span> <span class="n">data_in_path</span> <span class="o">+</span> <span class="s1">&#39;63702662.txt&#39;</span>
+
+<span class="n">spectra_file</span> <span class="o">=</span> <span class="n">dusty_AGB_spec_file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the spectra - as saved as text files &amp; do some housekeeping</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">spectra_file</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">colnames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;wave_mum&#39;</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;col2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;cspec_Jy&#39;</span>            
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;col3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;err_fl_Jy&#39;</span>         
+
+<span class="n">wav</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;wave_mum&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>  <span class="c1"># Wavelength: microns</span>
+<span class="n">fl</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;cspec_Jy&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Jy</span>       <span class="c1"># Fnu:  Jy</span>
+<span class="n">efl</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;err_fl_Jy&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Jy</span>     <span class="c1"># Error flux: Jy</span>
+
+<span class="c1"># Make a 1D spectrum object</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">Spectrum1D</span><span class="p">(</span><span class="n">spectral_axis</span> <span class="o">=</span> <span class="n">wav</span><span class="p">,</span> <span class="n">flux</span> <span class="o">=</span> <span class="n">fl</span><span class="p">,</span> <span class="n">uncertainty</span> <span class="o">=</span> <span class="n">StdDevUncertainty</span><span class="p">(</span><span class="n">efl</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong> Reading in a spectra comprised of multiple spectral components this file may have a spectral order column. In
+many instances these orders are not correctly stitched together due to issues with background and flux calibration. A
+spectral file with an order column that can read into the <code class="docutils literal notranslate"><span class="pre">Spectrum1D</span></code> is necessary to do corrections and scaling on
+each segment individually to fix the jumps between the spectra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply a 5 pixel boxcar smoothing to the spectrum</span>
+<span class="n">spec_bsmooth</span> <span class="o">=</span> <span class="n">box_smooth</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>   
+
+<span class="c1"># Plot the spectrum &amp; smoothed spectrum to inspect features </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Source&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">spec_bsmooth</span><span class="o">.</span><span class="n">flux</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Smoothed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_26_0.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_26_0.png" />
+</div>
+</div>
+<div class="section" id="fit-a-continuum-find-the-best-fitting-template-stellar-photosphere-model-or-blackbody">
+<h3>Fit a continuum - find the best-fitting template (stellar photosphere model or blackbody)<a class="headerlink" href="#fit-a-continuum-find-the-best-fitting-template-stellar-photosphere-model-or-blackbody" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note</strong> - Would idealy like to fit the photosphere with a set of Phoenix Models - but cant get that to work.
+I think <code class="docutils literal notranslate"><span class="pre">template_comparison</span></code> may be a good function here to work with the Phoenix Models which have been setup to
+interface with <code class="docutils literal notranslate"><span class="pre">pysynphot</span></code>.</p>
+<p>For now switching to a blackbody.</p>
+<ul class="simple">
+<li><p>For AGB stars with a photosphere component fit a stellar photosphere model or a blackbody to short wavelength end of
+the spectra</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">blackbody_Fnu</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Blackbody as a function of wavelength (um) and temperature (K).</span>
+<span class="sd">        Function returns the Planck function in f_nu units</span>
+<span class="sd">        # [Y Jy] = 1.0E+23 * [X erg/cm^2/s/Hz] = 10E+26  [X Watts/m^2/Hz]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="n">lam</span>                                              <span class="c1"># convert to metres</span>
+    <span class="n">bb_nu</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">c</span> <span class="o">/</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">c</span> <span class="o">/</span> <span class="p">(</span><span class="n">lam</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>      <span class="c1"># units of W/m^2/Hz/Steradian ; f_nu units</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="n">bb_nu</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only want to fit to a small wavelength range at the start of the spectra</span>
+<span class="n">phot_fit_region</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">9.4</span><span class="p">]</span>  <span class="c1"># Microns</span>
+
+<span class="c1"># Trim the specrum to the region showing a stellar photosphere</span>
+<span class="n">sub_region_phot</span> <span class="o">=</span> <span class="n">SpectralRegion</span><span class="p">([(</span><span class="n">phot_fit_region</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">phot_fit_region</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">)</span>
+<span class="n">sub_spectrum_phot</span> <span class="o">=</span> <span class="n">extract_region</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">sub_region_phot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit BB to the data</span>
+<span class="k">def</span> <span class="nf">phot_fn</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">blackbody_Fnu</span><span class="p">(</span><span class="n">wa</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> 
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">phot_fn</span><span class="p">,</span> <span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                       <span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
+                       <span class="n">sigma</span><span class="o">=</span><span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">uncertainty</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span>
+
+<span class="c1"># Get the best fitting parameter value and their 1 sigma errors</span>
+<span class="n">best_t1</span><span class="p">,</span> <span class="n">best_a1</span> <span class="o">=</span> <span class="n">popt</span>
+<span class="n">sigma_t1</span><span class="p">,</span> <span class="n">sigma_a1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>
+
+<span class="n">ybest</span> <span class="o">=</span> <span class="n">blackbody_Fnu</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">best_t1</span><span class="p">,</span> <span class="n">best_a1</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Parameters of best-fitting model:&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;T1 = </span><span class="si">%.2f</span><span class="s1"> +/- </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">best_t1</span><span class="p">,</span> <span class="n">sigma_t1</span><span class="p">))</span>
+
+<span class="n">degrees_of_freedom</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="n">resid</span> <span class="o">=</span> <span class="p">(</span><span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">phot_fn</span><span class="p">(</span><span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> \
+        <span class="o">/</span> <span class="n">sub_spectrum_phot</span><span class="o">.</span><span class="n">uncertainty</span><span class="o">.</span><span class="n">quantity</span>
+
+<span class="n">chisq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">resid</span><span class="p">,</span> <span class="n">resid</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;nchi2 </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">chisq</span> <span class="o">/</span> <span class="n">degrees_of_freedom</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameters of best-fitting model:
+T1 = 2361.46 +/- 20.80
+nchi2 828.47
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the spectrum &amp; the model fit to the short wavelength region of the data.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Source&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">ybest</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;BB&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Spectrum with blackbody fit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Now subtract the BB and plot the underlying dust continuum</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">ybest</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Dust spectra&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Continuum-subtracted spectrum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_31_0.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_31_0.png" />
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_31_1.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_31_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="now-have-the-dust-continuum-want-to-look-for-features-and-measure-their-properties">
+<h3>Now have the dust continuum want to look for features and measure their properties.<a class="headerlink" href="#now-have-the-dust-continuum-want-to-look-for-features-and-measure-their-properties" title="Permalink to this headline">¶</a></h3>
+<p>Want to find:</p>
+<ul class="simple">
+<li><p>Equivalent width</p></li>
+<li><p>Equivalent flux</p></li>
+<li><p>Optical depth</p></li>
+<li><p>Centroids = wavelength with half the flux on either side</p></li>
+</ul>
+<div class="section" id="as-an-example-lets-focus-on-the-amorphous-silicate-10-micron-region">
+<h4>As an example lets focus on the amorphous silicate 10 micron region.<a class="headerlink" href="#as-an-example-lets-focus-on-the-amorphous-silicate-10-micron-region" title="Permalink to this headline">¶</a></h4>
+<p><strong>Method - used repeatedly</strong></p>
+<ul class="simple">
+<li><p>Fit a spline to the photosphere continuum subtracted spectra excluding the feature in this fit.</p></li>
+<li><p>Trim the spectra to that wavelength region as the spline is now a different size to the full wavelength range of the
+spectra.</p></li>
+<li><p>Make a continuum subtracted and and continuum normalised spectra.</p></li>
+<li><p>Convert the units of the flux from Jy to W/m^2/wavelength for nice units post line integration.</p></li>
+<li><p>Determine the feature line flux in units of W/m^2 and the feature centroid. Use continuum subtracted spectra.</p></li>
+<li><p>Determine the feature equivalent width. Use continuum normalised spectra.</p></li>
+<li><p>Make sure errors have been propagated correctly.</p></li>
+<li><p>Store these results in a table</p></li>
+<li><p>Several molecular and dust features are normally present in the spectra. Repeat for each feature.</p></li>
+</ul>
+<p><strong>Note</strong>
+This seems like a long winded way to do this. Is there a simpler approach?</p>
+<blockquote>
+<div><p>For instance a tool that takes four wavelengths, fits a line using the data from  lam0 to lam1 and lam2 to lam3, then
+passes the continuum-subtracted  spectrum for line integration from lam1 to lam2 with error propagation is needed
+several times for dust features. But with the current spectra1d framework this takes many steps to write manually and
+is beyond tedious after doing this for 2 features let alone 20+.  Similar framework is also needed for the integrated
+line centroid with uncertainty, and the extracted equivalent width.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit a spline to the 10 micron feature to isolate it.</span>
+
+<span class="n">bbsub_spectra</span> <span class="o">=</span> <span class="n">spec</span> <span class="o">-</span> <span class="n">ybest</span>     <span class="c1"># continuum subtracted spectra - Dust only</span>
+
+<span class="c1"># Fit a local continuum between the flux densities at: 8.0 - 8.1 &amp; 14.9 - 15.0 microns</span>
+<span class="c1"># (i.e. excluding the line itself)</span>
+
+<span class="n">sw_region</span> <span class="o">=</span> <span class="mf">8.0</span>   <span class="c1">#lam0</span>
+<span class="n">sw_line</span> <span class="o">=</span> <span class="mf">8.1</span>     <span class="c1">#lam1</span>
+<span class="n">lw_line</span> <span class="o">=</span> <span class="mf">14.9</span>    <span class="c1">#lam2</span>
+<span class="n">lw_region</span> <span class="o">=</span> <span class="mf">15.0</span>  <span class="c1">#lam3</span>
+
+<span class="c1"># Zoom in on the line complex &amp; extract</span>
+<span class="n">line_reg_10</span> <span class="o">=</span> <span class="n">SpectralRegion</span><span class="p">([(</span><span class="n">sw_region</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">,</span> <span class="n">lw_region</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">)])</span>
+<span class="n">line_spec</span> <span class="o">=</span> <span class="n">extract_region</span><span class="p">(</span><span class="n">bbsub_spectra</span><span class="p">,</span> <span class="n">line_reg_10</span><span class="p">)</span>
+
+<span class="c1"># Fit a local continuum - exclude the actual dust feature when doing the fit</span>
+
+<span class="n">lgl_fit</span> <span class="o">=</span> <span class="n">fit_generic_continuum</span><span class="p">(</span><span class="n">line_spec</span><span class="p">,</span> 
+                                <span class="n">exclude_regions</span> <span class="o">=</span> <span class="n">SpectralRegion</span><span class="p">([(</span><span class="n">sw_line</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">,</span> 
+                                                                   <span class="n">lw_line</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">)]))</span> 
+
+<span class="c1"># Determine Y values of the line continuum</span>
+<span class="n">line_y_continuum</span> <span class="o">=</span> <span class="n">lgl_fit</span><span class="p">(</span><span class="n">line_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">)</span> 
+
+<span class="c1">#-----------------------------------------------------------------</span>
+<span class="c1"># Generate a continuum subtracted and continuum normalised spectra</span>
+
+<span class="n">line_spec_norm</span> <span class="o">=</span><span class="n">line_spec</span> <span class="o">/</span> <span class="n">line_y_continuum</span>
+
+<span class="n">line_spec_consub</span> <span class="o">=</span> <span class="n">line_spec</span> <span class="o">-</span> <span class="n">line_y_continuum</span>
+
+<span class="c1">#-----------------------------------------------------------------</span>
+<span class="c1"># Plot the dust feature &amp; continuum fit to the region</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">line_spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Dust spectra 10 micron region&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">line_y_continuum</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Local continuum&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;10$\mu$m feature plus local continuum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1">#-----------------------------------------------------------------</span>
+<span class="c1"># Plot the continuum subtracted 10 micron feature</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line_spec_consub</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">line_spec_consub</span><span class="o">.</span><span class="n">flux</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;continuum subtracted&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Continuum subtracted 10$\mu$m feature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Model is linear in parameters; consider using linear fitting methods. [astropy.modeling.fitting]
+WARNING:astropy:Model is linear in parameters; consider using linear fitting methods.
+</pre></div>
+</div>
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_33_1.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_33_1.png" />
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_33_2.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_33_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Line flux; Line Centroid; Equivalent width</span>
+<span class="c1"># NOTE: Where are errors computed with these functions?</span>
+
+<span class="n">line_centroid</span> <span class="o">=</span> <span class="n">centroid</span><span class="p">(</span><span class="n">line_spec_consub</span><span class="p">,</span> <span class="n">SpectralRegion</span><span class="p">(</span><span class="n">sw_line</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">,</span> <span class="n">lw_line</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">))</span>
+
+<span class="n">line_flux_val</span> <span class="o">=</span> <span class="n">line_flux</span><span class="p">(</span><span class="n">line_spec_consub</span><span class="p">,</span> <span class="n">SpectralRegion</span><span class="p">(</span><span class="n">sw_line</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">,</span> <span class="n">lw_line</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">um</span><span class="p">))</span>
+
+<span class="n">equivalent_width_val</span> <span class="o">=</span> <span class="n">equivalent_width</span><span class="p">(</span><span class="n">line_spec_norm</span><span class="p">)</span>
+
+<span class="c1"># Hack to convert the line flux value into more conventional units</span>
+<span class="c1"># Necessary as spectra has mixed units: f_nu+lambda</span>
+<span class="n">line_flux_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">line_flux_val</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">W</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="o">**-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">,</span>
+                                              <span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">line_centroid</span><span class="p">))</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Line_centroid: </span><span class="si">{:.6}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line_centroid</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Integrated line_flux: </span><span class="si">{:.6}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line_flux_val</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Equivalent width: </span><span class="si">{:.6}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">equivalent_width_val</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Line_centroid: 10.722 micron 
+Integrated line_flux: 6.51116e-12 W / m2 
+Equivalent width: -8.85904 micron 
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Developer note</strong> The hack in the cell above is necessary, as the line flux computed by <code class="docutils literal notranslate"><span class="pre">specutils</span></code> would return
+units of Jy micron and it is hard to convert this into conventional units within the current <code class="docutils literal notranslate"><span class="pre">specutils</span></code> framework.
+Line flux units should be in units of in W/m^2. Implementing a simple way to convert the flux and associate error to
+other units when dealing with a 1d spectal object with “mixed” spectral x and y axis units seems necessary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the optical depth of the 10 micron feature</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">line_spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="n">line_y_continuum</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+
+<span class="n">optdepth_spec</span> <span class="o">=</span> <span class="n">Spectrum1D</span><span class="p">(</span><span class="n">spectral_axis</span> <span class="o">=</span> <span class="n">line_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span>
+                           <span class="n">flux</span> <span class="o">=</span> <span class="n">tau</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Jy</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">Jy</span><span class="p">))</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Developer note</strong> Trying to put optical depth into a Spectrum1D object results in an error as no units.
+But the optical depth is unit-less - using (u.Jy/u.Jy) as work arround.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the optical depth of the 10 micron region vs wavelength</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">optdepth_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">optdepth_spec</span><span class="o">.</span><span class="n">flux</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tau&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_38_0.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_38_0.png" />
+</div>
+</div>
+<p><strong>Note</strong> At this point repeat <em>all</em> the steps above to isolate solid-state features e.g. for the forsterite feature at
+at approx 13.3 microns.</p>
+</div>
+<div class="section" id="now-try-looking-for-low-crystalline-silicate-features-at-23-28-33-microns-in-the-spectra">
+<h4>Now try looking for low crystalline silicate features  at 23, 28, 33 microns in the spectra.<a class="headerlink" href="#now-try-looking-for-low-crystalline-silicate-features-at-23-28-33-microns-in-the-spectra" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bbsub_spectra</span> <span class="o">=</span> <span class="n">spec</span> <span class="o">-</span> <span class="n">ybest</span>  <span class="c1"># photosphere continuum subtracted spectra</span>
+
+<span class="n">spline_points</span> <span class="o">=</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">21.3</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">,</span> <span class="mf">24.4</span><span class="p">,</span> <span class="mf">25.5</span><span class="p">,</span> <span class="mf">33.8</span><span class="p">,</span> <span class="mf">35.9</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>  
+
+<span class="n">fluxc_resample</span> <span class="o">=</span> <span class="n">SplineInterpolatedResampler</span><span class="p">()</span>
+
+<span class="c1"># Generate a spline fit to the dust continuum</span>
+<span class="n">spline_spec</span> <span class="o">=</span> <span class="n">fluxc_resample</span><span class="p">(</span><span class="n">bbsub_spectra</span><span class="p">,</span> <span class="n">spline_points</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the underlying dust continuum and spline fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bbsub_spectra</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">bbsub_spectra</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Dust spectra&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spline_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">spline_spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Spline spectra&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Continuum-subtracted spectrum with spline&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Plot the underlying dust continuum and spline fit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bbsub_spectra</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">bbsub_spectra</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Dust spectra&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spline_spec</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">spline_spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Spline spectra&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">spline_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">spline_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (microns)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flux ({:latex})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">flux</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Zoom of continuum-subtracted spectrum with spline&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_42_0.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_42_0.png" />
+<img alt="../../_images/JWST_Mstar_dataAnalysis_usecase_42_1.png" src="../../_images/JWST_Mstar_dataAnalysis_usecase_42_1.png" />
+</div>
+</div>
+<p><strong>Developer note</strong> By fitting a spline to a sub region the spectral shapes are no longer the same.
+<code class="docutils literal notranslate"> <span class="pre">bbsub_spectra.flux.value</span> <span class="pre">-</span> <span class="pre">spline_spec.flux.value</span></code> now brakes. Would need to trim the spectrum to the spline size to
+start looking closely for low contrast dust features and again measure their properties (see above). Some  wrapper to
+stop repeating the same steps over and over would be nice.</p>
+</div>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.gwdg.de/skamann/pampelmuse">PampelMuse</a></p></li>
+<li><p><a class="reference external" href="https://casa.nrao.edu/Release3.4.0/docs/UserMan/UserManse41.html">CASA</a></p></li>
+</ul>
+</div>
+<div class="section" id="about-this-notebook">
+<h2>About this notebook<a class="headerlink" href="#about-this-notebook" title="Permalink to this headline">¶</a></h2>
+<p><strong>Author:</strong> Olivia Jones, Project Scientist, UK ATC.
+<strong>Updated On:</strong> 2020-08-11</p>
+<hr class="docutils" />
+<p><a class="reference external" href="#top">Top of Page</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/MRS_Mstar_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../mos-spectroscopy/MOSspec_sv06_revised.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">MOS Spectroscopy of Typical Extragalactic Field</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../example_notebook/example_notebook.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Draft: Notebook title</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Captain Jupyter<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
