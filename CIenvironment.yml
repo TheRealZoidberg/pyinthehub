@@ -3,4 +3,6 @@
 - nbconvert
 - numpy>=1.18
 - requests=2.24.0
+- astropy
+- scipy
 - pytest
