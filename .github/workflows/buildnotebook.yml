@@ -35,6 +35,7 @@ jobs:
         #        pip install git+git://github.com/executablebookproject/cli.git
         pip install ghp-import
         pip install jupyter-book
+        pip install myst-nb
         PATH="${PATH}:${HOME}/.local/bin"
 
     - name: Build book TOC file 
