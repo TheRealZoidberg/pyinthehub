@@ -27,7 +27,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r environment.yml
+        pip install -r CIenvironment.yml
 
     - name: Install Python dependencies
       run: |
