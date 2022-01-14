@@ -39,8 +39,7 @@ jobs:
 
     - name: Build book TOC file 
       run: |
-        jupyter-book toc ./notebooks
-
+        jupyter-book toc from-project ./notebooks
     - name: Build book HTML 
       run: |
         jupyter-book build ./notebooks
