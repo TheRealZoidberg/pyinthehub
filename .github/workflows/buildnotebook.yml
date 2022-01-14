@@ -40,9 +40,10 @@ jobs:
     - name: Build book TOC file 
       run: |
         jupyter-book toc from-project ./notebooks
+
     - name: Build book HTML 
       run: |
-        jupyter-book build ./notebooks
+        jupyter-book build .
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
