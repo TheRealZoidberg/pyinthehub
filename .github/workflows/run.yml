@@ -29,18 +29,18 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-- name: Install Python dependencies
+    - name: Install Python dependencies
       run: |
         sudo apt-get install python3-pip
         pip install git+git://github.com/executablebookproject/cli.git#egg=master
         pip install ghp-import
         PATH="${PATH}:${HOME}/.local/bin"
 
-- name: Build book TOC file 
+    - name: Build book TOC file 
       run: |
         jupyter-book toc ./notebooks
 
-- name: Build book HTML 
+    - name: Build book HTML 
       run: |
         jupyter-book build ./notebooks
 
