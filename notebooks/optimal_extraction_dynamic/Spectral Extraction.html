@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/main.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -1818,7 +1819,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='557b4cf6-a204-458b-809c-6534d5c168be'></div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4006/4080183251.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+</script><div class="output text_html"><div id='9c4ead9f-7bbc-476d-8565-34724d7bfccf'></div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3834/4080183251.py:6: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   clb1 = plt.colorbar()
 </pre></div>
 </div>
@@ -2842,8 +2843,8 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='37dd16bd-aed0-4085-a8af-54e6ea4c3a09'></div></div><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "fe48ccca253b4087929739da1bba1873"}
+</script><div class="output text_html"><div id='1c5fdc37-4246-40f8-b4c1-cf3eb17f0026'></div></div><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "efcd021c5d664d0f9ae0a73830cc16ea"}
 </script></div>
 </div>
 <p>We get the region coordinates from the bounding rectangle – in this case, setting the coordinates to <code class="docutils literal notranslate"><span class="pre">x1=51,</span> <span class="pre">y1=3,</span> <span class="pre">x2=1268,</span> <span class="pre">y2=9</span></code> seems fine – or, we can set them directly. Finally, we create a new array containing only our extraction region (so that we don’t need to continually index our original array).</p>
@@ -3854,7 +3855,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='217a8a72-2438-40e2-b138-66c0080c2999'></div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4006/3742384047.py:23: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+</script><div class="output text_html"><div id='9557e79f-464a-4474-87ed-cbc632c09af2'></div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3834/3742384047.py:23: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
   clb3 = plt.colorbar()
 </pre></div>
 </div>
@@ -4885,8 +4886,8 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='e3cb9a34-ea3e-4d94-8d93-9259696baa0c'></div></div><script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "50a21f16ff7f4913b4f014f26044fa8e"}
+</script><div class="output text_html"><div id='5abe1950-5827-4747-a056-6bbca31ddd7a'></div></div><script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "6c5b0f456f8a482cb0e3e121c060f919"}
 </script></div>
 </div>
 <p>A column index of 670 and width 50 seem to work reasonably well for this file, so we can now generate the final slice for kernel fitting.</p>
@@ -5885,7 +5886,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='8917add2-6a44-456b-b6aa-8e3b2978e969'></div></div></div>
+</script><div class="output text_html"><div id='68571fc5-b5ab-400b-8705-fbf5c997698f'></div></div></div>
 </div>
 <p>The Gaussian profile looks like a better approximation, so that’s the profile we’ll use for this spectrum. In the cell below, we could add more PSF templates using <a class="reference external" href="https://docs.astropy.org/en/stable/modeling/compound-models.html">model operations</a>; this is left as an exercise for the reader.</p>
 <p>We need to de-normalize our amplitude, so we’ll set it to the maximum pixel value of the slice.</p>
@@ -6020,9 +6021,9 @@ Components:
 
     [1]: &lt;Polynomial1D(2, c0=-29.78193508, c1=-0.9648368, c2=0.10108206)&gt;
 Parameters:
-       amplitude_0          mean_0      ...         c1_1                c2_1       
-    ----------------- ----------------- ... ------------------- -------------------
-    188.8221348031878 6.073806403012218 ... -0.9648367971177167 0.10108205804453373
+       amplitude_0           mean_0       ...         c2_1       
+    ------------------ ------------------ ... -------------------
+    188.82213480317498 6.0738064030124015 ... 0.10108205804592583
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -6982,7 +6983,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='74fd129d-7691-4bbf-99af-a23985513d7b'></div></div></div>
+</script><div class="output text_html"><div id='8b0e3b1f-d709-40e7-b303-c61a53eed0e4'></div></div></div>
 </div>
 <div class="section" id="wavelength-varying-fwhm-skipped">
 <h2>Wavelength-varying FWHM (skipped)<a class="headerlink" href="#wavelength-varying-fwhm-skipped" title="Permalink to this headline">¶</a></h2>
@@ -7984,7 +7985,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='2c82938d-8e1d-4c97-be66-c670c44b06be'></div></div></div>
+</script><div class="output text_html"><div id='dfd5ea72-a638-45c3-ad01-f42d41348ba2'></div></div></div>
 </div>
 </div>
 </div>
@@ -8019,9 +8020,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 0
 Parameters:
-            c0       
-    -----------------
-    6.073806403012218
+            c0        
+    ------------------
+    6.0738064030124015
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -9018,7 +9019,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='f9e9d002-011a-4028-8e66-d71257f1c72a'></div></div></div>
+</script><div class="output text_html"><div id='7d04b3bf-d53c-4ed3-9d45-74c030c07dc7'></div></div></div>
 </div>
 </div>
 <div class="section" id="generate-the-1d-spectrum">
@@ -10058,7 +10059,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='6acaf053-8bff-4d57-865d-655796034388'></div></div></div>
+</script><div class="output text_html"><div id='2543849e-6d2a-465e-8e2f-16a5a23bb0c9'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -11055,7 +11056,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='1a2a0e21-295c-40e3-aed6-0d5a55fe3a64'></div></div></div>
+</script><div class="output text_html"><div id='53581f14-6e0b-4a8a-be93-0f3a43139388'></div></div></div>
 </div>
 </div>
 </div>
@@ -12099,60 +12100,6 @@ if (IPython.notebook.kernel !== null) {
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.fits_support:Input model &lt;class &#39;jwst.datamodels.slit.SlitModel&#39;&gt; does not match the requested model &lt;class &#39;jwst.datamodels.image.ImageModel&#39;&gt;. Cannot skip updating from FITS headers.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>: The fit may be unsuccessful; check fit_info[&#39;message&#39;] for more information. [astropy.modeling.fitting]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:astropy:The fit may be unsuccessful; check fit_info[&#39;message&#39;] for more information.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file 26 of 79: s2d_files/F170LP-G235M_MOS_observation-6_mod_correctedWCS_noflat_nooutlierdet_combined_s03055_s2d.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.util:Environmental &quot;PASS_INVALID_VALUES&quot; cannot be found. Using default value of &quot;False&quot;.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.util:Environmental &quot;STRICT_VALIDATION&quot; cannot be found. Using default value of &quot;False&quot;.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.util:Environmental &quot;SKIP_FITS_UPDATE&quot; cannot be found. Using default value of &quot;None&quot;.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.fits_support:Input model &lt;class &#39;jwst.datamodels.slit.SlitModel&#39;&gt; does not match the requested model &lt;class &#39;jwst.datamodels.image.ImageModel&#39;&gt;. Cannot skip updating from FITS headers.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>: The fit may be unsuccessful; check fit_info[&#39;message&#39;] for more information. [astropy.modeling.fitting]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:astropy:The fit may be unsuccessful; check fit_info[&#39;message&#39;] for more information.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file 27 of 79: s2d_files/F170LP-G235M_MOS_observation-6_mod_correctedWCS_noflat_nooutlierdet_combined_s30455_s2d.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.util:Environmental &quot;PASS_INVALID_VALUES&quot; cannot be found. Using default value of &quot;False&quot;.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:jwst.datamodels.util:Environmental &quot;STRICT_VALIDATION&quot; cannot be found. Using default value of &quot;False&quot;.
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
@@ -12181,111 +12128,45 @@ if (IPython.notebook.kernel !== null) {
 <span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_files_to_close</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hdulist</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="k">elif</span> <span class="n">file_type</span> <span class="o">==</span> <span class="s2">&quot;asdf&quot;</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/fits_support.py:584,</span> in <span class="ni">from_fits</span><span class="nt">(hdulist, schema, context, skip_fits_update, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">561</span> <span class="sd">&quot;&quot;&quot;Read model information from a FITS HDU list</span>
-<span class="g g-Whitespace">    </span><span class="mi">562</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">563</span><span class="sd"> Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span><span class="sd">     Otherwise, the default is `False`</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">584</span>     <span class="n">ff</span> <span class="o">=</span> <span class="n">from_fits_asdf</span><span class="p">(</span><span class="n">hdulist</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="k">raise</span> <span class="n">exc</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="s2">&quot;ERROR loading embedded ASDF: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">exc</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/fits_support.py:597,</span> in <span class="ni">from_fits</span><span class="nt">(hdulist, schema, context, skip_fits_update, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span> <span class="n">known_keywords</span><span class="p">,</span> <span class="n">known_datas</span> <span class="o">=</span> <span class="n">_load_from_schema</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span>     <span class="n">hdulist</span><span class="p">,</span> <span class="n">schema</span><span class="p">,</span> <span class="n">ff</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">skip_fits_update</span><span class="o">=</span><span class="n">skip_fits_update</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">skip_fits_update</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">597</span>     <span class="n">_load_extra_fits</span><span class="p">(</span><span class="n">hdulist</span><span class="p">,</span> <span class="n">known_keywords</span><span class="p">,</span> <span class="n">known_datas</span><span class="p">,</span> <span class="n">ff</span><span class="o">.</span><span class="n">tree</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="n">_load_history</span><span class="p">(</span><span class="n">hdulist</span><span class="p">,</span> <span class="n">ff</span><span class="o">.</span><span class="n">tree</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span> <span class="k">return</span> <span class="n">ff</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/fits_support.py:612,</span> in <span class="ni">from_fits_asdf</span><span class="nt">(hdulist, ignore_version_mismatch, ignore_unrecognized_tag, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">609</span><span class="sd"> Wrap asdf call to extract optional arguments</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="n">ignore_missing_extensions</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ignore_missing_extensions&#39;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">612</span> <span class="k">return</span> <span class="n">fits_embed</span><span class="o">.</span><span class="n">AsdfInFits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hdulist</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span>                                   <span class="n">ignore_version_mismatch</span><span class="o">=</span><span class="n">ignore_version_mismatch</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>                                   <span class="n">ignore_unrecognized_tag</span><span class="o">=</span><span class="n">ignore_unrecognized_tag</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">615</span>                                   <span class="n">ignore_missing_extensions</span><span class="o">=</span><span class="n">ignore_missing_extensions</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/fits_support.py:528,</span> in <span class="ni">_load_extra_fits</span><span class="nt">(hdulist, known_keywords, known_datas, tree)</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span> <span class="n">known</span> <span class="o">=</span> <span class="n">known_keywords</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hdu</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="n">cards</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">528</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">cards</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">_is_builtin_fits_keyword</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">or</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span>             <span class="n">key</span> <span class="ow">in</span> <span class="n">known</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span>         <span class="n">cards</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">comment</span><span class="p">])</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/fits_embed.py:218,</span> in <span class="ni">AsdfInFits.open</span><span class="nt">(cls, fd, uri, validate_checksums, extensions, ignore_version_mismatch, ignore_unrecognized_tag, strict_extension_check, ignore_missing_extensions, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="nd">@classmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span> <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validate_checksums</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>          <span class="n">ignore_version_mismatch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_unrecognized_tag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span>          <span class="n">strict_extension_check</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_missing_extensions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>          <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span>     <span class="sd">&quot;&quot;&quot;Creates a new AsdfInFits object based on given input data</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="sd">         to be valid.</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">218</span>     <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_open_impl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">219</span>                    <span class="n">validate_checksums</span><span class="o">=</span><span class="n">validate_checksums</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>                    <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>                    <span class="n">ignore_version_mismatch</span><span class="o">=</span><span class="n">ignore_version_mismatch</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>                    <span class="n">ignore_unrecognized_tag</span><span class="o">=</span><span class="n">ignore_unrecognized_tag</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>                    <span class="n">strict_extension_check</span><span class="o">=</span><span class="n">strict_extension_check</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>                    <span class="n">ignore_missing_extensions</span><span class="o">=</span><span class="n">ignore_missing_extensions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span>                    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/fits/card.py:212,</span> in <span class="ni">Card.__getitem__</span><span class="nt">(self, index)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">212</span>     <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keyword</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">comment</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/fits_embed.py:262,</span> in <span class="ni">AsdfInFits._open_impl</span><span class="nt">(cls, fd, uri, validate_checksums, extensions, ignore_version_mismatch, ignore_unrecognized_tag, strict_extension_check, ignore_missing_extensions, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="n">generic_file</span> <span class="o">=</span> <span class="n">generic_io</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">asdf_extension</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">262</span>     <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_open_asdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generic_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">263</span>                       <span class="n">validate_checksums</span><span class="o">=</span><span class="n">validate_checksums</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span>                       <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">265</span>                       <span class="n">strict_extension_check</span><span class="o">=</span><span class="n">strict_extension_check</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span>                       <span class="n">ignore_missing_extensions</span><span class="o">=</span><span class="n">ignore_missing_extensions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span>                       <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span> <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/fits/card.py:293,</span> in <span class="ni">Card.value</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">=</span> <span class="n">UNDEFINED</span>
+<span class="ne">--&gt; </span><span class="mi">293</span> <span class="k">if</span> <span class="n">conf</span><span class="o">.</span><span class="n">strip_header_whitespace</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span> <span class="k">return</span> <span class="n">value</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/asdf.py:881,</span> in <span class="ni">AsdfFile._open_asdf</span><span class="nt">(cls, self, fd, validate_checksums, extensions, _get_yaml_content, _force_raw_types, strict_extension_check, ignore_missing_extensions, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">879</span> <span class="k">if</span> <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">validate_on_read</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">881</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">reading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span>     <span class="k">except</span> <span class="n">ValidationError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">883</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/config/configuration.py:303,</span> in <span class="ni">ConfigItem.__get__</span><span class="nt">(self, obj, objtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span>     <span class="k">return</span> <span class="bp">self</span>
+<span class="ne">--&gt; </span><span class="mi">303</span> <span class="k">return</span> <span class="bp">self</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/asdf.py:619,</span> in <span class="ni">AsdfFile._validate</span><span class="nt">(self, tree, custom, reading)</span>
-<span class="g g-Whitespace">    </span><span class="mi">616</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span>     <span class="n">tagged_tree</span> <span class="o">=</span> <span class="n">yamlutil</span><span class="o">.</span><span class="n">custom_tree_to_tagged_tree</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">618</span>         <span class="n">tree</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">619</span> <span class="n">schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">tagged_tree</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">reading</span><span class="o">=</span><span class="n">reading</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="c1"># Perform secondary validation pass if requested</span>
-<span class="g g-Whitespace">    </span><span class="mi">621</span> <span class="k">if</span> <span class="n">custom</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_custom_schema</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/schema.py:695,</span> in <span class="ni">validate</span><span class="nt">(instance, ctx, schema, validators, reading, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="n">additional_validators</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">693</span>         <span class="n">validator</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">reading</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">695</span> <span class="n">treeutil</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">_callback</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/treeutil.py:37,</span> in <span class="ni">walk</span><span class="nt">(top, callback)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="sd"> Walking through a tree of objects, calling a given function at</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span><span class="sd"> each node.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="sd">     The modified tree.</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">iter_tree</span><span class="p">(</span><span class="n">top</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">37</span>     <span class="n">callback</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/schema.py:693,</span> in <span class="ni">validate.&lt;locals&gt;._callback</span><span class="nt">(instance)</span>
-<span class="g g-Whitespace">    </span><span class="mi">691</span> <span class="k">def</span> <span class="nf">_callback</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="n">additional_validators</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">693</span>         <span class="n">validator</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">reading</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/asdf/schema.py:620,</span> in <span class="ni">_validate_large_literals</span><span class="nt">(instance, reading)</span>
-<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">instance</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">620</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">621</span>             <span class="n">_validate</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/abc.py:96,</span> in <span class="ni">ABCMeta.__instancecheck__</span><span class="nt">(cls, instance)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="sd">&quot;&quot;&quot;Register a virtual subclass of an ABC.</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="sd">     Returns the subclass, to allow usage as a class decorator.</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="k">return</span> <span class="n">_abc_register</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">subclass</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">96</span> <span class="k">def</span> <span class="fm">__instancecheck__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="sd">&quot;&quot;&quot;Override for isinstance(instance, cls).&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">return</span> <span class="n">_abc_instancecheck</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/config/configuration.py:428,</span> in <span class="ni">ConfigItem.__call__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;in section [</span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s1">]&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span> <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">428</span> <span class="n">sec</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="n">rootname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rootname</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">sec</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">430</span>     <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">sec</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
