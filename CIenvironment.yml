@@ -1,3 +1,4 @@
+oifits
 Bottleneck>=1.3.2
 PyYAML
 aplpy >= 2.0.3
@@ -10,13 +11,6 @@ corner >= 2.0.1
 dill==0.3.1.1
 dust-extinction==0.8
 emcee==3.0.2
-git+https://github.com/anand0xff/ImPlaneIA.git@b45d665cdc6979dabdcde89be2b5a7b0a1995483
-git+https://github.com/astropy/regions.git
-git+https://github.com/radio-astro-tools/radio-beam.git
-git+https://github.com/spacetelescope/jdaviz.git@625acca8562249c2f4d9041c566c1820a4d480b2#egg=jdaviz
-git+https://github.com/spacetelescope/jwst@0.17.0#egg=jwst
-git+https://github.com/spacetelescope/jwst_gtvt.git
-git+https://github.com/spacetelescope/mirage#egg=mirage
 glue-astronomy==0.1
 glue-core==1.0.0
 glue-jupyter==0.2.1
@@ -53,3 +47,10 @@ specutils
 termcolor
 uncertainties
 webbpsf
+git+https://github.com/anand0xff/ImPlaneIA.git@b45d665cdc6979dabdcde89be2b5a7b0a1995483
+git+https://github.com/astropy/regions.git
+git+https://github.com/radio-astro-tools/radio-beam.git
+git+https://github.com/spacetelescope/jdaviz.git@625acca8562249c2f4d9041c566c1820a4d480b2#egg=jdaviz
+git+https://github.com/spacetelescope/jwst@0.17.0#egg=jwst
+git+https://github.com/spacetelescope/jwst_gtvt.git
+git+https://github.com/spacetelescope/mirage#egg=mirage
