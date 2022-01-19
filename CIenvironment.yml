@@ -47,7 +47,6 @@ specutils
 termcolor
 uncertainties
 webbpsf
-git+https://github.com/anand0xff/ImPlaneIA.git@b45d665cdc6979dabdcde89be2b5a7b0a1995483
 git+https://github.com/astropy/regions.git
 git+https://github.com/radio-astro-tools/radio-beam.git
 git+https://github.com/spacetelescope/jdaviz.git@625acca8562249c2f4d9041c566c1820a4d480b2#egg=jdaviz
