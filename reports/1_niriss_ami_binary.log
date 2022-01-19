@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 618, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 1085, in execute
@@ -11,40 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 551, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 846, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 748, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-import glob
-import io
-import os
-import sys
-
-import numpy as np
-from astropy.io import fits
-import yaml
-import zipfile
-import urllib.request
-from IPython.display import Image
-
-from mirage import imaging_simulator
-from mirage.yaml import yaml_generator
-
-%matplotlib inline
-import matplotlib.pyplot as plt
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mos[39;00m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01msys[39;00m
-[0;32m----> 6[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mastropy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mio[39;00m [38;5;28;01mimport[39;00m fits
-[1;32m      8[0m [38;5;28;01mimport[39;00m [38;5;21;01myaml[39;00m
-
-[0;31mModuleNotFoundError[0m: No module named 'numpy'
-ModuleNotFoundError: No module named 'numpy'
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 830, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 642, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/nbclient/client.py", line 689, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+["boxlink = 'https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/niriss_ami_binary/niriss_ami_binary1.zip'", "boxfile = './niriss_ami_binary1.zip'", '', '# Download zip file', 'if not os.path.exists(boxfile):']
+...
+['', "    zf = zipfile.ZipFile(boxfile, 'r')", '    zf.extractall()', 'else:', '    print("Input files exist. You may want to check if there is an updated version.")']
+-------------------
 

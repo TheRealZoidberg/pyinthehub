@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -403,20 +405,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">time</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">astropy</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span><span class="p">,</span> <span class="n">ascii</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -460,6 +448,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_4_0.png" src="../../_images/NGC4151_FeII_ContinuumFit_4_0.png" />
 </div>
 </div>
 <p>We see that the spectral edges of the summed 1D are ‘ratty’.  The 1D spectral array goes beyond the nominal useable data range of the instrument.  We’ll ignore the poor spectral regions and focus on the AGN flux.</p>
@@ -512,6 +503,9 @@ a more expanded spectral region that encompasses the emission..</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_6_0.png" src="../../_images/NGC4151_FeII_ContinuumFit_6_0.png" />
+</div>
 </div>
 <p>For this particular dataset, this continuum region looks very good.
 if you have a more structured continuum you can define additional
@@ -525,12 +519,30 @@ derive a more accurate fit in the below poly-fit analysis.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "8293139f879e4519805c8e9b0eec5e79"}
+</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here, we load the data into the cubeviz app.</span>
 <span class="n">app</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>: AstropyDeprecationWarning: support for accessing str attributes such as &#39;title&#39; from PhysicalType instances is deprecated since 4.3 and will be removed in a subsequent release. [astropy.units.physical]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:astropy:AstropyDeprecationWarning: support for accessing str attributes such as &#39;title&#39; from PhysicalType instances is deprecated since 4.3 and will be removed in a subsequent release.
 </pre></div>
 </div>
 </div>
@@ -556,6 +568,10 @@ in this dataset.  In this cube, data from slice ~1060 to ~1090 shows the extende
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "b0e2539f9aba4cf08f4bf4df2e47089e"}
+</script></div>
 </div>
 <p>Use the flux viewer in cubeviz to extract a spectrum located at the central AGN position.
 It should show in the above spectral viewer, too.</p>
@@ -579,6 +595,9 @@ It should show in the above spectral viewer, too.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_13_0.png" src="../../_images/NGC4151_FeII_ContinuumFit_13_0.png" />
 </div>
 </div>
 <p>Now, use the flux viewer and again use the ‘define circular region of interest’ icon to make spectra at two positions associated with the outflow emission in [Fe II].</p>
@@ -617,6 +636,10 @@ It should show in the above spectral viewer, too.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_15_0.png" src="../../_images/NGC4151_FeII_ContinuumFit_15_0.png" />
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_15_1.png" src="../../_images/NGC4151_FeII_ContinuumFit_15_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -640,6 +663,11 @@ It should show in the above spectral viewer, too.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_16_0.png" src="../../_images/NGC4151_FeII_ContinuumFit_16_0.png" />
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_16_1.png" src="../../_images/NGC4151_FeII_ContinuumFit_16_1.png" />
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_16_2.png" src="../../_images/NGC4151_FeII_ContinuumFit_16_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -685,6 +713,22 @@ It should show in the above spectral viewer, too.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>: Model is linear in parameters; consider using linear fitting methods. [astropy.modeling.fitting]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:astropy:Model is linear in parameters; consider using linear fitting methods.
+</pre></div>
+</div>
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_17_4.png" src="../../_images/NGC4151_FeII_ContinuumFit_17_4.png" />
+<img alt="../../_images/NGC4151_FeII_ContinuumFit_17_5.png" src="../../_images/NGC4151_FeII_ContinuumFit_17_5.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -721,6 +765,26 @@ It should show in the above spectral viewer, too.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuum subtracted cube saved. PSF continuum cube saved.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time count
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- 0.9634037017822266 seconds ---
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -751,6 +815,130 @@ It should show in the above spectral viewer, too.</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time count&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>: Model is linear in parameters; consider using linear fitting methods. [astropy.modeling.fitting]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:astropy:Model is linear in parameters; consider using linear fitting methods.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">flux1</span> <span class="o">=</span> <span class="n">Spectrum1D</span><span class="p">(</span><span class="n">flux</span> <span class="o">=</span> <span class="n">cube</span><span class="p">[:,</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">),</span> <span class="n">spectral_axis</span><span class="o">=</span><span class="n">wave</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">micron</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">m</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Polynomial1D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">fitted_model</span> <span class="o">=</span> <span class="n">fit_lines</span><span class="p">(</span><span class="n">flux1</span><span class="p">[</span><span class="n">continuummin</span><span class="p">:</span><span class="n">continuummax</span><span class="p">],</span> <span class="n">m</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">cont_fit</span> <span class="o">=</span> <span class="p">[</span><span class="n">fitted_model</span><span class="o">.</span><span class="n">c1</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">fitted_model</span><span class="o">.</span><span class="n">c0</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">continuum</span> <span class="o">=</span> <span class="n">fitted_model</span><span class="p">(</span><span class="n">flux1</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/fitting/fitmodels.py:362,</span> in <span class="ni">fit_lines</span><span class="nt">(spectrum, model, fitter, exclude_regions, weights, window, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="c1"># Check to see if the model has units. If it does not</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="c1"># have units then we are going to ignore them.</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="n">ignore_units</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model_guess</span><span class="p">,</span> <span class="n">model_guess</span><span class="o">.</span><span class="n">param_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">unit</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">362</span> <span class="n">fit_model</span> <span class="o">=</span> <span class="n">_fit_lines</span><span class="p">(</span><span class="n">spectrum</span><span class="p">,</span> <span class="n">model_guess</span><span class="p">,</span> <span class="n">fitter</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>                        <span class="n">exclude_regions</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">model_window</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span>                        <span class="n">ignore_units</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span> <span class="k">if</span> <span class="n">model_guess</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="n">fit_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">model_guess</span><span class="o">.</span><span class="n">name</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/fitting/fitmodels.py:480,</span> in <span class="ni">_fit_lines</span><span class="nt">(spectrum, model, fitter, exclude_regions, weights, window, ignore_units, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Spectrum flux is empty or None.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">478</span> <span class="n">input_spectrum</span> <span class="o">=</span> <span class="n">spectrum</span>
+<span class="ne">--&gt; </span><span class="mi">480</span> <span class="n">spectrum</span> <span class="o">=</span> <span class="n">Spectrum1D</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="n">flux</span><span class="o">=</span><span class="n">flux</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">flux_unit</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>     <span class="n">spectral_axis</span><span class="o">=</span><span class="n">dispersion</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="n">wcs</span><span class="o">=</span><span class="n">input_spectrum</span><span class="o">.</span><span class="n">wcs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="n">velocity_convention</span><span class="o">=</span><span class="n">input_spectrum</span><span class="o">.</span><span class="n">velocity_convention</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span>     <span class="n">rest_value</span><span class="o">=</span><span class="n">input_spectrum</span><span class="o">.</span><span class="n">rest_value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span> <span class="c1"># Compound models with units can not be fit.</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="c1"># Convert the model initial guess to the spectral</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span> <span class="c1"># units and then remove the units</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="c1">#</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="n">model_unitless</span><span class="p">,</span> <span class="n">dispersion_unitless</span><span class="p">,</span> <span class="n">flux_unitless</span> <span class="o">=</span> \
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="n">_strip_units_from_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="ow">not</span> <span class="n">ignore_units</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/spectra/spectrum1d.py:200,</span> in <span class="ni">Spectrum1D.__init__</span><span class="nt">(self, flux, spectral_axis, wcs, velocity_convention, rest_value, redshift, radial_velocity, bin_specification, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot separately set redshift or &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>                                  <span class="s2">&quot;radial_velocity if a SpectralAxis &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>                                  <span class="s2">&quot;object is input to spectral_axis&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_spectral_axis</span> <span class="o">=</span> <span class="n">spectral_axis</span>
+<span class="ne">--&gt; </span><span class="mi">200</span>     <span class="n">wcs</span> <span class="o">=</span> <span class="n">gwcs_from_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_spectral_axis</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">elif</span> <span class="n">wcs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="c1"># If no spectral axis or wcs information is provided, initialize</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="c1"># with an empty gwcs based on the flux.</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>     <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">flux</span><span class="o">.</span><span class="n">isscalar</span> <span class="k">else</span> <span class="mi">1</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/utils/wcs_utils.py:220,</span> in <span class="ni">gwcs_from_array</span><span class="nt">(array)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="k">def</span> <span class="nf">pixel_to_world</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">pixel_to_world</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>             <span class="n">orig_array</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">220</span> <span class="n">tabular_gwcs</span> <span class="o">=</span> <span class="n">SpectralGWCS</span><span class="p">(</span><span class="n">forward_transform</span><span class="o">=</span><span class="n">forward_transform</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>                             <span class="n">input_frame</span><span class="o">=</span><span class="n">coord_frame</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>                             <span class="n">output_frame</span><span class="o">=</span><span class="n">spec_frame</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span> <span class="c1"># Store the intended unit from the origin input array</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="c1">#     tabular_gwcs._input_unit = orig_array.unit</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span> <span class="k">return</span> <span class="n">tabular_gwcs</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/wcs.py:146,</span> in <span class="ni">WCS.__init__</span><span class="nt">(self, forward_transform, input_frame, output_frame, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="bp">self</span><span class="o">.</span><span class="n">_array_shape</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">146</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_wcs</span><span class="p">(</span><span class="n">forward_transform</span><span class="p">,</span> <span class="n">input_frame</span><span class="p">,</span> <span class="n">output_frame</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pixel_shape</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="n">pipe</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/wcs.py:169,</span> in <span class="ni">WCS._initialize_wcs</span><span class="nt">(self, forward_transform, input_frame, output_frame)</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="nb">super</span><span class="p">(</span><span class="n">WCS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">_input_frame</span><span class="p">,</span> <span class="n">inp_frame_obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="nb">super</span><span class="p">(</span><span class="n">WCS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">_output_frame</span><span class="p">,</span> <span class="n">outp_frame_obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">169</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span> <span class="o">=</span> <span class="p">[(</span><span class="n">input_frame</span><span class="p">,</span> <span class="n">forward_transform</span><span class="o">.</span><span class="n">copy</span><span class="p">()),</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>                       <span class="p">(</span><span class="n">output_frame</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">forward_transform</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">forward_transform</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/modeling/core.py:2151,</span> in <span class="ni">Model.copy</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2143</span> <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2144</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2145</span><span class="sd">     Return a copy of this model.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2146</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2147</span><span class="sd">     Uses a deep copy so that all model attributes, including parameter</span>
+<span class="g g-Whitespace">   </span><span class="mi">2148</span><span class="sd">     values, are copied as well.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2149</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">2151</span>     <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/copy.py:161,</span> in <span class="ni">deepcopy</span><span class="nt">(x, memo, _nil)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="n">reductor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;__reduce_ex__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="k">if</span> <span class="n">reductor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">161</span>     <span class="n">rv</span> <span class="o">=</span> <span class="n">reductor</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span>     <span class="n">reductor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;__reduce__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/copyreg.py:99,</span> in <span class="ni">_slotnames</span><span class="nt">(cls)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="sd">&quot;&quot;&quot;Used by pickle protocol 4, instead of __newobj__ to allow classes with</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="sd">     keyword-only arguments to be pickled correctly.</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">99</span> <span class="k">def</span> <span class="nf">_slotnames</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="sd">&quot;&quot;&quot;Return a list of slot names for a given class.</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="sd">     This needs to find slots defined by the class and its bases, so we</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="sd">     defined.)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="c1"># Get the value from a cache in the class if possible</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -492,17 +494,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import MAST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">astroquery.mast</span> <span class="kn">import</span> <span class="n">Mast</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;astroquery&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="perform-a-search-for-all-nirspec-data">
 <h3>Perform a search for all NIRSpec Data<a class="headerlink" href="#perform-a-search-for-all-nirspec-data" title="Permalink to this headline">¶</a></h3>
@@ -551,7 +542,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;jw84600007001_02101_00001_nrs1_rate&#39;, &#39;jw93125002001_02103_00001_nrs2_rate&#39;, &#39;jw84600041001_02101_00001_nrs2_uncal&#39;, &#39;jw95065009001_02104_00001_nrs2_rate&#39;, &#39;jw84600008001_02101_00002_nrs2_rate&#39;, &#39;jw96216006001_02101_00001_nrs2_dark&#39;, &#39;jw84600013001_02102_00001_nrs2_dark&#39;, &#39;jw95065009001_02103_00001_nrs1_rate&#39;, &#39;jw95065006001_02107_00001_nrs2_rate&#39;, &#39;jw95065009001_02101_00001_nrs2_rate&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -573,20 +564,6 @@
 <span class="c1"># Print the first ten filenames</span>
 <span class="k">for</span> <span class="n">result_one_parameter</span> <span class="ow">in</span> <span class="n">results_one_parameter</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">result_one_parameter</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jw93125002001_02103_00001_nrs2_rate
-jw95065009001_02104_00001_nrs2_rate
-jw84600008001_02101_00002_nrs2_rate
-jw95065009001_02103_00001_nrs1_rate
-jw95065006001_02107_00001_nrs2_rate
-jw95065009001_02101_00001_nrs2_rate
-jw95065009001_02101_00001_nrs1_rate
-jw95065006001_02103_00001_nrs1_rate
-jw95065006001_02108_00001_nrs1_rate
-jw95065009001_02104_00001_nrs1_rate
 </pre></div>
 </div>
 </div>
@@ -624,20 +601,6 @@ jw95065009001_02104_00001_nrs1_rate
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jw95065006001_02108_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw95065009001_02104_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw93125002001_02102_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw93125002001_02101_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw95065006001_02107_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw95065009001_02106_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw93125002001_02103_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw93125002001_02105_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw95065006001_02105_00001_nrs1_rate     PRIME_TARGETED_FIXED
-jw93125002001_02104_00001_nrs1_rate     PRIME_TARGETED_FIXED
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="a-list-of-available-filtering-parameters-in-the-archive">
@@ -657,7 +620,7 @@ jw93125002001_02104_00001_nrs1_rate     PRIME_TARGETED_FIXED
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ArchiveFileID, filename, fileSetName, productLevel, act_id, apername, asnpool, asntable, bartdelt, bendtime, bkgdtarg, bkglevel, bkgsub, bmidtime, bstrtime, category, cont_id, refframe, datamode, dataprob, date, date_mjd, date_end, date_end_mjd, date_obs, date_obs_mjd, detector, drpfrms1, drpfrms3, duration, dva_dec, dva_ra, effexptm, effinttm, eng_qual, eph_time, eph_type, exp_type, expcount, expend, expmid, exposure, expripar, expstart, fastaxis, filetype, filter, frmdivsr, gainfact, gdstarid, groupgap, gs_dec, gs_mag, gs_order, gs_ra, gsendtim, gsendtim_mjd, gsstrttm, gsstrttm_mjd, gs_udec, gs_umag, gs_ura, helidelt, hendtime, hga_move, hmidtime, hstrtime, instrume, intarget, is_psf, jwst_dx, jwst_dy, jwst_dz, jwst_x, jwst_y, jwst_z, lamp, mu_dec, mu_epoch, mu_epoch_mjd, mu_ra, nexposur, nextend, nframes, ngroups, nints, nresets, nrststrt, nsamples, numdthpt, nwfsest, obs_id, observtn, obslabel, origin, pcs_mode, pi_name, pps_aper, prd_ver, program, prop_dec, prop_ra, pwfseet, readpatt, sca_num, scicat, sdp_ver, selfref, seq_id, slowaxis, subarray, subcat, subsize1, subsize2, substrt1, substrt2, targ_dec, targ_ra, targname, targoopp, targprop, targtype, targudec, targura, telescop, template, tframe, tgroup, timesys, title, tsample, tsovisit, visit_id, visitend, visitend_mjd, visitgrp, visitsta, visitype, vststart, vststart_mjd, xoffset, yoffset, zerofram, errtype, rois, roiw, wpower, wtype, datamodl, exp_only, exsegnum, exsegtot, intstart, intend, date_beg, date_beg_mjd, obsfoldr, sctarate, opmode, osf_file, expsteng, expsteng_mjd, masterbg, scatfile, srctyapt, tcatfile, texptime, s_region, fcsrlpos, focuspos, fxd_slit, grating, gwa_pxav, gwa_pyav, gwa_tilt, gwa_xp_v, gwa_xtil, gwa_yp_v, gwa_ytil, is_imprt, msaconid, msametfl, msametid, msastate, patt_num, pattsize, preimage, rma_pos, subpxnum, subpxpat, subpxpns, nrs_norm, nrs_ref, patttype, pattstrt, fileSize, checksum, ingestStartDate, ingestStartDate_mjd, ingestCompletionDate, ingestCompletionDate_mjd, FileTypeID, publicReleaseDate, publicReleaseDate_mjd, isRestricted, isItar, isStale, FileSetId, dataURI
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -671,25 +634,6 @@ jw93125002001_02104_00001_nrs1_rate     PRIME_TARGETED_FIXED
     <span class="n">exp_type_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;exp_type&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;exp_type&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exp_type_list</span> <span class="k">else</span> <span class="n">exp_type_list</span>
 <span class="k">for</span> <span class="n">exp_type</span> <span class="ow">in</span> <span class="n">exp_type_list</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">exp_type</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NRS_IFU
-NRS_MSASPEC
-NRS_BRIGHTOBJ
-NRS_DARK
-NRS_AUTOWAVE
-NRS_LAMP
-NRS_AUTOFLAT
-NRS_IMAGE
-NRS_CONFIRM
-NRS_FIXEDSLIT
-NRS_MIMF
-NRS_FOCUS
-NRS_TACONFIRM
-NRS_WATA
-NRS_MSATA
 </pre></div>
 </div>
 </div>
@@ -825,41 +769,33 @@ NRS_MSATA
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: InputWarning: Filter grating does not exist. This filter will be skipped. [astroquery.mast.core]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: InputWarning: Filter grating does not exist. This filter will be skipped. [astroquery.mast.discovery_portal]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The observation table below contains potential duplicate observations for 
           target 1 in the input catalog.
-dataproduct_type calib_level obs_collection ...    obsid       objID   
----------------- ----------- -------------- ... ----------- -----------
-        spectrum          -1           JWST ... 10000001998 10000001998
-        spectrum          -1           JWST ... 10000001999 10000001999
-        spectrum          -1           JWST ... 10000002000 10000002000
-        spectrum          -1           JWST ... 10000002019 10000002019
-        spectrum          -1           JWST ... 10000002020 10000002020
+dataproduct_type calib_level obs_collection ... intentType  obsid    objID  
+---------------- ----------- -------------- ... ---------- -------- --------
+        spectrum          -1           JWST ...    SCIENCE 23798347 64394514
+        spectrum          -1           JWST ...    SCIENCE 23798346 64394513
+        spectrum          -1           JWST ...    SCIENCE 23798345 64394512
+        spectrum          -1           JWST ...    SCIENCE 23798326 64394493
+        spectrum          -1           JWST ...    SCIENCE 23798325 64394492
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: Query returned no results. [astroquery.mast.core]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: Query returned no results. [astroquery.mast.discovery_portal]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The observation table below contains potential duplicate observations for 
           target 2 in the input catalog.
-dataproduct_type calib_level obs_collection ...    obsid       objID   
----------------- ----------- -------------- ... ----------- -----------
-        spectrum          -1           JWST ... 10000012222 10000012222
-        spectrum          -1           JWST ... 10000012223 10000012223
-        spectrum          -1           JWST ... 10000012224 10000012224
-        spectrum          -1           JWST ... 10000012225 10000012225
-
-The observation table below contains potential duplicate observations for 
+dataproduct_type calib_level obs_collection obs_id ... intentType obsid objID
+---------------- ----------- -------------- ------ ... ---------- ----- -----
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The observation table below contains potential duplicate observations for 
           target 3 in the input catalog.
-dataproduct_type calib_level obs_collection ...    obsid       objID   
----------------- ----------- -------------- ... ----------- -----------
-           image          -1           JWST ... 10000007643 10000007643
-           image          -1           JWST ... 10000007644 10000007644
-           image          -1           JWST ... 10000007645 10000007645
-           image          -1           JWST ... 10000007646 10000007646
-           image          -1           JWST ... 10000007647 10000007647
+dataproduct_type calib_level obs_collection obs_id ... intentType obsid objID
+---------------- ----------- -------------- ------ ... ---------- ----- -----
 </pre></div>
 </div>
 </div>
@@ -878,7 +814,7 @@ dataproduct_type calib_level obs_collection ...    obsid       objID
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>It may be helpful to check these proposal IDs in APT to compare proposal details: [1180, 1207, 1210, 1212, 1286, 1287, 1282, 1222]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>It may be helpful to check these proposal IDs in APT to compare proposal details: [1180, 1207, 1210, 1212, 1286, 1287]
 </pre></div>
 </div>
 </div>
@@ -896,7 +832,7 @@ dataproduct_type calib_level obs_collection ...    obsid       objID
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Product group IDs: [&#39;10000001998&#39;, &#39;10000001999&#39;, &#39;10000002000&#39;, &#39;10000002019&#39;, &#39;10000002020&#39;, &#39;10000002021&#39;, &#39;10000002046&#39;, &#39;10000002047&#39;, &#39;10000002048&#39;, &#39;10000002067&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Product group IDs: [&#39;23798347&#39;, &#39;23798346&#39;, &#39;23798345&#39;, &#39;23798326&#39;, &#39;23798325&#39;, &#39;23798324&#39;, &#39;23798251&#39;, &#39;23798250&#39;, &#39;23798249&#39;, &#39;23798230&#39;]
 </pre></div>
 </div>
 </div>
@@ -912,68 +848,7 @@ dataproduct_type calib_level obs_collection ...    obsid       objID
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?download=1&amp;filename=hst_11635_11_wfc3_uvis_f469n_daophot_trm.cat to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n/hst_11635_11_wfc3_uvis_f469n_daophot_trm.cat ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?download=1&amp;filename=hst_11635_11_wfc3_uvis_f469n_sexphot_trm.cat to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n/hst_11635_11_wfc3_uvis_f469n_sexphot_trm.cat ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/preview.cgi?dataset=hst_11635_11_wfc3_uvis_f469n to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n/hst_11635_11_wfc3_uvis_f469n_drz.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_drz.fits to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n/hst_11635_11_wfc3_uvis_f469n_drz.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/preview.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_01 to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_01/hst_11635_11_wfc3_uvis_f469n_01_drz.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_01_drz.fits to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_01/hst_11635_11_wfc3_uvis_f469n_01_drz.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/preview.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_02 to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_02/hst_11635_11_wfc3_uvis_f469n_02_drz.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_02_drz.fits to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_02/hst_11635_11_wfc3_uvis_f469n_02_drz.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/preview.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_03 to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_03/hst_11635_11_wfc3_uvis_f469n_03_drz.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_03_drz.fits to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_03/hst_11635_11_wfc3_uvis_f469n_03_drz.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/preview.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_04 to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_04/hst_11635_11_wfc3_uvis_f469n_04_drz.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLA/url/cgi-bin/getdata.cgi?dataset=hst_11635_11_wfc3_uvis_f469n_04_drz.fits to ./mastDownload/HLA/hst_11635_11_wfc3_uvis_f469n_04/hst_11635_11_wfc3_uvis_f469n_04_drz.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_jif.fits to ./mastDownload/HST/ib3p11010/ib3p11010_jif.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_jit.fits to ./mastDownload/HST/ib3p11010/ib3p11010_jit.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_spt.fits to ./mastDownload/HST/ib3p11010/ib3p11010_spt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_trl.fits to ./mastDownload/HST/ib3p11010/ib3p11010_trl.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_asn.fits to ./mastDownload/HST/ib3p11010/ib3p11010_asn.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_log.txt to ./mastDownload/HST/ib3p11010/ib3p11010_log.txt ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_drc.jpg to ./mastDownload/HST/ib3p11010/ib3p11010_drc.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_drz.jpg to ./mastDownload/HST/ib3p11010/ib3p11010_drz.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_drc.fits to ./mastDownload/HST/ib3p11010/ib3p11010_drc.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11010_drz.fits to ./mastDownload/HST/ib3p11010/ib3p11010_drz.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_flt_hlet.fits to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_flt_hlet.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_spt.fits to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_spt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_trl.fits to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_trl.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_log.txt to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_log.txt ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_raw.jpg to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_raw.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_flc.jpg to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_flc.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_flt.jpg to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_flt.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_flc.fits to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_flc.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_flt.fits to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_flt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p7q_raw.fits to ./mastDownload/HST/ib3p11p7q/ib3p11p7q_raw.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_flt_hlet.fits to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_flt_hlet.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_spt.fits to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_spt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_trl.fits to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_trl.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_log.txt to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_log.txt ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_raw.jpg to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_raw.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_flc.jpg to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_flc.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_flt.jpg to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_flt.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_flc.fits to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_flc.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_flt.fits to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_flt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11p8q_raw.fits to ./mastDownload/HST/ib3p11p8q/ib3p11p8q_raw.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_flt_hlet.fits to ./mastDownload/HST/ib3p11phq/ib3p11phq_flt_hlet.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_spt.fits to ./mastDownload/HST/ib3p11phq/ib3p11phq_spt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_trl.fits to ./mastDownload/HST/ib3p11phq/ib3p11phq_trl.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_log.txt to ./mastDownload/HST/ib3p11phq/ib3p11phq_log.txt ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_raw.jpg to ./mastDownload/HST/ib3p11phq/ib3p11phq_raw.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_flc.jpg to ./mastDownload/HST/ib3p11phq/ib3p11phq_flc.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_flt.jpg to ./mastDownload/HST/ib3p11phq/ib3p11phq_flt.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_flc.fits to ./mastDownload/HST/ib3p11phq/ib3p11phq_flc.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_flt.fits to ./mastDownload/HST/ib3p11phq/ib3p11phq_flt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11phq_raw.fits to ./mastDownload/HST/ib3p11phq/ib3p11phq_raw.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_flt_hlet.fits to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_flt_hlet.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_spt.fits to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_spt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_trl.fits to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_trl.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_log.txt to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_log.txt ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_raw.jpg to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_raw.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_flc.jpg to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_flc.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_flt.jpg to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_flt.jpg ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_flc.fits to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_flc.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_flt.fits to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_flt.fits ... [Done]
-Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ib3p11q9q_raw.fits to ./mastDownload/HST/ib3p11q9q/ib3p11q9q_raw.fits ... [Done]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: No products to download. [astroquery.mast.observations]
 </pre></div>
 </div>
 </div>

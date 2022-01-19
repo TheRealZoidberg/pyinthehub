@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -599,19 +601,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">astropy.wcs</span> <span class="kn">import</span> <span class="n">WCS</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;astropy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -669,6 +658,32 @@
 <span class="kn">import</span> <span class="nn">spectral_cube</span>
 <span class="kn">from</span> <span class="nn">spectral_cube</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">spectral_cube_version</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SpectralCube: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spectral_cube_version</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">aplpy</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">aplpy</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">aplpy_version</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aplpy: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aplpy_version</span><span class="p">))</span>
+
+<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.8.12</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">aplpy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_ASTROPY_SETUP_</span><span class="p">:</span>  <span class="c1"># noqa</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">FITSFigure</span>  <span class="c1"># noqa</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="kn">from</span> <span class="nn">.rgb</span> <span class="kn">import</span> <span class="n">make_rgb_image</span><span class="p">,</span> <span class="n">make_rgb_cube</span>  <span class="c1"># noqa</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="kn">from</span> <span class="nn">.frame</span> <span class="kn">import</span> <span class="n">Frame</span>  <span class="c1"># noqa</span>
+
+<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.8.12</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.8</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">aplpy</span><span class="o">/</span><span class="n">core</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">astropy.wcs.utils</span> <span class="kn">import</span> <span class="n">proj_plane_pixel_scales</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">astropy.nddata.utils</span> <span class="kn">import</span> <span class="n">block_reduce</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">AsymmetricPercentileInterval</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">astropy.visualization.wcsaxes</span> <span class="kn">import</span> <span class="n">WCSAxes</span><span class="p">,</span> <span class="n">WCSAxesSubplot</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;block_reduce&#39; from &#39;astropy.nddata.utils&#39; (/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/utils.py)
 </pre></div>
 </div>
 </div>

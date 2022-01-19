@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -337,18 +339,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -374,6 +364,87 @@
 <span class="c1"># read in fits file</span>
 
 <span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">flc_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># read in detection catalogs</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">coords_tab_sci1</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">coo1_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii.no_header&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">coords_tab_sci2</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">coo2_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;ascii.no_header&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># read in fits file</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/table/connect.py:62,</span> in <span class="ni">TableRead.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="n">units</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="n">descriptions</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;descriptions&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">62</span> <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="c1"># For some readers (e.g., ascii.ecsv), the returned `out` class is not</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span> <span class="c1"># guaranteed to be the same as the desired output `cls`.  If so,</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="c1"># try coercing to desired class without copying (io.registry.read</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="c1"># would normally do a copy).  The normal case here is swapping</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> <span class="c1"># Table &lt;=&gt; QTable.</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">out</span><span class="o">.</span><span class="vm">__class__</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/registry/core.py:199,</span> in <span class="ni">UnifiedInputRegistry.read</span><span class="nt">(self, cls, format, cache, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="nb">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_valid_format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">fileobj</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="n">reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_reader</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">199</span> <span class="n">data</span> <span class="o">=</span> <span class="n">reader</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="c1"># User has read with a subclass where only the parent class is</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="c1"># registered.  This returns the parent class, so try coercing</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>     <span class="c1"># to desired subclass.</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/ascii/connect.py:18,</span> in <span class="ni">io_read</span><span class="nt">(format, filename, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="nb">format</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^ascii\.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">format</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="k">return</span> <span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/ascii/ui.py:341,</span> in <span class="ni">read</span><span class="nt">(table, guess, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span>             <span class="n">new_kwargs</span><span class="p">[</span><span class="s1">&#39;guess_html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_probably_html</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span> <span class="c1"># Get the table from guess in ``dat``.  If ``dat`` comes back as None</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="c1"># then there was just one set of kwargs in the guess list so fall</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="c1"># through below to the non-guess way so that any problems result in a</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span> <span class="c1"># more useful traceback.</span>
+<span class="ne">--&gt; </span><span class="mi">341</span> <span class="n">dat</span> <span class="o">=</span> <span class="n">_guess</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">new_kwargs</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">fast_reader</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span> <span class="k">if</span> <span class="n">dat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span>     <span class="n">guess</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/ascii/ui.py:506,</span> in <span class="ni">_guess</span><span class="nt">(table, read_kwargs, format, fast_reader)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="n">reader</span> <span class="o">=</span> <span class="n">get_reader</span><span class="p">(</span><span class="o">**</span><span class="n">guess_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span> <span class="n">reader</span><span class="o">.</span><span class="n">guessing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">506</span> <span class="n">dat</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="n">_read_trace</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">guess_kwargs</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span>                     <span class="s1">&#39;Reader&#39;</span><span class="p">:</span> <span class="n">reader</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span>                     <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;Success (guessing)&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>                     <span class="s1">&#39;dt&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> ms&#39;</span><span class="p">})</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span> <span class="k">return</span> <span class="n">dat</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/io/ascii/fastbasic.py:109,</span> in <span class="ni">FastBasic.read</span><span class="nt">(self, table)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="c1"># Put fast_reader dict back into kwargs.</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;fast_reader&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fast_reader</span>
+<span class="ne">--&gt; </span><span class="mi">109</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">cparser</span><span class="o">.</span><span class="n">CParser</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strip_whitespace_lines</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>                               <span class="bp">self</span><span class="o">.</span><span class="n">strip_whitespace_fields</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>                               <span class="n">delimiter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">delimiter</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>                               <span class="n">header_start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">header_start</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>                               <span class="n">comment</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">comment</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>                               <span class="n">quotechar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quotechar</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>                               <span class="n">data_start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_start</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>                               <span class="n">fill_extra_cols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fill_extra_cols</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>                               <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="n">conversion_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_header</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_header</span><span class="p">()</span>
+
+<span class="nn">File astropy/io/ascii/cparser.pyx:248,</span> in <span class="ni">astropy.io.ascii.cparser.CParser.__cinit__</span><span class="nt">()</span>
+
+<span class="nn">File astropy/io/ascii/cparser.pyx:296,</span> in <span class="ni">astropy.io.ascii.cparser.CParser.setup_tokenizer</span><span class="nt">()</span>
+
+<span class="nn">File astropy/io/ascii/cparser.pyx:124,</span> in <span class="ni">astropy.io.ascii.cparser.FileString.__cinit__</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/grp/hst/acs9/slhoffmann/geodist/idc2019/f606w/tweakreg/post/general/ja9bw2a5q_flc_sci1_xy_catalog.coo&#39;
 </pre></div>
 </div>
 </div>

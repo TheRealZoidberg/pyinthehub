@@ -17,34 +17,50 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import os
-from glob import glob
-import shutil
-import yaml
-import zipfile
-import urllib.request
+# Run the yaml generator
+yam = yaml_generator.SimInput(xml_file, pointing_file, 
+                              catalogs=cat_dict, 
+                              verbose=True,
+                              simdata_output_dir=output_dir,
+                              output_dir=output_dir,
+                              roll_angle=pav3, 
+                              # to do : explain linear vs raw
+                              datatype='linear,raw') 
 
-# mirage imports
-from mirage import imaging_simulator
-from mirage.seed_image import catalog_seed_image
-from mirage.dark import dark_prep
-from mirage.ramp_generator import obs_generator
-from mirage.yaml import yaml_generator
-
-from astropy.table import Table
-from astropy.io import fits
-
+yam.use_linearized_darks = True
+yam.create_inputs()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
-[1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01murllib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mrequest[39;00m
-[1;32m      8[0m [38;5;66;03m# mirage imports[39;00m
-[0;32m----> 9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmirage[39;00m [38;5;28;01mimport[39;00m imaging_simulator
-[1;32m     10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmirage[39;00m[38;5;21;01m.[39;00m[38;5;21;01mseed_image[39;00m [38;5;28;01mimport[39;00m catalog_seed_image
-[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmirage[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdark[39;00m [38;5;28;01mimport[39;00m dark_prep
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Input [0;32mIn [10][0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;66;03m# Run the yaml generator[39;00m
+[0;32m----> 2[0m yam [38;5;241m=[39m [43myaml_generator[49m[38;5;241;43m.[39;49m[43mSimInput[49m[43m([49m[43mxml_file[49m[43m,[49m[43m [49m[43mpointing_file[49m[43m,[49m[43m [49m
+[1;32m      3[0m [43m                              [49m[43mcatalogs[49m[38;5;241;43m=[39;49m[43mcat_dict[49m[43m,[49m[43m [49m
+[1;32m      4[0m [43m                              [49m[43mverbose[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m      5[0m [43m                              [49m[43msimdata_output_dir[49m[38;5;241;43m=[39;49m[43moutput_dir[49m[43m,[49m
+[1;32m      6[0m [43m                              [49m[43moutput_dir[49m[38;5;241;43m=[39;49m[43moutput_dir[49m[43m,[49m
+[1;32m      7[0m [43m                              [49m[43mroll_angle[49m[38;5;241;43m=[39;49m[43mpav3[49m[43m,[49m[43m [49m
+[1;32m      8[0m [43m                              [49m[38;5;66;43;03m# to do : explain linear vs raw[39;49;00m
+[1;32m      9[0m [43m                              [49m[43mdatatype[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mlinear,raw[39;49m[38;5;124;43m'[39;49m[43m)[49m 
+[1;32m     11[0m yam[38;5;241m.[39muse_linearized_darks [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[1;32m     12[0m yam[38;5;241m.[39mcreate_inputs()
 
-[0;31mModuleNotFoundError[0m: No module named 'mirage'
-ModuleNotFoundError: No module named 'mirage'
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/mirage/yaml/yaml_generator.py:329[0m, in [0;36mSimInput.__init__[0;34m(self, input_xml, pointing_file, datatype, reffile_defaults, reffile_overrides, use_JWST_pipeline, catalogs, cosmic_rays, background, roll_angle, dates, observation_list_file, verbose, output_dir, simdata_output_dir, dateobs_for_background, segmap_flux_limit, segmap_flux_limit_units, add_ghosts, convolve_ghosts_with_psf, convolve_extended_with_psf, offline)[0m
+[1;32m    326[0m     [38;5;28mself[39m[38;5;241m.[39msegmentation_threshold_units [38;5;241m=[39m segmap_flux_limit_units
+[1;32m    328[0m [38;5;66;03m# Expand the MIRAGE_DATA environment variable[39;00m
+[0;32m--> 329[0m [38;5;28mself[39m[38;5;241m.[39mdatadir [38;5;241m=[39m [43mexpand_environment_variable[49m[43m([49m[43mENV_VAR[49m[43m,[49m[43m [49m[43moffline[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moffline[49m[43m)[49m
+[1;32m    331[0m [38;5;66;03m# Check that CRDS-related environment variables are set correctly[39;00m
+[1;32m    332[0m [38;5;28mself[39m[38;5;241m.[39mcrds_datadir [38;5;241m=[39m crds_tools[38;5;241m.[39menv_variables()
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/mirage/utils/utils.py:421[0m, in [0;36mexpand_environment_variable[0;34m(variable_name, offline)[0m
+[1;32m    419[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m offline:
+[1;32m    420[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m os[38;5;241m.[39mpath[38;5;241m.[39misdir(variable_directory):
+[0;32m--> 421[0m         [38;5;28;01mraise[39;00m [38;5;167;01mFileNotFoundError[39;00m(([38;5;124m"[39m[38;5;124mThe directory contained in the [39m[38;5;132;01m{}[39;00m[38;5;124m [39m[38;5;124m"[39m
+[1;32m    422[0m                                  [38;5;124m"[39m[38;5;124menvironment variable: [39m[38;5;132;01m{}[39;00m[38;5;124m does not exist or [39m[38;5;124m"[39m
+[1;32m    423[0m                                  [38;5;124m"[39m[38;5;124mis not accessible.[39m[38;5;124m"[39m[38;5;241m.[39mformat(variable_name, variable_directory)))
+[1;32m    424[0m [38;5;28;01mreturn[39;00m variable_directory
+
+[0;31mFileNotFoundError[0m: The directory contained in the MIRAGE_DATA environment variable: /path/to/mirage_data/ does not exist or is not accessible.
+FileNotFoundError: The directory contained in the MIRAGE_DATA environment variable: /path/to/mirage_data/ does not exist or is not accessible.
 

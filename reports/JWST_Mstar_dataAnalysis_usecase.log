@@ -17,29 +17,57 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Import useful python packages
-import numpy as np
+# Import astropy packages 
+from astropy import units as u
+from astropy.io import ascii
+from astropy.wcs import WCS
+from astropy.table import Table, vstack
+from astropy.stats import sigma_clipped_stats
+from astropy.nddata import StdDevUncertainty
 
-# Import packages to display images inline in the notebook
-import matplotlib.pyplot as plt    
-%matplotlib inline   
+# Import packages to deal with spectralcubes
+from spectral_cube import SpectralCube
 
-# Set general plotting options
-params={'legend.fontsize':'18','axes.labelsize':'18',
-        'axes.titlesize':'18','xtick.labelsize':'18',
-        'ytick.labelsize':'18','lines.linewidth':2,'axes.linewidth':2,'animation.html': 'html5'}
-plt.rcParams.update(params)
-plt.rcParams.update({'figure.max_open_warning': 0})
+# To find stars in the MRS spectralcubes and do aperture photometry
+from photutils import DAOStarFinder, CircularAperture
+
+# To deal with 1D spectrum
+from specutils import Spectrum1D
+from specutils.fitting import fit_generic_continuum
+from specutils.manipulation import box_smooth, extract_region, SplineInterpolatedResampler
+from specutils.analysis import line_flux, centroid, equivalent_width
+from specutils.spectra import SpectralRegion
+
+# To make nice plots with WCS axis
+import aplpy
+
+# To fit a curve to the data
+from scipy.optimize import curve_fit
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [38;5;66;03m# Import useful python packages[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[1;32m      4[0m [38;5;66;03m# Import packages to display images inline in the notebook[39;00m
-[1;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m    
+[0;31mImportError[0m                               Traceback (most recent call last)
+Input [0;32mIn [2][0m, in [0;36m<module>[0;34m[0m
+[1;32m     20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mspecutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mspectra[39;00m [38;5;28;01mimport[39;00m SpectralRegion
+[1;32m     22[0m [38;5;66;03m# To make nice plots with WCS axis[39;00m
+[0;32m---> 23[0m [38;5;28;01mimport[39;00m [38;5;21;01maplpy[39;00m
+[1;32m     25[0m [38;5;66;03m# To fit a curve to the data[39;00m
+[1;32m     26[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m[38;5;21;01m.[39;00m[38;5;21;01moptimize[39;00m [38;5;28;01mimport[39;00m curve_fit
 
-[0;31mModuleNotFoundError[0m: No module named 'numpy'
-ModuleNotFoundError: No module named 'numpy'
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/aplpy/__init__.py:14[0m, in [0;36m<module>[0;34m[0m
+[1;32m     10[0m [38;5;66;03m# ----------------------------------------------------------------------------[39;00m
+[1;32m     12[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m _ASTROPY_SETUP_:  [38;5;66;03m# noqa[39;00m
+[0;32m---> 14[0m     [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m FITSFigure  [38;5;66;03m# noqa[39;00m
+[1;32m     15[0m     [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mrgb[39;00m [38;5;28;01mimport[39;00m make_rgb_image, make_rgb_cube  [38;5;66;03m# noqa[39;00m
+[1;32m     17[0m     [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mframe[39;00m [38;5;28;01mimport[39;00m Frame  [38;5;66;03m# noqa[39;00m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/aplpy/core.py:20[0m, in [0;36m<module>[0;34m[0m
+[1;32m     18[0m [38;5;28;01mfrom[39;00m [38;5;21;01mastropy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mwcs[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m proj_plane_pixel_scales
+[1;32m     19[0m [38;5;28;01mfrom[39;00m [38;5;21;01mastropy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mio[39;00m [38;5;28;01mimport[39;00m fits
+[0;32m---> 20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mastropy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnddata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m block_reduce
+[1;32m     21[0m [38;5;28;01mfrom[39;00m [38;5;21;01mastropy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mvisualization[39;00m [38;5;28;01mimport[39;00m AsymmetricPercentileInterval
+[1;32m     22[0m [38;5;28;01mfrom[39;00m [38;5;21;01mastropy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mvisualization[39;00m[38;5;21;01m.[39;00m[38;5;21;01mwcsaxes[39;00m [38;5;28;01mimport[39;00m WCSAxes, WCSAxesSubplot
+
+[0;31mImportError[0m: cannot import name 'block_reduce' from 'astropy.nddata.utils' (/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/utils.py)
+ImportError: cannot import name 'block_reduce' from 'astropy.nddata.utils' (/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/utils.py)
 

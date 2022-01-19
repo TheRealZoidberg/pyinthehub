@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -766,18 +768,6 @@ but flux <em>uncertainties</em> cannot be automatically converted to magnitude u
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">os</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="matplotlib-setup-for-plotting">
@@ -890,6 +880,11 @@ but flux <em>uncertainties</em> cannot be automatically converted to magnitude u
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1000 x 1000 pixels = 30&quot; x 30&quot; (0.03&quot; / pixel)
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="create-color-images-optional">
@@ -944,6 +939,12 @@ As a workaround, I tried but was unable to turn off yticklabels in the right plo
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Interactive zoom / pan controls both images simultaneously&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interactive zoom / pan controls both images simultaneously
+</pre></div>
+</div>
+<img alt="../../_images/NIRCam_PSF_matched_multiband_photometry_20_1.png" src="../../_images/NIRCam_PSF_matched_multiband_photometry_20_1.png" />
 </div>
 </div>
 </div>
@@ -1032,6 +1033,21 @@ As a workaround, I tried but was unable to turn off yticklabels in the right plo
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F200W   zeropoint = 27.9973 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F200W.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F200W_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: &quot;filter_kernel&quot; was deprecated in version 1.2 and will be removed in a future version. Use argument &quot;kernel&quot; instead. [warnings]
+WARNING: AstropyDeprecationWarning: &quot;filter_kernel&quot; was deprecated in version 1.2 and will be removed in a future version. Use argument &quot;kernel&quot; instead. [warnings]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cataloged 323 objects, deblended from 301 detections with 5 pixels above 2-sigma threshold
+Background median 6.25759e-06, RMS 0.00187681, threshold median 0.00375987
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="measure-photometry-and-more-in-detection-image">
@@ -1042,6 +1058,16 @@ As a workaround, I tried but was unable to turn off yticklabels in the right plo
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># exposure_time = hdu[0].header.get(&#39;EXPTIME&#39;)  # seconds</span>
 <span class="n">exposure_time</span> <span class="o">=</span> <span class="mi">49500</span>  <span class="c1"># seconds; Adding by hand because it&#39;s missing from the image header</span>
 <span class="n">detection_catalog</span><span class="o">.</span><span class="n">measure_source_properties</span><span class="p">(</span><span class="n">exposure_time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+WARNING: AstropyDeprecationWarning: The LegacySourceCatalog class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
 </pre></div>
 </div>
 </div>
@@ -1107,6 +1133,12 @@ As a workaround, I tried but was unable to turn off yticklabels in the right plo
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Interactive zoom / pan controls all images simultaneously&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interactive zoom / pan controls all images simultaneously
+</pre></div>
+</div>
+<img alt="../../_images/NIRCam_PSF_matched_multiband_photometry_29_1.png" src="../../_images/NIRCam_PSF_matched_multiband_photometry_29_1.png" />
 </div>
 </div>
 </div>
@@ -1218,6 +1250,145 @@ They need to be the same, so we go with u.ABmag
     <span class="n">mag</span><span class="p">,</span> <span class="n">magerr</span> <span class="o">=</span> <span class="n">fluxes2mags</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">fluxerr</span><span class="p">)</span>
     <span class="n">source_table</span><span class="p">[</span><span class="n">filt</span><span class="o">+</span><span class="s1">&#39;_mag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mag</span>
     <span class="n">source_table</span><span class="p">[</span><span class="n">filt</span><span class="o">+</span><span class="s1">&#39;_magerr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magerr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F090W   zeropoint = 27.4525 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F090W.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F090W_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+WARNING: AstropyDeprecationWarning: The LegacySourceCatalog class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/function/logarithmic.py:46: RuntimeWarning: invalid value encountered in log10
+  return dex.to(self._function_unit, np.log10(x))
+/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:614: RuntimeWarning: invalid value encountered in log10
+  result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F115W   zeropoint = 27.5681 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F115W.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F115W_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+WARNING: AstropyDeprecationWarning: The LegacySourceCatalog class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F150W   zeropoint = 27.814 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F150W.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F150W_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+WARNING: AstropyDeprecationWarning: The LegacySourceCatalog class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F200W   zeropoint = 27.9973 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F200W.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F200W_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+WARNING: AstropyDeprecationWarning: The LegacySourceCatalog class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F277W   zeropoint = 27.8803 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F277W.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F277W_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+WARNING: AstropyDeprecationWarning: The LegacySourceCatalog class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F335M   zeropoint = 27.0579 mag(AB)
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F335M.fits
+https://data.science.stsci.edu/redirect/JWST/jwst-data_analysis_tools/nircam_photometry/jades_jwst_nircam_goods_s_crop_F335M_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The source_properties function is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [warnings]
+WARNING: AstropyDeprecationWarning: The SourceProperties class is deprecated and may be removed in a future version.
+        Use `~photutils.segmentation.SourceCatalog` instead. [photutils.segmentation.properties]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Measure photometry in this filter for objects detected in detected image</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># segmentation map will define isophotal apertures</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">filter_catalog</span><span class="o">.</span><span class="n">segm_deblend</span> <span class="o">=</span> <span class="n">detection_catalog</span><span class="o">.</span><span class="n">segm_deblend</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">filter_catalog</span><span class="o">.</span><span class="n">measure_source_properties</span><span class="p">(</span><span class="n">exposure_time</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Convert measured fluxes to fluxes in nJy and to AB magnitudes</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">filter_table</span> <span class="o">=</span> <span class="n">filter_catalog</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">to_table</span><span class="p">()</span>
+
+<span class="nn">Input In [11],</span> in <span class="ni">Photutils_Catalog.measure_source_properties</span><span class="nt">(self, exposure_time, local_background_width)</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="c1"># effective gain parameter required to be positive everywhere (not zero), so adding small value 1e-8</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_rms</span> <span class="o">=</span> <span class="n">calc_total_error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">background_rms</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_time_map</span><span class="o">+</span><span class="mf">1e-8</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">66</span> <span class="bp">self</span><span class="o">.</span><span class="n">catalog</span> <span class="o">=</span> <span class="n">source_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">background_map</span><span class="o">.</span><span class="n">background</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">segm_deblend</span><span class="p">,</span> <span class="n">wcs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">imwcs</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                                  <span class="n">error</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_rms</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">background_map</span><span class="o">.</span><span class="n">background</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">68</span>                                  <span class="n">localbkg_width</span><span class="o">=</span><span class="n">local_background_width</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/utils/decorators.py:125,</span> in <span class="ni">deprecated.&lt;locals&gt;.deprecate_function.&lt;locals&gt;.deprecated_func</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="n">category</span> <span class="o">=</span> <span class="n">warning_type</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">125</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/photutils/segmentation/properties.py:1825,</span> in <span class="ni">source_properties</span><span class="nt">(data, segment_img, error, mask, background, filter_kernel, wcs, labels, localbkg_width, kron_params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1821</span>         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;label </span><span class="si">{}</span><span class="s1"> is not in the segmentation image.&#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1822</span>                       <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="n">AstropyUserWarning</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1823</span>         <span class="k">continue</span>  <span class="c1"># skip invalid labels</span>
+<span class="ne">-&gt; </span><span class="mi">1825</span>     <span class="n">sources_props</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SourceProperties</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1826</span>         <span class="n">data</span><span class="p">,</span> <span class="n">segment_img</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">filtered_data</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1827</span>         <span class="n">error</span><span class="o">=</span><span class="n">error</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">background</span><span class="p">,</span> <span class="n">wcs</span><span class="o">=</span><span class="n">wcs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1828</span>         <span class="n">localbkg_width</span><span class="o">=</span><span class="n">localbkg_width</span><span class="p">,</span> <span class="n">kron_params</span><span class="o">=</span><span class="n">kron_params</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1830</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">sources_props</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1831</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No sources are defined.&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/utils/decorators.py:125,</span> in <span class="ni">deprecated.&lt;locals&gt;.deprecate_function.&lt;locals&gt;.deprecated_func</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="n">category</span> <span class="o">=</span> <span class="n">warning_type</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">125</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/photutils/segmentation/properties.py:285,</span> in <span class="ni">SourceProperties.__init__</span><span class="nt">(self, data, segment_img, label, filtered_data, error, mask, background, wcs, localbkg_width, kron_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background</span> <span class="o">=</span> <span class="n">background</span>  <span class="c1"># 2D array</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wcs</span> <span class="o">=</span> <span class="n">wcs</span>
+<span class="ne">--&gt; </span><span class="mi">285</span> <span class="n">segment_img</span><span class="o">.</span><span class="n">check_labels</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment</span> <span class="o">=</span> <span class="n">segment_img</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">segment_img</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/photutils/segmentation/core.py:364,</span> in <span class="ni">SegmentationImage.check_labels</span><span class="nt">(self, labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span> <span class="c1"># check if label is in the segmentation array</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span> <span class="n">bad_labels</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">364</span> <span class="k">if</span> <span class="n">bad_labels</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bad_labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;label </span><span class="si">{</span><span class="n">bad_labels</span><span class="si">}</span><span class="s1"> is invalid&#39;</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

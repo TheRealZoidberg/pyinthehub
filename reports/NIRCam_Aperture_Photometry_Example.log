@@ -17,45 +17,86 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import os
-import sys
-import time
+radii = [3.5, 4.0]
 
-import numpy as np
+for det in dets_short:
+    for j, filt in enumerate(filts_short):
+        for i in np.arange(0, len(dict_images[det][filt]['images']), 1):
 
-import pandas as pd
+            radius = np.str(radii[j])
 
-import glob as glob
+            image = fits.open(dict_images[det][filt]['images'][0])
+            data = image[1].data
 
-import tarfile
+            image_model = ImageModel(dict_images[det][filt]['images'][0])
 
-import urllib.request
+            mask = ((dict_aper[det][filt]['sources found']['xcentroid'] > 0) &
+                    (dict_aper[det][filt]['sources found']['xcentroid'] < data.shape[1]) &
+                    (dict_aper[det][filt]['sources found']['ycentroid'] > 0) &
+                    (dict_aper[det][filt]['sources found']['ycentroid'] < data.shape[0]) &
+                    (dict_aper[det][filt]['aperture phot table']['aper_sum_bkgsub_' + radius + 'px'] > 0))
 
-import jwst
-from jwst.datamodels import ImageModel
+            table_phot = Table()
 
-from astropy.io import fits
-from astropy.table import Table
-from astropy.visualization import (ZScaleInterval, SqrtStretch, ImageNormalize)
-from astropy.visualization import simple_norm
-from astropy.stats import sigma_clipped_stats, SigmaClip
-from astropy.coordinates import SkyCoord, match_coordinates_sky
-from astropy import units as u
+            table_phot['x'] = dict_aper[det][filt]['sources found']['xcentroid'][mask]
+            table_phot['y'] = dict_aper[det][filt]['sources found']['ycentroid'][mask]
 
-from photutils.detection import DAOStarFinder
-from photutils.background import MMMBackground, MADStdBackgroundRMS, Background2D
-from photutils import CircularAperture, CircularAnnulus, aperture_photometry
+            ra, dec = image_model.meta.wcs(table_phot['x'], table_phot['y'])
+            table_phot['radec'] = SkyCoord(ra, dec, unit='deg')
+            table_phot[filt + '_inst'] = -2.5 * np.log10(dict_aper[det][filt]['aperture phot table']['aper_sum_bkgsub_' + radius + 'px'][mask])
+            table_phot['e' + filt + '_inst'] = 1.086 * (dict_aper[det][filt]['aperture phot table']['flux_err_' + radius + 'px'][mask] /
+                                                        dict_aper[det][filt]['aperture phot table']['aper_sum_bkgsub_' + radius + 'px'][mask])
+
+            dict_aper[det][filt]['final aperture phot table'] = table_phot
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01msys[39;00m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mtime[39;00m
-[0;32m----> 5[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[1;32m      7[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      9[0m [38;5;28;01mimport[39;00m [38;5;21;01mglob[39;00m [38;5;28;01mas[39;00m [38;5;21;01mglob[39;00m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [12][0m, in [0;36m<module>[0;34m[0m
+[1;32m      9[0m image [38;5;241m=[39m fits[38;5;241m.[39mopen(dict_images[det][filt][[38;5;124m'[39m[38;5;124mimages[39m[38;5;124m'[39m][[38;5;241m0[39m])
+[1;32m     10[0m data [38;5;241m=[39m image[[38;5;241m1[39m][38;5;241m.[39mdata
+[0;32m---> 12[0m image_model [38;5;241m=[39m [43mImageModel[49m[43m([49m[43mdict_images[49m[43m[[49m[43mdet[49m[43m][49m[43m[[49m[43mfilt[49m[43m][49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mimages[39;49m[38;5;124;43m'[39;49m[43m][49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m)[49m
+[1;32m     14[0m mask [38;5;241m=[39m ((dict_aper[det][filt][[38;5;124m'[39m[38;5;124msources found[39m[38;5;124m'[39m][[38;5;124m'[39m[38;5;124mxcentroid[39m[38;5;124m'[39m] [38;5;241m>[39m [38;5;241m0[39m) [38;5;241m&[39m
+[1;32m     15[0m         (dict_aper[det][filt][[38;5;124m'[39m[38;5;124msources found[39m[38;5;124m'[39m][[38;5;124m'[39m[38;5;124mxcentroid[39m[38;5;124m'[39m] [38;5;241m<[39m data[38;5;241m.[39mshape[[38;5;241m1[39m]) [38;5;241m&[39m
+[1;32m     16[0m         (dict_aper[det][filt][[38;5;124m'[39m[38;5;124msources found[39m[38;5;124m'[39m][[38;5;124m'[39m[38;5;124mycentroid[39m[38;5;124m'[39m] [38;5;241m>[39m [38;5;241m0[39m) [38;5;241m&[39m
+[1;32m     17[0m         (dict_aper[det][filt][[38;5;124m'[39m[38;5;124msources found[39m[38;5;124m'[39m][[38;5;124m'[39m[38;5;124mycentroid[39m[38;5;124m'[39m] [38;5;241m<[39m data[38;5;241m.[39mshape[[38;5;241m0[39m]) [38;5;241m&[39m
+[1;32m     18[0m         (dict_aper[det][filt][[38;5;124m'[39m[38;5;124maperture phot table[39m[38;5;124m'[39m][[38;5;124m'[39m[38;5;124maper_sum_bkgsub_[39m[38;5;124m'[39m [38;5;241m+[39m radius [38;5;241m+[39m [38;5;124m'[39m[38;5;124mpx[39m[38;5;124m'[39m] [38;5;241m>[39m [38;5;241m0[39m))
+[1;32m     20[0m table_phot [38;5;241m=[39m Table()
 
-[0;31mModuleNotFoundError[0m: No module named 'numpy'
-ModuleNotFoundError: No module named 'numpy'
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/image.py:44[0m, in [0;36mImageModel.__init__[0;34m(self, init, **kwargs)[0m
+[1;32m     42[0m [38;5;28;01mdef[39;00m [38;5;21m__init__[39m([38;5;28mself[39m, init[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m---> 44[0m     [38;5;28;43msuper[39;49m[43m([49m[43mImageModel[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m)[49m[38;5;241;43m.[39;49m[38;5;21;43m__init__[39;49m[43m([49m[43minit[49m[38;5;241;43m=[39;49m[43minit[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/model_base.py:186[0m, in [0;36mDataModel.__init__[0;34m(self, init, schema, memmap, pass_invalid_values, strict_validation, ignore_missing_extensions, **kwargs)[0m
+[1;32m    183[0m         init_fitsopen [38;5;241m=[39m init
+[1;32m    185[0m     hdulist [38;5;241m=[39m fits[38;5;241m.[39mopen(init_fitsopen, memmap[38;5;241m=[39mmemmap)
+[0;32m--> 186[0m     asdffile [38;5;241m=[39m [43mfits_support[49m[38;5;241;43m.[39;49m[43mfrom_fits[49m[43m([49m
+[1;32m    187[0m [43m        [49m[43mhdulist[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_schema[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_ctx[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m
+[1;32m    188[0m [43m    [49m[43m)[49m
+[1;32m    189[0m     [38;5;28mself[39m[38;5;241m.[39m_files_to_close[38;5;241m.[39mappend(hdulist)
+[1;32m    191[0m [38;5;28;01melif[39;00m file_type [38;5;241m==[39m [38;5;124m"[39m[38;5;124masdf[39m[38;5;124m"[39m:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/fits_support.py:589[0m, in [0;36mfrom_fits[0;34m(hdulist, schema, context, skip_fits_update, **kwargs)[0m
+[1;32m    586[0m     [38;5;28;01mraise[39;00m exc[38;5;241m.[39m[38;5;18m__class__[39m([38;5;124m"[39m[38;5;124mERROR loading embedded ASDF: [39m[38;5;124m"[39m [38;5;241m+[39m [38;5;28mstr[39m(exc)) [38;5;28;01mfrom[39;00m [38;5;21;01mexc[39;00m
+[1;32m    588[0m [38;5;66;03m# Determine whether skipping the FITS loading can be done.[39;00m
+[0;32m--> 589[0m skip_fits_update [38;5;241m=[39m [43m_verify_skip_fits_update[49m[43m([49m
+[1;32m    590[0m [43m    [49m[43mskip_fits_update[49m[43m,[49m[43m [49m[43mhdulist[49m[43m,[49m[43m [49m[43mff[49m[43m,[49m[43m [49m[43mcontext[49m
+[1;32m    591[0m [43m[49m[43m)[49m
+[1;32m    593[0m known_keywords, known_datas [38;5;241m=[39m _load_from_schema(
+[1;32m    594[0m     hdulist, schema, ff[38;5;241m.[39mtree, context, skip_fits_update[38;5;241m=[39mskip_fits_update
+[1;32m    595[0m )
+[1;32m    596[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m skip_fits_update:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/jwst/datamodels/fits_support.py:686[0m, in [0;36m_verify_skip_fits_update[0;34m(skip_fits_update, hdulist, asdf_struct, context)[0m
+[1;32m    683[0m     log[38;5;241m.[39mdebug([38;5;124m'[39m[38;5;124mCannot determine model of the FITS file.[39m[38;5;124m'[39m
+[1;32m    684[0m               [38;5;124m'[39m[38;5;124m Cannot skip updating from FITS headers.[39m[38;5;124m'[39m)
+[1;32m    685[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mFalse[39;00m
+[0;32m--> 686[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28;43misinstance[39;49m[43m([49m[43mcontext[49m[43m,[49m[43m [49m[43mhdulist_class[49m[43m)[49m:
+[1;32m    687[0m     log[38;5;241m.[39mdebug([38;5;124mf[39m[38;5;124m'[39m[38;5;124mInput model [39m[38;5;132;01m{[39;00mhdulist_class[38;5;132;01m}[39;00m[38;5;124m does not match the[39m[38;5;124m'[39m
+[1;32m    688[0m               [38;5;124mf[39m[38;5;124m'[39m[38;5;124m requested model [39m[38;5;132;01m{[39;00m[38;5;28mtype[39m(context)[38;5;132;01m}[39;00m[38;5;124m.[39m[38;5;124m'[39m
+[1;32m    689[0m               [38;5;124m'[39m[38;5;124m Cannot skip updating from FITS headers.[39m[38;5;124m'[39m)
+[1;32m    690[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mFalse[39;00m
+
+[0;31mTypeError[0m: isinstance() arg 2 must be a type or tuple of types
+TypeError: isinstance() arg 2 must be a type or tuple of types
 

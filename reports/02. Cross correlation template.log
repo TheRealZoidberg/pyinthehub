@@ -17,51 +17,162 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-%matplotlib inline
+# Continuum fit to the fitting temp;
+regions = [SpectralRegion(0.37*u.um, 0.452*u.um), 
+           SpectralRegion(0.476*u.um, 0.53*u.um),
+           SpectralRegion(0.645*u.um, 0.67*u.um)]
+
+continuum_model = continuum.fit_generic_continuum(template, model=Chebyshev1D(3), exclude_regions=regions)
+
+p_template = template - continuum_model(template.spectral_axis)
+
+plt.figure()
+plt.plot(p_template.spectral_axis, p_template.flux, color='orange')
+plt.xlabel(p_template.spectral_axis.unit)
+plt.title('Continuum subtracted template')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0m [43mget_ipython[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mrun_line_magic[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mmatplotlib[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43minline[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[0;31mUnitTypeError[0m                             Traceback (most recent call last)
+Input [0;32mIn [23][0m, in [0;36m<module>[0;34m[0m
+[1;32m      2[0m regions [38;5;241m=[39m [SpectralRegion([38;5;241m0.37[39m[38;5;241m*[39mu[38;5;241m.[39mum, [38;5;241m0.452[39m[38;5;241m*[39mu[38;5;241m.[39mum), 
+[1;32m      3[0m            SpectralRegion([38;5;241m0.476[39m[38;5;241m*[39mu[38;5;241m.[39mum, [38;5;241m0.53[39m[38;5;241m*[39mu[38;5;241m.[39mum),
+[1;32m      4[0m            SpectralRegion([38;5;241m0.645[39m[38;5;241m*[39mu[38;5;241m.[39mum, [38;5;241m0.67[39m[38;5;241m*[39mu[38;5;241m.[39mum)]
+[1;32m      6[0m continuum_model [38;5;241m=[39m continuum[38;5;241m.[39mfit_generic_continuum(template, model[38;5;241m=[39mChebyshev1D([38;5;241m3[39m), exclude_regions[38;5;241m=[39mregions)
+[0;32m----> 8[0m p_template [38;5;241m=[39m [43mtemplate[49m[43m [49m[38;5;241;43m-[39;49m[43m [49m[43mcontinuum_model[49m[43m([49m[43mtemplate[49m[38;5;241;43m.[39;49m[43mspectral_axis[49m[43m)[49m
+[1;32m     10[0m plt[38;5;241m.[39mfigure()
+[1;32m     11[0m plt[38;5;241m.[39mplot(p_template[38;5;241m.[39mspectral_axis, p_template[38;5;241m.[39mflux, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124morange[39m[38;5;124m'[39m)
 
-File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/IPython/core/interactiveshell.py:2204[0m, in [0;36mInteractiveShell.run_line_magic[0;34m(self, magic_name, line, _stack_depth)[0m
-[1;32m   2202[0m     kwargs[[38;5;124m'[39m[38;5;124mlocal_ns[39m[38;5;124m'[39m] [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mget_local_scope(stack_depth)
-[1;32m   2203[0m [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39mbuiltin_trap:
-[0;32m-> 2204[0m     result [38;5;241m=[39m [43mfn[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m   2205[0m [38;5;28;01mreturn[39;00m result
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/spectra/spectrum1d.py:415[0m, in [0;36mSpectrum1D.__sub__[0;34m(self, other)[0m
+[1;32m    412[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(other, NDDataRef):
+[1;32m    413[0m     other [38;5;241m=[39m u[38;5;241m.[39mQuantity(other, unit[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39munit)
+[0;32m--> 415[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msubtract[49m[43m([49m[43mother[49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/IPython/core/magics/pylab.py:99[0m, in [0;36mPylabMagics.matplotlib[0;34m(self, line)[0m
-[1;32m     97[0m     [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mAvailable matplotlib backends: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m backends_list)
-[1;32m     98[0m [38;5;28;01melse[39;00m:
-[0;32m---> 99[0m     gui, backend [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mshell[49m[38;5;241;43m.[39;49m[43menable_matplotlib[49m[43m([49m[43margs[49m[38;5;241;43m.[39;49m[43mgui[49m[38;5;241;43m.[39;49m[43mlower[49m[43m([49m[43m)[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[38;5;28;43misinstance[39;49m[43m([49m[43margs[49m[38;5;241;43m.[39;49m[43mgui[49m[43m,[49m[43m [49m[38;5;28;43mstr[39;49m[43m)[49m[43m [49m[38;5;28;43;01melse[39;49;00m[43m [49m[43margs[49m[38;5;241;43m.[39;49m[43mgui[49m[43m)[49m
-[1;32m    100[0m     [38;5;28mself[39m[38;5;241m.[39m_show_matplotlib_backend(args[38;5;241m.[39mgui, backend)
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/mixins/ndarithmetic.py:524[0m, in [0;36mNDArithmeticMixin.subtract[0;34m(self, operand, operand2, **kwargs)[0m
+[1;32m    521[0m [38;5;129m@sharedmethod[39m
+[1;32m    522[0m [38;5;129m@format_doc[39m(_arit_doc, name[38;5;241m=[39m[38;5;124m'[39m[38;5;124msubtraction[39m[38;5;124m'[39m, op[38;5;241m=[39m[38;5;124m'[39m[38;5;124m-[39m[38;5;124m'[39m)
+[1;32m    523[0m [38;5;28;01mdef[39;00m [38;5;21msubtract[39m([38;5;28mself[39m, operand, operand2[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 524[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_prepare_then_do_arithmetic[49m[43m([49m[43mnp[49m[38;5;241;43m.[39;49m[43msubtract[49m[43m,[49m[43m [49m[43moperand[49m[43m,[49m[43m [49m[43moperand2[49m[43m,[49m
+[1;32m    525[0m [43m                                            [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/IPython/core/interactiveshell.py:3327[0m, in [0;36mInteractiveShell.enable_matplotlib[0;34m(self, gui)[0m
-[1;32m   3306[0m [38;5;124;03m"""Enable interactive matplotlib and inline figure support.[39;00m
-[1;32m   3307[0m 
-[1;32m   3308[0m [38;5;124;03mThis takes the following steps:[39;00m
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/mixins/ndarithmetic.py:610[0m, in [0;36mNDArithmeticMixin._prepare_then_do_arithmetic[0;34m(self_or_cls, operation, operand, operand2, **kwargs)[0m
+[1;32m    602[0m     operand [38;5;241m=[39m [38;5;28mcls[39m(operand)
+[1;32m    604[0m [38;5;66;03m# At this point operand, operand2, kwargs and cls are determined.[39;00m
+[1;32m    605[0m 
+[1;32m    606[0m [38;5;66;03m# Let's try to convert operand2 to the class of operand to allows for[39;00m
+[1;32m    607[0m [38;5;66;03m# arithmetic operations with numbers, lists, numpy arrays, numpy masked[39;00m
+[1;32m    608[0m [38;5;66;03m# arrays, astropy quantities, masked quantities and of other subclasses[39;00m
+[1;32m    609[0m [38;5;66;03m# of NDData.[39;00m
+[0;32m--> 610[0m operand2 [38;5;241m=[39m [38;5;28;43mcls[39;49m[43m([49m[43moperand2[49m[43m)[49m
+[1;32m    612[0m [38;5;66;03m# Now call the _arithmetics method to do the arithmetics.[39;00m
+[1;32m    613[0m result, init_kwds [38;5;241m=[39m operand[38;5;241m.[39m_arithmetic(operation, operand2, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/spectra/spectrum1d.py:217[0m, in [0;36mSpectrum1D.__init__[0;34m(self, flux, spectral_axis, wcs, velocity_convention, rest_value, redshift, radial_velocity, bin_specification, **kwargs)[0m
+[1;32m    212[0m [38;5;66;03m# If no spectral_axis was provided, create a SpectralCoord based on[39;00m
+[1;32m    213[0m [38;5;66;03m# the WCS[39;00m
+[1;32m    214[0m [38;5;28;01mif[39;00m spectral_axis [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    215[0m     [38;5;66;03m# If spectral_axis wasn't provided, set _spectral_axis based on[39;00m
+[1;32m    216[0m     [38;5;66;03m# the WCS[39;00m
+[0;32m--> 217[0m     spec_axis [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mwcs[49m[38;5;241;43m.[39;49m[43mpixel_to_world[49m[43m([49m[43mnp[49m[38;5;241;43m.[39;49m[43marange[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mflux[49m[38;5;241;43m.[39;49m[43mshape[49m[43m[[49m[38;5;241;43m-[39;49m[38;5;241;43m1[39;49m[43m][49m[43m)[49m[43m)[49m
+[1;32m    219[0m     [38;5;28;01mif[39;00m spec_axis[38;5;241m.[39munit[38;5;241m.[39mis_equivalent(u[38;5;241m.[39mone):
+[1;32m    220[0m         spec_axis [38;5;241m=[39m spec_axis [38;5;241m*[39m u[38;5;241m.[39mpixel
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/utils/wcs_utils.py:217[0m, in [0;36mgwcs_from_array.<locals>.SpectralGWCS.pixel_to_world[0;34m(self, *args, **kwargs)[0m
+[1;32m    216[0m [38;5;28;01mdef[39;00m [38;5;21mpixel_to_world[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 217[0m     [38;5;28;01mreturn[39;00m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mpixel_to_world[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m[38;5;241m.[39mto(
+[1;32m    218[0m         orig_array[38;5;241m.[39munit, equivalencies[38;5;241m=[39mu[38;5;241m.[39mspectral())
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/api.py:299[0m, in [0;36mGWCSAPIMixin.pixel_to_world[0;34m(self, *pixel_arrays)[0m
+[1;32m    295[0m [38;5;124;03m"""[39;00m
+[1;32m    296[0m [38;5;124;03mConvert pixel values to world coordinates.[39;00m
+[1;32m    297[0m [38;5;124;03m"""[39;00m
+[1;32m    298[0m pixels [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_sanitize_pixel_inputs([38;5;241m*[39mpixel_arrays)
+[0;32m--> 299[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m([49m[38;5;241;43m*[39;49m[43mpixels[49m[43m,[49m[43m [49m[43mwith_units[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/wcs.py:380[0m, in [0;36mWCS.__call__[0;34m(self, *args, **kwargs)[0m
+[1;32m    378[0m [38;5;28;01mif[39;00m with_units:
+[1;32m    379[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39moutput_frame[38;5;241m.[39mnaxes [38;5;241m==[39m [38;5;241m1[39m:
+[0;32m--> 380[0m         result [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moutput_frame[49m[38;5;241;43m.[39;49m[43mcoordinates[49m[43m([49m[43mresult[49m[43m)[49m
+[1;32m    381[0m     [38;5;28;01melse[39;00m:
+[1;32m    382[0m         result [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39moutput_frame[38;5;241m.[39mcoordinates([38;5;241m*[39mresult)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/coordinate_frames.py:463[0m, in [0;36mSpectralFrame.coordinates[0;34m(self, *args)[0m
+[1;32m    461[0m [38;5;28;01melse[39;00m:
+[1;32m    462[0m     [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(args[[38;5;241m0[39m], [38;5;124m'[39m[38;5;124munit[39m[38;5;124m'[39m):
+[0;32m--> 463[0m         [38;5;28;01mreturn[39;00m [43mcoord[49m[38;5;241;43m.[39;49m[43mSpectralCoord[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m)[49m[38;5;241m.[39mto([38;5;28mself[39m[38;5;241m.[39munit[[38;5;241m0[39m])
+[1;32m    464[0m     [38;5;28;01melse[39;00m:
+[1;32m    465[0m         [38;5;28;01mreturn[39;00m coord[38;5;241m.[39mSpectralCoord([38;5;241m*[39margs, [38;5;28mself[39m[38;5;241m.[39munit[[38;5;241m0[39m])
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/decorators.py:304[0m, in [0;36mQuantityInput.__call__.<locals>.wrapper[0;34m(*func_args, **func_kwargs)[0m
+[1;32m    302[0m [38;5;66;03m# Call the original function with any equivalencies in force.[39;00m
+[1;32m    303[0m [38;5;28;01mwith[39;00m add_enabled_equivalencies([38;5;28mself[39m[38;5;241m.[39mequivalencies):
+[0;32m--> 304[0m     return_ [38;5;241m=[39m [43mwrapped_function[49m[43m([49m[38;5;241;43m*[39;49m[43mfunc_args[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mfunc_kwargs[49m[43m)[49m
+[1;32m    306[0m [38;5;66;03m# Return[39;00m
+[1;32m    307[0m ra [38;5;241m=[39m wrapped_signature[38;5;241m.[39mreturn_annotation
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_coordinate.py:193[0m, in [0;36mSpectralCoord.__new__[0;34m(cls, value, unit, observer, target, radial_velocity, redshift, **kwargs)[0m
+[1;32m    187[0m [38;5;129m@u[39m[38;5;241m.[39mquantity_input(radial_velocity[38;5;241m=[39mu[38;5;241m.[39mkm[38;5;241m/[39mu[38;5;241m.[39ms)
+[1;32m    188[0m [38;5;28;01mdef[39;00m [38;5;21m__new__[39m([38;5;28mcls[39m, value, unit[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    189[0m             observer[38;5;241m=[39m[38;5;28;01mNone[39;00m, target[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    190[0m             radial_velocity[38;5;241m=[39m[38;5;28;01mNone[39;00m, redshift[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    191[0m             [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 193[0m     obj [38;5;241m=[39m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[38;5;21;43m__new__[39;49m[43m([49m[38;5;28;43mcls[39;49m[43m,[49m[43m [49m[43mvalue[49m[43m,[49m[43m [49m[43munit[49m[38;5;241;43m=[39;49m[43munit[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    195[0m     [38;5;66;03m# There are two main modes of operation in this class. Either the[39;00m
+[1;32m    196[0m     [38;5;66;03m# observer and target are both defined, in which case the radial[39;00m
+[1;32m    197[0m     [38;5;66;03m# velocity and redshift are automatically computed from these, or[39;00m
 [0;32m   (...)[0m
-[1;32m   3324[0m [38;5;124;03m    display figures inline.[39;00m
-[1;32m   3325[0m [38;5;124;03m"""[39;00m
-[1;32m   3326[0m [38;5;28;01mfrom[39;00m [38;5;21;01mIPython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m pylabtools [38;5;28;01mas[39;00m pt
-[0;32m-> 3327[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib_inline[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackend_inline[39;00m [38;5;28;01mimport[39;00m configure_inline_support
-[1;32m   3328[0m gui, backend [38;5;241m=[39m pt[38;5;241m.[39mfind_gui_and_backend(gui, [38;5;28mself[39m[38;5;241m.[39mpylab_gui_select)
-[1;32m   3330[0m [38;5;28;01mif[39;00m gui [38;5;241m!=[39m [38;5;124m'[39m[38;5;124minline[39m[38;5;124m'[39m:
-[1;32m   3331[0m     [38;5;66;03m# If we have our first gui selection, store it[39;00m
+[1;32m    200[0m     [38;5;66;03m# observer are both specified, we can't also accept a radial velocity[39;00m
+[1;32m    201[0m     [38;5;66;03m# or redshift.[39;00m
+[1;32m    202[0m     [38;5;28;01mif[39;00m target [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m observer [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
 
-File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib_inline/backend_inline.py:6[0m, in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [38;5;124;03m"""A matplotlib backend for publishing figures via display_data"""[39;00m
-[1;32m      3[0m [38;5;66;03m# Copyright (c) IPython Development Team.[39;00m
-[1;32m      4[0m [38;5;66;03m# Distributed under the terms of the BSD 3-Clause License.[39;00m
-[0;32m----> 6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m
-[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackends[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackend_agg[39;00m [38;5;28;01mimport[39;00m (  [38;5;66;03m# noqa[39;00m
-[1;32m      8[0m     new_figure_manager,
-[1;32m      9[0m     FigureCanvasAgg,
-[1;32m     10[0m     new_figure_manager_given_figure,
-[1;32m     11[0m )
-[1;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mimport[39;00m colors
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_quantity.py:57[0m, in [0;36mSpectralQuantity.__new__[0;34m(cls, value, unit, doppler_rest, doppler_convention, **kwargs)[0m
+[1;32m     53[0m [38;5;28;01mdef[39;00m [38;5;21m__new__[39m([38;5;28mcls[39m, value, unit[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m     54[0m             doppler_rest[38;5;241m=[39m[38;5;28;01mNone[39;00m, doppler_convention[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m     55[0m             [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m---> 57[0m     obj [38;5;241m=[39m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[38;5;21;43m__new__[39;49m[43m([49m[38;5;28;43mcls[39;49m[43m,[49m[43m [49m[43mvalue[49m[43m,[49m[43m [49m[43munit[49m[38;5;241;43m=[39;49m[43munit[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     59[0m     [38;5;66;03m# If we're initializing from an existing SpectralQuantity, keep any[39;00m
+[1;32m     60[0m     [38;5;66;03m# parameters that aren't being overridden[39;00m
+[1;32m     61[0m     [38;5;28;01mif[39;00m doppler_rest [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
 
-[0;31mModuleNotFoundError[0m: No module named 'matplotlib'
-ModuleNotFoundError: No module named 'matplotlib'
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:425[0m, in [0;36mQuantity.__new__[0;34m(cls, value, unit, dtype, copy, order, subok, ndmin)[0m
+[1;32m    421[0m     copy [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[1;32m    423[0m [38;5;28;01mif[39;00m [38;5;28mtype[39m(value) [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28mcls[39m [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m (subok [38;5;129;01mand[39;00m
+[1;32m    424[0m                                    [38;5;28misinstance[39m(value, [38;5;28mcls[39m)):
+[0;32m--> 425[0m     value [38;5;241m=[39m [43mvalue[49m[38;5;241;43m.[39;49m[43mview[49m[43m([49m[38;5;28;43mcls[39;49m[43m)[49m
+[1;32m    427[0m [38;5;28;01mif[39;00m dtype [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m value[38;5;241m.[39mdtype[38;5;241m.[39mkind [38;5;129;01min[39;00m [38;5;124m'[39m[38;5;124miu[39m[38;5;124m'[39m:
+[1;32m    428[0m     dtype [38;5;241m=[39m [38;5;28mfloat[39m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_coordinate.py:242[0m, in [0;36mSpectralCoord.__array_finalize__[0;34m(self, obj)[0m
+[1;32m    241[0m [38;5;28;01mdef[39;00m [38;5;21m__array_finalize__[39m([38;5;28mself[39m, obj):
+[0;32m--> 242[0m     [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43m__array_finalize__[49m[43m([49m[43mobj[49m[43m)[49m
+[1;32m    243[0m     [38;5;28mself[39m[38;5;241m.[39m_radial_velocity [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_radial_velocity[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m    244[0m     [38;5;28mself[39m[38;5;241m.[39m_observer [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_observer[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_quantity.py:72[0m, in [0;36mSpectralQuantity.__array_finalize__[0;34m(self, obj)[0m
+[1;32m     71[0m [38;5;28;01mdef[39;00m [38;5;21m__array_finalize__[39m([38;5;28mself[39m, obj):
+[0;32m---> 72[0m     [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43m__array_finalize__[49m[43m([49m[43mobj[49m[43m)[49m
+[1;32m     73[0m     [38;5;28mself[39m[38;5;241m.[39m_doppler_rest [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_doppler_rest[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m     74[0m     [38;5;28mself[39m[38;5;241m.[39m_doppler_convention [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_doppler_convention[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:550[0m, in [0;36mQuantity.__array_finalize__[0;34m(self, obj)[0m
+[1;32m    548[0m     unit [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_unit[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m    549[0m     [38;5;28;01mif[39;00m unit [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 550[0m         [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_set_unit[49m[43m([49m[43munit[49m[43m)[49m
+[1;32m    552[0m [38;5;66;03m# Copy info if the original had `info` defined.  Because of the way the[39;00m
+[1;32m    553[0m [38;5;66;03m# DataInfo works, `'info' in obj.__dict__` is False until the[39;00m
+[1;32m    554[0m [38;5;66;03m# `info` attribute is accessed or set.[39;00m
+[1;32m    555[0m [38;5;28;01mif[39;00m [38;5;124m'[39m[38;5;124minfo[39m[38;5;124m'[39m [38;5;129;01min[39;00m obj[38;5;241m.[39m[38;5;18m__dict__[39m:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:1933[0m, in [0;36mSpecificTypeQuantity._set_unit[0;34m(self, unit)[0m
+[1;32m   1931[0m [38;5;28;01mdef[39;00m [38;5;21m_set_unit[39m([38;5;28mself[39m, unit):
+[1;32m   1932[0m     [38;5;28;01mif[39;00m unit [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m unit[38;5;241m.[39mis_equivalent([38;5;28mself[39m[38;5;241m.[39m_equivalent_unit):
+[0;32m-> 1933[0m         [38;5;28;01mraise[39;00m UnitTypeError(
+[1;32m   1934[0m             [38;5;124m"[39m[38;5;132;01m{}[39;00m[38;5;124m instances require units equivalent to [39m[38;5;124m'[39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;124m"[39m
+[1;32m   1935[0m             [38;5;241m.[39mformat([38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39m[38;5;18m__name__[39m, [38;5;28mself[39m[38;5;241m.[39m_equivalent_unit) [38;5;241m+[39m
+[1;32m   1936[0m             ([38;5;124m"[39m[38;5;124m, but no unit was given.[39m[38;5;124m"[39m [38;5;28;01mif[39;00m unit [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m
+[1;32m   1937[0m              [38;5;124mf[39m[38;5;124m"[39m[38;5;124m, so cannot set it to [39m[38;5;124m'[39m[38;5;132;01m{[39;00munit[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m.[39m[38;5;124m"[39m))
+[1;32m   1939[0m     [38;5;28msuper[39m()[38;5;241m.[39m_set_unit(unit)
+
+[0;31mUnitTypeError[0m: SpectralCoord instances require units equivalent to '(Unit("Hz"), Unit("m"), Unit("J"), Unit("1 / m"), Unit("km / s"))', so cannot set it to ''.
+UnitTypeError: SpectralCoord instances require units equivalent to '(Unit("Hz"), Unit("m"), Unit("J"), Unit("1 / m"), Unit("km / s"))', so cannot set it to ''.
 

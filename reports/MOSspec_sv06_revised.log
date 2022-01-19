@@ -17,63 +17,146 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-#general os
-import os
-import zipfile
-import urllib.request
-
-#general plotting
-from matplotlib import pyplot as plt
-
-params={'legend.fontsize':'18','axes.labelsize':'18',
-        'axes.titlesize':'18','xtick.labelsize':'18',
-        'ytick.labelsize':'18','lines.linewidth':2,'axes.linewidth':2,'animation.html': 'html5'}
-plt.rcParams.update(params)
-plt.rcParams.update({'figure.max_open_warning': 0})
-
-#table/math handling
-import pandas as pd
-import numpy as np
-np.seterr(all='ignore')  # hides irrelevant warnings about divide-by-zero, etc
-
-#astropy
-import astropy
-import astropy.units as u
-from astropy.table import QTable
-from astropy.io import fits,ascii
-from astropy.nddata import StdDevUncertainty
-from astropy.modeling import models
-from astropy.visualization import quantity_support
-from astropy import constants as const
-
-#specutils
-import specutils
-from specutils import Spectrum1D, SpectralRegion
-from specutils.manipulation import gaussian_smooth
-from specutils.fitting import fit_generic_continuum
-from specutils.fitting import find_lines_derivative
-from specutils.fitting import find_lines_threshold
-from specutils.fitting import fit_lines
-from specutils.manipulation import noise_region_uncertainty
-from specutils.analysis import centroid
-from specutils.analysis import line_flux
-from specutils.analysis import equivalent_width
-from specutils.analysis import template_comparison
-
-quantity_support();  # auto-recognizes units on matplotlib plots
+spec1d_sub = spec1d - cont_fit
+spec1d_sub
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01murllib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mrequest[39;00m
-[1;32m      6[0m [38;5;66;03m#general plotting[39;00m
-[0;32m----> 7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mimport[39;00m pyplot [38;5;28;01mas[39;00m plt
-[1;32m      9[0m params[38;5;241m=[39m{[38;5;124m'[39m[38;5;124mlegend.fontsize[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124m18[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124maxes.labelsize[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124m18[39m[38;5;124m'[39m,
-[1;32m     10[0m         [38;5;124m'[39m[38;5;124maxes.titlesize[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124m18[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mxtick.labelsize[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124m18[39m[38;5;124m'[39m,
-[1;32m     11[0m         [38;5;124m'[39m[38;5;124mytick.labelsize[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124m18[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mlines.linewidth[39m[38;5;124m'[39m:[38;5;241m2[39m,[38;5;124m'[39m[38;5;124maxes.linewidth[39m[38;5;124m'[39m:[38;5;241m2[39m,[38;5;124m'[39m[38;5;124manimation.html[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mhtml5[39m[38;5;124m'[39m}
-[1;32m     12[0m plt[38;5;241m.[39mrcParams[38;5;241m.[39mupdate(params)
+[0;31mUnitTypeError[0m                             Traceback (most recent call last)
+Input [0;32mIn [17][0m, in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0m spec1d_sub [38;5;241m=[39m [43mspec1d[49m[43m [49m[38;5;241;43m-[39;49m[43m [49m[43mcont_fit[49m
+[1;32m      2[0m spec1d_sub
 
-[0;31mModuleNotFoundError[0m: No module named 'matplotlib'
-ModuleNotFoundError: No module named 'matplotlib'
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/spectra/spectrum1d.py:415[0m, in [0;36mSpectrum1D.__sub__[0;34m(self, other)[0m
+[1;32m    412[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(other, NDDataRef):
+[1;32m    413[0m     other [38;5;241m=[39m u[38;5;241m.[39mQuantity(other, unit[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39munit)
+[0;32m--> 415[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msubtract[49m[43m([49m[43mother[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/mixins/ndarithmetic.py:524[0m, in [0;36mNDArithmeticMixin.subtract[0;34m(self, operand, operand2, **kwargs)[0m
+[1;32m    521[0m [38;5;129m@sharedmethod[39m
+[1;32m    522[0m [38;5;129m@format_doc[39m(_arit_doc, name[38;5;241m=[39m[38;5;124m'[39m[38;5;124msubtraction[39m[38;5;124m'[39m, op[38;5;241m=[39m[38;5;124m'[39m[38;5;124m-[39m[38;5;124m'[39m)
+[1;32m    523[0m [38;5;28;01mdef[39;00m [38;5;21msubtract[39m([38;5;28mself[39m, operand, operand2[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 524[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_prepare_then_do_arithmetic[49m[43m([49m[43mnp[49m[38;5;241;43m.[39;49m[43msubtract[49m[43m,[49m[43m [49m[43moperand[49m[43m,[49m[43m [49m[43moperand2[49m[43m,[49m
+[1;32m    525[0m [43m                                            [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/nddata/mixins/ndarithmetic.py:610[0m, in [0;36mNDArithmeticMixin._prepare_then_do_arithmetic[0;34m(self_or_cls, operation, operand, operand2, **kwargs)[0m
+[1;32m    602[0m     operand [38;5;241m=[39m [38;5;28mcls[39m(operand)
+[1;32m    604[0m [38;5;66;03m# At this point operand, operand2, kwargs and cls are determined.[39;00m
+[1;32m    605[0m 
+[1;32m    606[0m [38;5;66;03m# Let's try to convert operand2 to the class of operand to allows for[39;00m
+[1;32m    607[0m [38;5;66;03m# arithmetic operations with numbers, lists, numpy arrays, numpy masked[39;00m
+[1;32m    608[0m [38;5;66;03m# arrays, astropy quantities, masked quantities and of other subclasses[39;00m
+[1;32m    609[0m [38;5;66;03m# of NDData.[39;00m
+[0;32m--> 610[0m operand2 [38;5;241m=[39m [38;5;28;43mcls[39;49m[43m([49m[43moperand2[49m[43m)[49m
+[1;32m    612[0m [38;5;66;03m# Now call the _arithmetics method to do the arithmetics.[39;00m
+[1;32m    613[0m result, init_kwds [38;5;241m=[39m operand[38;5;241m.[39m_arithmetic(operation, operand2, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/spectra/spectrum1d.py:217[0m, in [0;36mSpectrum1D.__init__[0;34m(self, flux, spectral_axis, wcs, velocity_convention, rest_value, redshift, radial_velocity, bin_specification, **kwargs)[0m
+[1;32m    212[0m [38;5;66;03m# If no spectral_axis was provided, create a SpectralCoord based on[39;00m
+[1;32m    213[0m [38;5;66;03m# the WCS[39;00m
+[1;32m    214[0m [38;5;28;01mif[39;00m spectral_axis [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    215[0m     [38;5;66;03m# If spectral_axis wasn't provided, set _spectral_axis based on[39;00m
+[1;32m    216[0m     [38;5;66;03m# the WCS[39;00m
+[0;32m--> 217[0m     spec_axis [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mwcs[49m[38;5;241;43m.[39;49m[43mpixel_to_world[49m[43m([49m[43mnp[49m[38;5;241;43m.[39;49m[43marange[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mflux[49m[38;5;241;43m.[39;49m[43mshape[49m[43m[[49m[38;5;241;43m-[39;49m[38;5;241;43m1[39;49m[43m][49m[43m)[49m[43m)[49m
+[1;32m    219[0m     [38;5;28;01mif[39;00m spec_axis[38;5;241m.[39munit[38;5;241m.[39mis_equivalent(u[38;5;241m.[39mone):
+[1;32m    220[0m         spec_axis [38;5;241m=[39m spec_axis [38;5;241m*[39m u[38;5;241m.[39mpixel
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/specutils/utils/wcs_utils.py:217[0m, in [0;36mgwcs_from_array.<locals>.SpectralGWCS.pixel_to_world[0;34m(self, *args, **kwargs)[0m
+[1;32m    216[0m [38;5;28;01mdef[39;00m [38;5;21mpixel_to_world[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 217[0m     [38;5;28;01mreturn[39;00m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mpixel_to_world[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m[38;5;241m.[39mto(
+[1;32m    218[0m         orig_array[38;5;241m.[39munit, equivalencies[38;5;241m=[39mu[38;5;241m.[39mspectral())
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/api.py:299[0m, in [0;36mGWCSAPIMixin.pixel_to_world[0;34m(self, *pixel_arrays)[0m
+[1;32m    295[0m [38;5;124;03m"""[39;00m
+[1;32m    296[0m [38;5;124;03mConvert pixel values to world coordinates.[39;00m
+[1;32m    297[0m [38;5;124;03m"""[39;00m
+[1;32m    298[0m pixels [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_sanitize_pixel_inputs([38;5;241m*[39mpixel_arrays)
+[0;32m--> 299[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m([49m[38;5;241;43m*[39;49m[43mpixels[49m[43m,[49m[43m [49m[43mwith_units[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/wcs.py:380[0m, in [0;36mWCS.__call__[0;34m(self, *args, **kwargs)[0m
+[1;32m    378[0m [38;5;28;01mif[39;00m with_units:
+[1;32m    379[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39moutput_frame[38;5;241m.[39mnaxes [38;5;241m==[39m [38;5;241m1[39m:
+[0;32m--> 380[0m         result [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moutput_frame[49m[38;5;241;43m.[39;49m[43mcoordinates[49m[43m([49m[43mresult[49m[43m)[49m
+[1;32m    381[0m     [38;5;28;01melse[39;00m:
+[1;32m    382[0m         result [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39moutput_frame[38;5;241m.[39mcoordinates([38;5;241m*[39mresult)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/gwcs/coordinate_frames.py:463[0m, in [0;36mSpectralFrame.coordinates[0;34m(self, *args)[0m
+[1;32m    461[0m [38;5;28;01melse[39;00m:
+[1;32m    462[0m     [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(args[[38;5;241m0[39m], [38;5;124m'[39m[38;5;124munit[39m[38;5;124m'[39m):
+[0;32m--> 463[0m         [38;5;28;01mreturn[39;00m [43mcoord[49m[38;5;241;43m.[39;49m[43mSpectralCoord[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m)[49m[38;5;241m.[39mto([38;5;28mself[39m[38;5;241m.[39munit[[38;5;241m0[39m])
+[1;32m    464[0m     [38;5;28;01melse[39;00m:
+[1;32m    465[0m         [38;5;28;01mreturn[39;00m coord[38;5;241m.[39mSpectralCoord([38;5;241m*[39margs, [38;5;28mself[39m[38;5;241m.[39munit[[38;5;241m0[39m])
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/decorators.py:304[0m, in [0;36mQuantityInput.__call__.<locals>.wrapper[0;34m(*func_args, **func_kwargs)[0m
+[1;32m    302[0m [38;5;66;03m# Call the original function with any equivalencies in force.[39;00m
+[1;32m    303[0m [38;5;28;01mwith[39;00m add_enabled_equivalencies([38;5;28mself[39m[38;5;241m.[39mequivalencies):
+[0;32m--> 304[0m     return_ [38;5;241m=[39m [43mwrapped_function[49m[43m([49m[38;5;241;43m*[39;49m[43mfunc_args[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mfunc_kwargs[49m[43m)[49m
+[1;32m    306[0m [38;5;66;03m# Return[39;00m
+[1;32m    307[0m ra [38;5;241m=[39m wrapped_signature[38;5;241m.[39mreturn_annotation
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_coordinate.py:193[0m, in [0;36mSpectralCoord.__new__[0;34m(cls, value, unit, observer, target, radial_velocity, redshift, **kwargs)[0m
+[1;32m    187[0m [38;5;129m@u[39m[38;5;241m.[39mquantity_input(radial_velocity[38;5;241m=[39mu[38;5;241m.[39mkm[38;5;241m/[39mu[38;5;241m.[39ms)
+[1;32m    188[0m [38;5;28;01mdef[39;00m [38;5;21m__new__[39m([38;5;28mcls[39m, value, unit[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    189[0m             observer[38;5;241m=[39m[38;5;28;01mNone[39;00m, target[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    190[0m             radial_velocity[38;5;241m=[39m[38;5;28;01mNone[39;00m, redshift[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    191[0m             [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 193[0m     obj [38;5;241m=[39m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[38;5;21;43m__new__[39;49m[43m([49m[38;5;28;43mcls[39;49m[43m,[49m[43m [49m[43mvalue[49m[43m,[49m[43m [49m[43munit[49m[38;5;241;43m=[39;49m[43munit[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    195[0m     [38;5;66;03m# There are two main modes of operation in this class. Either the[39;00m
+[1;32m    196[0m     [38;5;66;03m# observer and target are both defined, in which case the radial[39;00m
+[1;32m    197[0m     [38;5;66;03m# velocity and redshift are automatically computed from these, or[39;00m
+[0;32m   (...)[0m
+[1;32m    200[0m     [38;5;66;03m# observer are both specified, we can't also accept a radial velocity[39;00m
+[1;32m    201[0m     [38;5;66;03m# or redshift.[39;00m
+[1;32m    202[0m     [38;5;28;01mif[39;00m target [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m observer [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_quantity.py:57[0m, in [0;36mSpectralQuantity.__new__[0;34m(cls, value, unit, doppler_rest, doppler_convention, **kwargs)[0m
+[1;32m     53[0m [38;5;28;01mdef[39;00m [38;5;21m__new__[39m([38;5;28mcls[39m, value, unit[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m     54[0m             doppler_rest[38;5;241m=[39m[38;5;28;01mNone[39;00m, doppler_convention[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m     55[0m             [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m---> 57[0m     obj [38;5;241m=[39m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[38;5;21;43m__new__[39;49m[43m([49m[38;5;28;43mcls[39;49m[43m,[49m[43m [49m[43mvalue[49m[43m,[49m[43m [49m[43munit[49m[38;5;241;43m=[39;49m[43munit[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     59[0m     [38;5;66;03m# If we're initializing from an existing SpectralQuantity, keep any[39;00m
+[1;32m     60[0m     [38;5;66;03m# parameters that aren't being overridden[39;00m
+[1;32m     61[0m     [38;5;28;01mif[39;00m doppler_rest [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:425[0m, in [0;36mQuantity.__new__[0;34m(cls, value, unit, dtype, copy, order, subok, ndmin)[0m
+[1;32m    421[0m     copy [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[1;32m    423[0m [38;5;28;01mif[39;00m [38;5;28mtype[39m(value) [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28mcls[39m [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m (subok [38;5;129;01mand[39;00m
+[1;32m    424[0m                                    [38;5;28misinstance[39m(value, [38;5;28mcls[39m)):
+[0;32m--> 425[0m     value [38;5;241m=[39m [43mvalue[49m[38;5;241;43m.[39;49m[43mview[49m[43m([49m[38;5;28;43mcls[39;49m[43m)[49m
+[1;32m    427[0m [38;5;28;01mif[39;00m dtype [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m value[38;5;241m.[39mdtype[38;5;241m.[39mkind [38;5;129;01min[39;00m [38;5;124m'[39m[38;5;124miu[39m[38;5;124m'[39m:
+[1;32m    428[0m     dtype [38;5;241m=[39m [38;5;28mfloat[39m
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_coordinate.py:242[0m, in [0;36mSpectralCoord.__array_finalize__[0;34m(self, obj)[0m
+[1;32m    241[0m [38;5;28;01mdef[39;00m [38;5;21m__array_finalize__[39m([38;5;28mself[39m, obj):
+[0;32m--> 242[0m     [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43m__array_finalize__[49m[43m([49m[43mobj[49m[43m)[49m
+[1;32m    243[0m     [38;5;28mself[39m[38;5;241m.[39m_radial_velocity [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_radial_velocity[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m    244[0m     [38;5;28mself[39m[38;5;241m.[39m_observer [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_observer[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/coordinates/spectral_quantity.py:72[0m, in [0;36mSpectralQuantity.__array_finalize__[0;34m(self, obj)[0m
+[1;32m     71[0m [38;5;28;01mdef[39;00m [38;5;21m__array_finalize__[39m([38;5;28mself[39m, obj):
+[0;32m---> 72[0m     [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43m__array_finalize__[49m[43m([49m[43mobj[49m[43m)[49m
+[1;32m     73[0m     [38;5;28mself[39m[38;5;241m.[39m_doppler_rest [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_doppler_rest[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m     74[0m     [38;5;28mself[39m[38;5;241m.[39m_doppler_convention [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_doppler_convention[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:550[0m, in [0;36mQuantity.__array_finalize__[0;34m(self, obj)[0m
+[1;32m    548[0m     unit [38;5;241m=[39m [38;5;28mgetattr[39m(obj, [38;5;124m'[39m[38;5;124m_unit[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)
+[1;32m    549[0m     [38;5;28;01mif[39;00m unit [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 550[0m         [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_set_unit[49m[43m([49m[43munit[49m[43m)[49m
+[1;32m    552[0m [38;5;66;03m# Copy info if the original had `info` defined.  Because of the way the[39;00m
+[1;32m    553[0m [38;5;66;03m# DataInfo works, `'info' in obj.__dict__` is False until the[39;00m
+[1;32m    554[0m [38;5;66;03m# `info` attribute is accessed or set.[39;00m
+[1;32m    555[0m [38;5;28;01mif[39;00m [38;5;124m'[39m[38;5;124minfo[39m[38;5;124m'[39m [38;5;129;01min[39;00m obj[38;5;241m.[39m[38;5;18m__dict__[39m:
+
+File [0;32m/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/astropy/units/quantity.py:1933[0m, in [0;36mSpecificTypeQuantity._set_unit[0;34m(self, unit)[0m
+[1;32m   1931[0m [38;5;28;01mdef[39;00m [38;5;21m_set_unit[39m([38;5;28mself[39m, unit):
+[1;32m   1932[0m     [38;5;28;01mif[39;00m unit [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m unit[38;5;241m.[39mis_equivalent([38;5;28mself[39m[38;5;241m.[39m_equivalent_unit):
+[0;32m-> 1933[0m         [38;5;28;01mraise[39;00m UnitTypeError(
+[1;32m   1934[0m             [38;5;124m"[39m[38;5;132;01m{}[39;00m[38;5;124m instances require units equivalent to [39m[38;5;124m'[39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;124m"[39m
+[1;32m   1935[0m             [38;5;241m.[39mformat([38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39m[38;5;18m__name__[39m, [38;5;28mself[39m[38;5;241m.[39m_equivalent_unit) [38;5;241m+[39m
+[1;32m   1936[0m             ([38;5;124m"[39m[38;5;124m, but no unit was given.[39m[38;5;124m"[39m [38;5;28;01mif[39;00m unit [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m
+[1;32m   1937[0m              [38;5;124mf[39m[38;5;124m"[39m[38;5;124m, so cannot set it to [39m[38;5;124m'[39m[38;5;132;01m{[39;00munit[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m.[39m[38;5;124m"[39m))
+[1;32m   1939[0m     [38;5;28msuper[39m()[38;5;241m.[39m_set_unit(unit)
+
+[0;31mUnitTypeError[0m: SpectralCoord instances require units equivalent to '(Unit("Hz"), Unit("m"), Unit("J"), Unit("1 / m"), Unit("km / s"))', so cannot set it to ''.
+UnitTypeError: SpectralCoord instances require units equivalent to '(Unit("Hz"), Unit("m"), Unit("J"), Unit("1 / m"), Unit("km / s"))', so cannot set it to ''.
 

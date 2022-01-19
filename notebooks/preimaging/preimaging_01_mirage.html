@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -503,20 +505,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># mirage imports</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">mirage</span> <span class="kn">import</span> <span class="n">imaging_simulator</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">mirage.seed_image</span> <span class="kn">import</span> <span class="n">catalog_seed_image</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">mirage.dark</span> <span class="kn">import</span> <span class="n">dark_prep</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;mirage&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,6 +530,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/runner/work/pyinthehub/pyinthehub/notebooks/preimaging&#39;
 </pre></div>
 </div>
 </div>
@@ -649,6 +642,56 @@ For users at STScI, this is the location of MIRAGE data:</p>
 
 <span class="n">yam</span><span class="o">.</span><span class="n">use_linearized_darks</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">yam</span><span class="o">.</span><span class="n">create_inputs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-19 19:15:00,800 - mirage.yaml.yaml_generator - INFO - Running yaml_generator....
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-19 19:15:00,801 - mirage.yaml.yaml_generator - INFO - 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-19 19:15:00,802 - mirage.yaml.yaml_generator - INFO - using APT xml file: preimaging/NRC21_pid1069_2018_rev2.xml
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-19 19:15:00,803 - mirage.yaml.yaml_generator - INFO - 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-19 19:15:00,804 - mirage.yaml.yaml_generator - INFO - Original log file name: ./mirage_latest.log
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Run the yaml generator</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">yam</span> <span class="o">=</span> <span class="n">yaml_generator</span><span class="o">.</span><span class="n">SimInput</span><span class="p">(</span><span class="n">xml_file</span><span class="p">,</span> <span class="n">pointing_file</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                               <span class="n">catalogs</span><span class="o">=</span><span class="n">cat_dict</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span>                               <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>                               <span class="n">simdata_output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>                               <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>                               <span class="n">roll_angle</span><span class="o">=</span><span class="n">pav3</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span>                               <span class="c1"># to do : explain linear vs raw</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>                               <span class="n">datatype</span><span class="o">=</span><span class="s1">&#39;linear,raw&#39;</span><span class="p">)</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">yam</span><span class="o">.</span><span class="n">use_linearized_darks</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">yam</span><span class="o">.</span><span class="n">create_inputs</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/mirage/yaml/yaml_generator.py:329,</span> in <span class="ni">SimInput.__init__</span><span class="nt">(self, input_xml, pointing_file, datatype, reffile_defaults, reffile_overrides, use_JWST_pipeline, catalogs, cosmic_rays, background, roll_angle, dates, observation_list_file, verbose, output_dir, simdata_output_dir, dateobs_for_background, segmap_flux_limit, segmap_flux_limit_units, add_ghosts, convolve_ghosts_with_psf, convolve_extended_with_psf, offline)</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="bp">self</span><span class="o">.</span><span class="n">segmentation_threshold_units</span> <span class="o">=</span> <span class="n">segmap_flux_limit_units</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span> <span class="c1"># Expand the MIRAGE_DATA environment variable</span>
+<span class="ne">--&gt; </span><span class="mi">329</span> <span class="bp">self</span><span class="o">.</span><span class="n">datadir</span> <span class="o">=</span> <span class="n">expand_environment_variable</span><span class="p">(</span><span class="n">ENV_VAR</span><span class="p">,</span> <span class="n">offline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">offline</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span> <span class="c1"># Check that CRDS-related environment variables are set correctly</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="bp">self</span><span class="o">.</span><span class="n">crds_datadir</span> <span class="o">=</span> <span class="n">crds_tools</span><span class="o">.</span><span class="n">env_variables</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/mirage/utils/utils.py:421,</span> in <span class="ni">expand_environment_variable</span><span class="nt">(variable_name, offline)</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">offline</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">variable_directory</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">421</span>         <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">((</span><span class="s2">&quot;The directory contained in the </span><span class="si">{}</span><span class="s2"> &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>                                  <span class="s2">&quot;environment variable: </span><span class="si">{}</span><span class="s2"> does not exist or &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>                                  <span class="s2">&quot;is not accessible.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">variable_directory</span><span class="p">)))</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span> <span class="k">return</span> <span class="n">variable_directory</span>
+
+<span class="ne">FileNotFoundError</span>: The directory contained in the MIRAGE_DATA environment variable: /path/to/mirage_data/ does not exist or is not accessible.
 </pre></div>
 </div>
 </div>
