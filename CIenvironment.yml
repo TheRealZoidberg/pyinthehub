@@ -31,7 +31,6 @@ mplcursors
 munch
 notebook==6.1.5
 numpy
-numpymatplotlib
 pandas==1.1.2
 photutils==1.0.1
 poppy
