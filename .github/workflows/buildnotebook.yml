@@ -15,16 +15,7 @@ on:
       - 'notebooks/**.ipynb'
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
-jobs:
-  nbval:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Analysing with nbval
-      run: |
-        pip install nbval
-        python -m pytest --nbval -x -k "test_ or notebook_utils" --durations 10
-        
+jobs:       
   deploy-book:
     runs-on: ubuntu-latest
     steps:
@@ -36,9 +27,9 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Install dependencies
-      run: |
-        pip install -r CIenvironment.yml
+   # - name: Install dependencies
+   #   run: |
+   #     pip install -r CIenvironment.yml
 
     - name: Install Python dependencies
       run: |
