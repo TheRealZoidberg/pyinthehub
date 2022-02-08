@@ -47,8 +47,13 @@ jobs:
         pip install ghp-import
         pip install jupyter-book
         pip install myst-nb
+        pip install nbval
         PATH="${PATH}:${HOME}/.local/bin"
-
+        
+    - name: nbval validation step
+      run: |
+        python -m pytest --nbval --durations 10
+        
     - name: Build book TOC file 
       run: |
         jupyter-book toc from-project ./notebooks
