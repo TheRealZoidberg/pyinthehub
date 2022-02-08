@@ -11,9 +11,20 @@ on:
     #
     # paths:
     # - some-subfolder/**
+    paths:
+      - 'notebooks/**.ipynb'
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
+  nbval:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Analysing with nbval
+      run: |
+        pip install nbval
+        python -m pytest --nbval -x -k "test_ or notebook_utils" --durations 10
+        
   deploy-book:
     runs-on: ubuntu-latest
     steps:
